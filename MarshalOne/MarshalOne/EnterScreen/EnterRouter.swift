@@ -23,6 +23,5 @@ extension EnterRouter: EnterRouterInput {
         
         window.rootViewController = loginContainer.viewController
         window.makeKeyAndVisible()
-//        viewController?.navigationController?.pushViewController(loginContainer.viewController, animated: true)
     }
 }

@@ -27,6 +27,8 @@
 		94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D6929969D00009FB37F /* LoginProtocols.swift */; };
 		94C58D7029969D00009FB37F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D6A29969D00009FB37F /* LoginInteractor.swift */; };
 		94C58D7129969D00009FB37F /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D6B29969D00009FB37F /* LoginContainer.swift */; };
+		94C58D742996A196009FB37F /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D732996A196009FB37F /* CustomTF.swift */; };
+		94C58D762996A313009FB37F /* LoginStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D752996A313009FB37F /* LoginStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		94C58D6929969D00009FB37F /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
 		94C58D6A29969D00009FB37F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		94C58D6B29969D00009FB37F /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
+		94C58D732996A196009FB37F /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
+		94C58D752996A313009FB37F /* LoginStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 		94C58D3B2995358F009FB37F /* MarshalOne */ = {
 			isa = PBXGroup;
 			children = (
+				94C58D722996A17C009FB37F /* Views */,
 				94C58D6529969CCC009FB37F /* LoginScreen */,
 				94C58D5E299539A5009FB37F /* Extensions */,
 				94C58D5129953969009FB37F /* EnterScreen */,
@@ -139,6 +144,15 @@
 				94C58D6B29969D00009FB37F /* LoginContainer.swift */,
 			);
 			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		94C58D722996A17C009FB37F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				94C58D732996A196009FB37F /* CustomTF.swift */,
+				94C58D752996A313009FB37F /* LoginStackView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +234,8 @@
 				94C58D5A29953985009FB37F /* EnterViewController.swift in Sources */,
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
+				94C58D742996A196009FB37F /* CustomTF.swift in Sources */,
+				94C58D762996A313009FB37F /* LoginStackView.swift in Sources */,
 				94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */,
 				94C58D6029953A08009FB37F /* UIView+Layout.swift in Sources */,
 				94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */,

@@ -11,6 +11,12 @@ import UIKit
 final class LoginViewController: UIViewController {
 	private let output: LoginViewOutput
 
+    let loginStackView: LoginStackView = {
+        let loginSV = LoginStackView()
+        loginSV.translatesAutoresizingMaskIntoConstraints = false
+        return loginSV
+    }()
+    
     init(output: LoginViewOutput) {
         self.output = output
         
@@ -23,8 +29,19 @@ final class LoginViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        setupConstraints()
 	}
 }
+
+extension LoginViewController {
+    func setupConstraints(){
+        view.addSubview(loginStackView)
+        loginStackView.centerY()
+        loginStackView.leading(43)
+        loginStackView.trailing(-43)
+    }
+}
+
 
 extension LoginViewController: LoginViewInput {
 }
