@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window: UIWindow = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let enterContainer = EnterContainer.assemble(with: EnterContext())
+        let enterContainer = EnterContainer.assemble(with: EnterContext(window: window))
         let navigationController = UINavigationController(rootViewController: enterContainer.viewController)
 
         window.rootViewController = navigationController
