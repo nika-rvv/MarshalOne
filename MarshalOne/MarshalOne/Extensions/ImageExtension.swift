@@ -10,4 +10,5 @@ import UIKit
 
 extension UIImage {
     static let launchImage = UIImage(named: "LaunchImage")
+    static let loginImage = UIImage(named: "LoginImage")
 }

@@ -10,5 +10,6 @@ import UIKit
 extension UIColor {
     static let mainOrangeColor = UIColor(named: "MainOrange")
     static let cellColor = UIColor(named: "CellColor")
-    static let launchScreenColor = UIColor(named: "launchScreenColor")
+    static let ScreenColor = UIColor(named: "launchScreenColor")
+    static let mainTextColor = UIColor(named: "MainTextColor")
 }
