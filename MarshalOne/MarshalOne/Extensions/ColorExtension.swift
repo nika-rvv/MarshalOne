@@ -11,7 +11,7 @@ extension UIColor {
     static let mainOrangeColor = UIColor(named: "MainOrange")
     static let mainBlueColor = UIColor(named: "MainBlue")
     static let cellColor = UIColor(named: "CellColor")
-    static let ScreenColor = UIColor(named: "launchScreenColor")
+    static let screenColor = UIColor(named: "launchScreenColor")
     static let mainTextColor = UIColor(named: "MainTextColor")
     static let tfColor = UIColor(named: "TFColor")
     static let tfText = UIColor(named: "tfText")

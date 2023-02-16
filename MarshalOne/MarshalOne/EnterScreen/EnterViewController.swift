@@ -64,7 +64,7 @@ final class EnterViewController: UIViewController {
 
 extension EnterViewController {
     func setupConstraints(){
-        view.backgroundColor = .ScreenColor
+        view.backgroundColor = .screenColor
 
         view.addSubview(lauchImage)
         lauchImage.centerX()

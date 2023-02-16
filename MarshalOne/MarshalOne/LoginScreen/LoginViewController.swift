@@ -57,14 +57,15 @@ final class LoginViewController: UIViewController {
     }()
     
     private let registrationButton: UIButton = {
-        let button: UIButton = .init()
+        let button = UIButton()
         var attrString0 = NSMutableAttributedString(string: "Нет аккаунта? ",
                                                     attributes:[
-                                                        .font: UIFont.systemFont(ofSize: 15)])
+                                                        .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
+                                                        .foregroundColor: UIColor.tfText ?? .systemGray])
         let attrString1 = NSAttributedString(string: "Зарегистрироваться",
                                              attributes:[
-                                                .font: UIFont.systemFont(ofSize: 15),
-                                                .foregroundColor: UIColor.systemBlue])
+                                                .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
+                                                .foregroundColor: UIColor.mainBlueColor ?? .systemBlue])
         attrString0.append(attrString1)
         button.setAttributedTitle(attrString0, for: .normal)
         return button
@@ -82,7 +83,7 @@ final class LoginViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        view.backgroundColor = .ScreenColor
+        view.backgroundColor = .screenColor
         setupConstraints()
         setupViews()
 	}
