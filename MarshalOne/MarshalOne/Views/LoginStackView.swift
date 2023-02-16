@@ -9,16 +9,15 @@ import Foundation
 import UIKit
 
 class LoginStackView: UIView {
-    let mailTextField: CustomTF = {
+    private let mailTextField: CustomTF = {
         let mailTF = CustomTF()
         mailTF.translatesAutoresizingMaskIntoConstraints = false
         return mailTF
     }()
     
-    let passwordTextField: CustomTF = {
+    private let passwordTextField: CustomTF = {
         let passwordTF = CustomTF()
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
-        passwordTF.textField.isSecureTextEntry = true
         return passwordTF
     }()
     
@@ -46,5 +45,6 @@ class LoginStackView: UIView {
         passwordTextField.leading()
         passwordTextField.trailing()
         passwordTextField.height(42)
+        passwordTextField.setupSecureEntry()
     }
 }

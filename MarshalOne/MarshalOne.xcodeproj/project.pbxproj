@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F5E299E300F005EDB9D /* CustomButton.swift */; };
 		94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3C2995358F009FB37F /* AppDelegate.swift */; };
 		94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3E2995358F009FB37F /* SceneDelegate.swift */; };
 		94C58D442995358F009FB37F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C58D422995358F009FB37F /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94542F5E299E300F005EDB9D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		94C58D392995358F009FB37F /* MarshalOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshalOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C58D3C2995358F009FB37F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94C58D3E2995358F009FB37F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				94C58D732996A196009FB37F /* CustomTF.swift */,
 				94C58D752996A313009FB37F /* LoginStackView.swift */,
+				94542F5E299E300F005EDB9D /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				94C58D6C29969D00009FB37F /* LoginPresenter.swift in Sources */,
 				94C58D5D29953985009FB37F /* EnterContainer.swift in Sources */,
 				94C58D5B29953985009FB37F /* EnterProtocols.swift in Sources */,
+				94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */,
 				94C58D7029969D00009FB37F /* LoginInteractor.swift in Sources */,
 				94C58D5A29953985009FB37F /* EnterViewController.swift in Sources */,
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,

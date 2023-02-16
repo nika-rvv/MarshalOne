@@ -11,14 +11,14 @@ import UIKit
 final class LoginViewController: UIViewController {
 	private let output: LoginViewOutput
 
-    let loginImage: UIImageView = {
+    private let loginImage: UIImageView = {
         let loginIm = UIImageView()
         loginIm.translatesAutoresizingMaskIntoConstraints = false
         loginIm.image = .loginImage
         return loginIm
     }()
     
-    let loginLabel: UILabel = {
+    private let loginLabel: UILabel = {
         let loginLa = UILabel()
         loginLa.translatesAutoresizingMaskIntoConstraints = false
         loginLa.text = "Добро пожаловать \nв MarshalOne"
@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController {
         return loginLa
     }()
     
-    let loginStackView: UIStackView = {
+    private let loginStackView: UIStackView = {
         let loginSV = UIStackView()
         loginSV.translatesAutoresizingMaskIntoConstraints = false
         loginSV.alignment = .center
@@ -38,16 +38,36 @@ final class LoginViewController: UIViewController {
         return loginSV
     }()
     
-    let mailTextField: CustomTF = {
+    private let mailTextField: CustomTF = {
         let mailTF = CustomTF()
         mailTF.translatesAutoresizingMaskIntoConstraints = false
         return mailTF
     }()
     
-    let passwordTextField: CustomTF = {
+    private let passwordTextField: CustomTF = {
         let passwordTF = CustomTF()
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         return passwordTF
+    }()
+    
+    private let enterButton: CustomButton = {
+        let enterBtn = CustomButton()
+        enterBtn.translatesAutoresizingMaskIntoConstraints = false
+        return enterBtn
+    }()
+    
+    private let registrationButton: UIButton = {
+        let button: UIButton = .init()
+        var attrString0 = NSMutableAttributedString(string: "Нет аккаунта? ",
+                                                    attributes:[
+                                                        .font: UIFont.systemFont(ofSize: 15)])
+        let attrString1 = NSAttributedString(string: "Зарегистрироваться",
+                                             attributes:[
+                                                .font: UIFont.systemFont(ofSize: 15),
+                                                .foregroundColor: UIColor.systemBlue])
+        attrString0.append(attrString1)
+        button.setAttributedTitle(attrString0, for: .normal)
+        return button
     }()
     
     init(output: LoginViewOutput) {
@@ -64,6 +84,7 @@ final class LoginViewController: UIViewController {
 		super.viewDidLoad()
         view.backgroundColor = .ScreenColor
         setupConstraints()
+        setupViews()
 	}
 }
 
@@ -92,12 +113,37 @@ extension LoginViewController {
         mailTextField.top(isIncludeSafeArea: false)
         mailTextField.leading()
         mailTextField.trailing()
+        mailTextField.height(44)
+        
         loginStackView.addArrangedSubview(passwordTextField)
         NSLayoutConstraint.activate([
             passwordTextField.topAnchor.constraint(equalTo: mailTextField.bottomAnchor, constant: 12)
         ])
         passwordTextField.leading()
         passwordTextField.trailing()
+        passwordTextField.height(44)
+        
+        view.addSubview(enterButton)
+        NSLayoutConstraint.activate([
+            enterButton.topAnchor.constraint(equalTo: loginStackView.bottomAnchor, constant: 24)
+        ])
+        enterButton.leading(44)
+        enterButton.trailing(-44)
+        enterButton.height(44)
+        
+        view.addSubview(registrationButton)
+        registrationButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            registrationButton.topAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 16)
+        ])
+        registrationButton.leading(60)
+        registrationButton.trailing(-60)
+    }
+    
+    func setupViews(){
+        mailTextField.setupPlaceholder(with: "Введите почту")
+        passwordTextField.setupPlaceholder(with: "Введите пароль")
+        enterButton.setupTitle(with: "Войти")
     }
 }
 
