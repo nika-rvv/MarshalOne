@@ -28,3 +28,10 @@
 "man" = "man";
 "woman" = "woman";
 "sex" = "Sex";
+"name" = "Name";
+"surname" = "Surname";
+"city" = "City";
+"email" = "Email";
+"password" = "Password";
+"passwordConfirmation" = "Password confirmation";
+

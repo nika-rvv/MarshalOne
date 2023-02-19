@@ -86,6 +86,7 @@ final class LoginViewController: UIViewController {
         view.backgroundColor = .screenColor
         setupConstraints()
         setupViews()
+        setupActions()
 	}
 }
 
@@ -145,6 +146,23 @@ extension LoginViewController {
         mailTextField.setupPlaceholder(with: R.string.localizable.enterEmail())
         passwordTextField.setupPlaceholder(with: R.string.localizable.enterPassword())
         enterButton.setupTitle(with: R.string.localizable.enter())
+    }
+    
+    func setupActions() {
+        registrationButton.addTarget(self, action: #selector(didTapRegButton), for: .touchUpInside)
+    }
+    
+    @objc
+    private func didTapRegButton() {
+        view.endEditing(true)
+        UIView.animate(withDuration: 0.2){ [weak self] in
+            self?.registrationButton.alpha = 0.7
+        } completion: { [weak self] finished in
+            if finished {
+                self?.output.didTapRegButton()
+                self?.registrationButton.alpha = 1
+            }
+        }
     }
 }
 

@@ -9,6 +9,8 @@
 import UIKit
 
 final class RegisterRouter {
+    var viewController: UIViewController?
+    var window: UIWindow?
 }
 
 extension RegisterRouter: RegisterRouterInput {

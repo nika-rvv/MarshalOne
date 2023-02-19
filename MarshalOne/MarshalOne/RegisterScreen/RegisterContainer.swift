@@ -19,6 +19,8 @@ final class RegisterContainer {
         let presenter = RegisterPresenter(router: router, interactor: interactor)
 		let viewController = RegisterViewController(output: presenter)
 
+        router.viewController = viewController
+        router.window = context.window
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 
@@ -36,4 +38,5 @@ final class RegisterContainer {
 
 struct RegisterContext {
 	weak var moduleOutput: RegisterModuleOutput?
+    let window: UIWindow
 }

@@ -28,3 +28,9 @@
 "man" = "муж";
 "woman" = "жен";
 "sex" = "Пол";
+"name" = "Имя";
+"surname" = "Фамилия";
+"city" = "Город";
+"email" = "Почта";
+"password" = "Пароль";
+"passwordConfirmation" = "Подтверждение пароля";

@@ -19,6 +19,7 @@ protocol LoginViewInput: AnyObject {
 }
 
 protocol LoginViewOutput: AnyObject {
+    func didTapRegButton()
 }
 
 protocol LoginInteractorInput: AnyObject {
@@ -28,4 +29,5 @@ protocol LoginInteractorOutput: AnyObject {
 }
 
 protocol LoginRouterInput: AnyObject {
+    func openRegScreen()
 }

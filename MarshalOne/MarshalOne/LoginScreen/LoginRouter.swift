@@ -14,4 +14,12 @@ final class LoginRouter {
 }
 
 extension LoginRouter: LoginRouterInput {
+    func openRegScreen() {
+        guard let window = window else {
+            return
+        }
+        let registrationContext = RegisterContext(window: window)
+        let registrationContainer = RegisterContainer.assemble(with: registrationContext)
+        viewController?.navigationController?.pushViewController(registrationContainer.viewController, animated: true)
+    }
 }
