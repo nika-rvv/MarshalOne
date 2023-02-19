@@ -21,7 +21,7 @@ final class LoginViewController: UIViewController {
     private let loginLabel: UILabel = {
         let loginLa = UILabel()
         loginLa.translatesAutoresizingMaskIntoConstraints = false
-        loginLa.text = "Добро пожаловать \nв MarshalOne"
+        loginLa.text = R.string.localizable.welcomeLabel()
         loginLa.textColor = .mainTextColor
         loginLa.numberOfLines = 0
         loginLa.textAlignment = .center
@@ -58,11 +58,11 @@ final class LoginViewController: UIViewController {
     
     private let registrationButton: UIButton = {
         let button = UIButton()
-        var attrString0 = NSMutableAttributedString(string: "Нет аккаунта? ",
+        var attrString0 = NSMutableAttributedString(string: R.string.localizable.noAccount(),
                                                     attributes:[
                                                         .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
                                                         .foregroundColor: UIColor.tfText ?? .systemGray])
-        let attrString1 = NSAttributedString(string: "Зарегистрироваться",
+        let attrString1 = NSAttributedString(string: R.string.localizable.register(),
                                              attributes:[
                                                 .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
                                                 .foregroundColor: UIColor.mainBlueColor ?? .systemBlue])
@@ -142,9 +142,9 @@ extension LoginViewController {
     }
     
     func setupViews(){
-        mailTextField.setupPlaceholder(with: "Введите почту")
-        passwordTextField.setupPlaceholder(with: "Введите пароль")
-        enterButton.setupTitle(with: "Войти")
+        mailTextField.setupPlaceholder(with: R.string.localizable.enterEmail())
+        passwordTextField.setupPlaceholder(with: R.string.localizable.enterPassword())
+        enterButton.setupTitle(with: R.string.localizable.enter())
     }
 }
 

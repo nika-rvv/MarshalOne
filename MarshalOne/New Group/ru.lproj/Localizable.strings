@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  MarshalOne
+
+  Created by Veronika on 16.02.2023.
+  
+*/
+
+// login
+"welcomeLabel" = "Добро пожаловать \nв MarshalOne";
+"noAccount" = "Нет аккаунта? ";
+"register" = "Зарегестрироваться";
+"enterEmail" = "Введите email";
+"enterPassword" = "Введите пароль";
+"enter" = "Войти";
+
+//registration
+"createAccount" = "Создайте аккаунт";
+"fillFields" = "Пожалуйста, заполните все поля";
+"enterName" = "Введите имя";
+"enterSurname" = "Введите фамилию";
+"birthdate" = "Дата рождения";
+"enterCity" = "Введите город проживания";
+"createPassword" = "Создайте пароль";
+"confirmPassword" = "Подтвердите пароль";
+"acceptRules" = "Регистрируясь, я соглашаюсь с ";
+"acceptRules2" = "\n пользовательским соглашением";
+"man" = "муж";
+"woman" = "жен";
+"sex" = "Пол";

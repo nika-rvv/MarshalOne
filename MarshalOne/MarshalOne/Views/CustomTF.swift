@@ -5,7 +5,6 @@
 //  Created by Veronika on 10.02.2023.
 //
 
-import Foundation
 import UIKit
 
 class CustomTF: UIView {
@@ -47,4 +46,14 @@ class CustomTF: UIView {
     func setupSecureEntry(){
         textField.isSecureTextEntry = true
     }
+    
+    func setupInputView(with inputView: UIView?) {
+        textField.inputView = inputView
+    }
+    
+    func setupText(with text: String) {
+        textField.text = text
+    }
 }
+
+

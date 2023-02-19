@@ -12,7 +12,7 @@ final class EnterViewController: UIViewController {
 	private let output: EnterViewOutput
 
     var timer = Timer()
-    let timeInterval = 5.0
+    let timeInterval = 1.0
     
     let lauchImage: UIImageView = {
         let image = UIImageView()
@@ -83,7 +83,7 @@ extension EnterViewController {
     
     func setupProgressView(){
         UIView.animate(withDuration: timeInterval) {
-            self.progressView.setProgress(1.0, animated: true)
+            self.progressView.setProgress(Float(self.timeInterval), animated: true)
         }
     }
 }
