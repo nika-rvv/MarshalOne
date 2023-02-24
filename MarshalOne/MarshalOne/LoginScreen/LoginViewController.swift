@@ -9,8 +9,8 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-	private let output: LoginViewOutput
-
+    private let output: LoginViewOutput
+    
     private let loginImage: UIImageView = {
         let loginIm = UIImageView()
         loginIm.translatesAutoresizingMaskIntoConstraints = false
@@ -18,36 +18,10 @@ final class LoginViewController: UIViewController {
         return loginIm
     }()
     
-    private let loginLabel: UILabel = {
-        let loginLa = UILabel()
-        loginLa.translatesAutoresizingMaskIntoConstraints = false
-        loginLa.text = R.string.localizable.welcomeLabel()
-        loginLa.textColor = .mainTextColor
-        loginLa.numberOfLines = 0
-        loginLa.textAlignment = .center
-        loginLa.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-        return loginLa
-    }()
-    
-    private let loginStackView: UIStackView = {
-        let loginSV = UIStackView()
-        loginSV.translatesAutoresizingMaskIntoConstraints = false
-        loginSV.alignment = .center
-        loginSV.axis = .vertical
-        loginSV.spacing = 12
-        return loginSV
-    }()
-    
-    private let mailTextField: CustomTF = {
-        let mailTF = CustomTF()
-        mailTF.translatesAutoresizingMaskIntoConstraints = false
-        return mailTF
-    }()
-    
-    private let passwordTextField: CustomTF = {
-        let passwordTF = CustomTF()
-        passwordTF.translatesAutoresizingMaskIntoConstraints = false
-        return passwordTF
+    private let loginContentView: LoginContentView = {
+        let loginCV = LoginContentView()
+        loginCV.translatesAutoresizingMaskIntoConstraints = false
+        return loginCV
     }()
     
     private let enterButton: CustomButton = {
@@ -58,6 +32,7 @@ final class LoginViewController: UIViewController {
     
     private let registrationButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         var attrString0 = NSMutableAttributedString(string: R.string.localizable.noAccount(),
                                                     attributes:[
                                                         .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
@@ -81,60 +56,64 @@ final class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .screenColor
         setupConstraints()
         setupViews()
         setupActions()
-	}
+        setupObserversForKeyboard()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeObserversForKeyboard()
+    }
 }
 
 extension LoginViewController {
-    func setupConstraints(){
+    
+    func setupBigLoginImageConstraints(){
         view.addSubview(loginImage)
         loginImage.top(isIncludeSafeArea: true)
-        loginImage.leading()
-        loginImage.trailing()
+        loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = false
+        loginImage.widthAnchor.constraint(equalToConstant: 160).isActive = false
+        loginImage.heightAnchor.constraint(equalToConstant: 160).isActive = false
+        loginImage.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        loginImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        loginImage.layer.cornerRadius = 0
+    }
+    
+    func setupRoundLognImageConstraints(){
+        loginImage.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = false
+        loginImage.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = false
+        loginImage.heightAnchor.constraint(equalToConstant: 300).isActive = false
+        loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginImage.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        loginImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        loginImage.layer.cornerRadius = 80
+        loginImage.clipsToBounds = true
+    }
+    func setupConstraints(){
+        setupBigLoginImageConstraints()
         
-        view.addSubview(loginLabel)
+        view.addSubview(loginContentView)
         NSLayoutConstraint.activate([
-            loginLabel.topAnchor.constraint(equalTo: loginImage.bottomAnchor, constant: 8)
+            loginContentView.topAnchor.constraint(equalTo: loginImage.bottomAnchor, constant: 24)
         ])
-        loginLabel.leading()
-        loginLabel.trailing()
-        
-        view.addSubview(loginStackView)
-        NSLayoutConstraint.activate([
-            loginStackView.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 20)
-        ])
-        loginStackView.leading(43)
-        loginStackView.trailing(-43)
-        
-        loginStackView.addArrangedSubview(mailTextField)
-        mailTextField.top(isIncludeSafeArea: false)
-        mailTextField.leading()
-        mailTextField.trailing()
-        mailTextField.height(44)
-        
-        loginStackView.addArrangedSubview(passwordTextField)
-        NSLayoutConstraint.activate([
-            passwordTextField.topAnchor.constraint(equalTo: mailTextField.bottomAnchor, constant: 12)
-        ])
-        passwordTextField.leading()
-        passwordTextField.trailing()
-        passwordTextField.height(44)
+        loginContentView.leading()
+        loginContentView.trailing()
+        loginContentView.height(190)
         
         view.addSubview(enterButton)
         NSLayoutConstraint.activate([
-            enterButton.topAnchor.constraint(equalTo: loginStackView.bottomAnchor, constant: 24)
+            enterButton.topAnchor.constraint(equalTo: loginContentView.bottomAnchor, constant: 24)
         ])
         enterButton.leading(44)
         enterButton.trailing(-44)
         enterButton.height(44)
         
         view.addSubview(registrationButton)
-        registrationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             registrationButton.topAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 16)
         ])
@@ -143,13 +122,13 @@ extension LoginViewController {
     }
     
     func setupViews(){
-        mailTextField.setupPlaceholder(with: R.string.localizable.enterEmail())
-        passwordTextField.setupPlaceholder(with: R.string.localizable.enterPassword())
         enterButton.setupTitle(with: R.string.localizable.enter())
     }
     
     func setupActions() {
         registrationButton.addTarget(self, action: #selector(didTapRegButton), for: .touchUpInside)
+        let tapToHide = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapToHide)
     }
     
     @objc
@@ -163,6 +142,51 @@ extension LoginViewController {
                 self?.registrationButton.alpha = 1
             }
         }
+    }
+    
+    func setupObserversForKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    func removeObserversForKeyboard(){
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: self.view.window)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: self.view.window)
+    }
+    
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        let keyboardFrame = keyboardSize.cgRectValue
+        print(keyboardFrame.height)
+        if loginContentView.frame.origin.y == 462 {
+            UIView.animate(withDuration: 0.3){ [weak self] in
+                self?.loginContentView.frame.origin.y = keyboardFrame.height - 10
+                self?.setupRoundLognImageConstraints()
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        loginContentView.frame.origin.y = 462
+        setupBigLoginImageConstraints()
+        view.layoutIfNeeded()
+    }
+    
+    @objc
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

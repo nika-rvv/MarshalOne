@@ -18,6 +18,7 @@
 		946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4829A2691500C24AF4 /* RegisterProtocols.swift */; };
 		946C3B4F29A2691500C24AF4 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4929A2691500C24AF4 /* RegisterInteractor.swift */; };
 		946C3B5029A2691500C24AF4 /* RegisterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4A29A2691500C24AF4 /* RegisterContainer.swift */; };
+		946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5129A27B4300C24AF4 /* LoginContentView.swift */; };
 		94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3C2995358F009FB37F /* AppDelegate.swift */; };
 		94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3E2995358F009FB37F /* SceneDelegate.swift */; };
 		94C58D442995358F009FB37F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C58D422995358F009FB37F /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		946C3B4829A2691500C24AF4 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
 		946C3B4929A2691500C24AF4 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		946C3B4A29A2691500C24AF4 /* RegisterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterContainer.swift; sourceTree = "<group>"; };
+		946C3B5129A27B4300C24AF4 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		94C58D392995358F009FB37F /* MarshalOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshalOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C58D3C2995358F009FB37F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94C58D3E2995358F009FB37F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				94C58D752996A313009FB37F /* LoginStackView.swift */,
 				94542F5E299E300F005EDB9D /* CustomButton.swift */,
 				946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */,
+				946C3B5129A27B4300C24AF4 /* LoginContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				94C58D7029969D00009FB37F /* LoginInteractor.swift in Sources */,
 				94C58D5A29953985009FB37F /* EnterViewController.swift in Sources */,
 				946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */,
+				946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */,
 				946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */,
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,
 				94542F70299E5987005EDB9D /* R.generated.swift in Sources */,
