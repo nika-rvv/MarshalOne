@@ -19,6 +19,7 @@ protocol RegisterViewInput: AnyObject {
 }
 
 protocol RegisterViewOutput: AnyObject {
+    func backButtonAction()
 }
 
 protocol RegisterInteractorInput: AnyObject {
@@ -28,4 +29,5 @@ protocol RegisterInteractorOutput: AnyObject {
 }
 
 protocol RegisterRouterInput: AnyObject {
+    func backButtonTapped()
 }

@@ -19,6 +19,8 @@
 		946C3B4F29A2691500C24AF4 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4929A2691500C24AF4 /* RegisterInteractor.swift */; };
 		946C3B5029A2691500C24AF4 /* RegisterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4A29A2691500C24AF4 /* RegisterContainer.swift */; };
 		946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5129A27B4300C24AF4 /* LoginContentView.swift */; };
+		946C3B5429A9136900C24AF4 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5329A9136900C24AF4 /* AuthCoordinator.swift */; };
+		946C3B5829A913BF00C24AF4 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5729A913BF00C24AF4 /* CoordinatorProtocol.swift */; };
 		94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3C2995358F009FB37F /* AppDelegate.swift */; };
 		94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3E2995358F009FB37F /* SceneDelegate.swift */; };
 		94C58D442995358F009FB37F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C58D422995358F009FB37F /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		946C3B4929A2691500C24AF4 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		946C3B4A29A2691500C24AF4 /* RegisterContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterContainer.swift; sourceTree = "<group>"; };
 		946C3B5129A27B4300C24AF4 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
+		946C3B5329A9136900C24AF4 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		946C3B5729A913BF00C24AF4 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		94C58D392995358F009FB37F /* MarshalOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshalOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C58D3C2995358F009FB37F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94C58D3E2995358F009FB37F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,23 @@
 			path = RegisterScreen;
 			sourceTree = "<group>";
 		};
+		946C3B5529A9136C00C24AF4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				946C3B5629A9137200C24AF4 /* Coordinator */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		946C3B5629A9137200C24AF4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				946C3B5329A9136900C24AF4 /* AuthCoordinator.swift */,
+				946C3B5729A913BF00C24AF4 /* CoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		94C58D302995358F009FB37F = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +181,7 @@
 		94C58D3B2995358F009FB37F /* MarshalOne */ = {
 			isa = PBXGroup;
 			children = (
+				946C3B5529A9136C00C24AF4 /* Helpers */,
 				946C3B4229A13C5800C24AF4 /* RegisterScreen */,
 				94C58D722996A17C009FB37F /* Views */,
 				94C58D6529969CCC009FB37F /* LoginScreen */,
@@ -379,6 +401,7 @@
 				946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */,
 				946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */,
 				946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */,
+				946C3B5829A913BF00C24AF4 /* CoordinatorProtocol.swift in Sources */,
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,
 				94542F70299E5987005EDB9D /* R.generated.swift in Sources */,
 				946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */,
@@ -393,6 +416,7 @@
 				94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */,
 				94C58D5929953985009FB37F /* EnterRouter.swift in Sources */,
 				94C58D7129969D00009FB37F /* LoginContainer.swift in Sources */,
+				946C3B5429A9136900C24AF4 /* AuthCoordinator.swift in Sources */,
 				94C58D5C29953985009FB37F /* EnterInteractor.swift in Sources */,
 				946C3B4C29A2691500C24AF4 /* RegisterRouter.swift in Sources */,
 				94C58D6429953BF8009FB37F /* ImageExtension.swift in Sources */,

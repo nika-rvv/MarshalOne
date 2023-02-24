@@ -25,6 +25,9 @@ extension RegisterPresenter: RegisterModuleInput {
 }
 
 extension RegisterPresenter: RegisterViewOutput {
+    func backButtonAction() {
+        router.backButtonTapped()
+    }
 }
 
 extension RegisterPresenter: RegisterInteractorOutput {

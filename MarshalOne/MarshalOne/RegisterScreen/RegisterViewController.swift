@@ -111,14 +111,14 @@ final class RegisterViewController: UIViewController {
             self?.backButton.alpha = 0.7
         } completion: { [weak self] finished in
             if finished {
-//                self?.output.backButtonAction()
+                self?.output.backButtonAction()
                 self?.backButton.alpha = 1
             }
         }
     }
 }
 
-extension RegisterViewController {
+extension RegisterViewController: UIGestureRecognizerDelegate {
     func setupLayout() {
         regContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -161,7 +161,7 @@ extension RegisterViewController {
     
     func setupGestureRecognizer(){
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-//        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func addViews() {

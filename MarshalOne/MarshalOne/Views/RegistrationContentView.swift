@@ -25,7 +25,7 @@ final class RegistrationContentView: UIView {
         let bike = UIImageView()
         bike.translatesAutoresizingMaskIntoConstraints = false
         bike.image = R.image.registrationImage()
-        bike.contentMode = .scaleAspectFit
+//        bike.contentMode = .scaleToFill
         return bike
     }()
     
@@ -87,6 +87,7 @@ final class RegistrationContentView: UIView {
     let registrationButton: CustomButton = {
         let registration = CustomButton()
         registration.translatesAutoresizingMaskIntoConstraints = false
+        registration.setupTitle(with: R.string.localizable.register())
         registration.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         return registration
     }()
@@ -107,17 +108,22 @@ final class RegistrationContentView: UIView {
 extension RegistrationContentView {
     func setupConstraints(){
         self.addSubview(bikeImage)
+        bikeImage.top(isIncludeSafeArea: true)
+        bikeImage.leading()
+        bikeImage.trailing()
+        bikeImage.height(350)
+        
         self.addSubview(createLabel)
+        NSLayoutConstraint.activate([
+            createLabel.topAnchor.constraint(equalTo: bikeImage.bottomAnchor, constant: 12)
+        ])
+        createLabel.centerX()
+        
         self.addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            bikeImage.topAnchor.constraint(equalTo: self.topAnchor),
-            bikeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bikeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            createLabel.topAnchor.constraint(equalTo: bikeImage.bottomAnchor),
-            createLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            hintLabel.topAnchor.constraint(equalTo: createLabel.bottomAnchor, constant: 7),
-            hintLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 43)
+            hintLabel.topAnchor.constraint(equalTo: createLabel.bottomAnchor, constant: 7)
         ])
+        hintLabel.leading(43)
         
         self.addSubview(birthdayGenderStackView)
         
@@ -198,7 +204,7 @@ extension RegistrationContentView {
         datePicker.preferredDatePickerStyle = .inline
         datePicker.maximumDate = Date()
         datePicker.center = self.center
-        textFields[3].setupInputView(with: datePicker)
+        textFields[2].setupInputView(with: datePicker)
     }
     
     func formatDate(date: Date) -> String {

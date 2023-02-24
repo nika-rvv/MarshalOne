@@ -14,4 +14,7 @@ final class RegisterRouter {
 }
 
 extension RegisterRouter: RegisterRouterInput {
+    func backButtonTapped(){
+        self.viewController?.navigationController?.popViewController(animated: true)
+    }
 }

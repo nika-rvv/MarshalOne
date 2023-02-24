@@ -10,6 +10,7 @@ import UIKit
 
 final class EnterRouter {
     var viewController: UIViewController?
+    var appCoordinator: AuthCoordinator?
     var window: UIWindow?
 }
 
@@ -18,10 +19,7 @@ extension EnterRouter: EnterRouterInput {
         guard let window = window else {
             return
         }
-        let loginContext = LoginContext(window: window)
-        let loginContainer = LoginContainer.assemble(with: loginContext)
-        
-        window.rootViewController = loginContainer.viewController
-        window.makeKeyAndVisible()
+        appCoordinator = AuthCoordinator(window: window)
+        appCoordinator?.start()
     }
 }
