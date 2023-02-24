@@ -150,8 +150,15 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
     }
     
     func setupAction(){
-        regContentView.setRegisterAction { [weak self] info in
-//            self?.output.didTapRegButton(regInfo: info)
+        regContentView.setRegisterAction { [weak self] _ in
+            UIView.animate(withDuration: 0.3) {
+                self?.regContentView.registrationButton.alpha = 0.7
+            } completion: { [weak self] finished in
+                if finished {
+                    self?.output.didTapEnterButton()
+                    self?.regContentView.registrationButton.alpha = 1
+                }
+            }
         }
     }
     

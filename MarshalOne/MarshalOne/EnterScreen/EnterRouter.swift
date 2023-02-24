@@ -10,7 +10,7 @@ import UIKit
 
 final class EnterRouter {
     var viewController: UIViewController?
-    var appCoordinator: AuthCoordinator?
+    var appCoordinator: AppCoordinator?
     var window: UIWindow?
 }
 
@@ -19,7 +19,7 @@ extension EnterRouter: EnterRouterInput {
         guard let window = window else {
             return
         }
-        appCoordinator = AuthCoordinator(window: window)
+        appCoordinator = AppCoordinator(window: window, instructor: .authorization)
         appCoordinator?.start()
     }
 }

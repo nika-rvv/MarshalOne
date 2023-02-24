@@ -34,3 +34,8 @@
 "email" = "Почта";
 "password" = "Пароль";
 "passwordConfirmation" = "Подтверждение пароля";
+
+//tabBar
+"events" = "Соревнования";
+"myEvents" = "Мои соревнования";
+"profile" = "Профиль";

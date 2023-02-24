@@ -21,7 +21,8 @@ final class EventsContainer {
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
-
+        router.window = context.window
+        router.viewController = viewController
 		interactor.output = presenter
 
         return EventsContainer(view: viewController, input: presenter, router: router)
@@ -36,4 +37,5 @@ final class EventsContainer {
 
 struct EventsContext {
 	weak var moduleOutput: EventsModuleOutput?
+    let window: UIWindow
 }

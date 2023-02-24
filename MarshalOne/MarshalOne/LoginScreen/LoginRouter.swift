@@ -22,4 +22,12 @@ extension LoginRouter: LoginRouterInput {
         let registrationContainer = RegisterContainer.assemble(with: registrationContext)
         viewController?.navigationController?.pushViewController(registrationContainer.viewController, animated: true)
     }
+    
+    func openMainFlow() {
+        guard let window = window else {
+            return
+        }
+        let coordinator = AppCoordinator(window: window, instructor: .main)
+        coordinator.start()
+    }
 }

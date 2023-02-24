@@ -132,6 +132,8 @@ extension LoginViewController {
         registrationButton.addTarget(self, action: #selector(didTapRegButton), for: .touchUpInside)
         let tapToHide = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapToHide)
+        
+        enterButton.addTarget(self, action: #selector(didTapSignButton), for: .touchUpInside)
     }
     
     @objc
@@ -143,6 +145,19 @@ extension LoginViewController {
             if finished {
                 self?.output.didTapRegButton()
                 self?.registrationButton.alpha = 1
+            }
+        }
+    }
+    
+    @objc
+    private func didTapSignButton() {
+        view.endEditing(true)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.enterButton.alpha = 0.7
+        } completion: { [weak self] finished in
+            if finished {
+                self?.output.didTapSignInButton()
+                self?.enterButton.alpha = 1
             }
         }
     }

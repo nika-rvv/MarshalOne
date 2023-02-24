@@ -35,3 +35,7 @@
 "password" = "Password";
 "passwordConfirmation" = "Password confirmation";
 
+// tabBar
+"events" = "Events";
+"myEvents" = "My events";
+"profile" = "Profile";

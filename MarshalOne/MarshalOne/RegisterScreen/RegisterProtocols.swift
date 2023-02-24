@@ -20,6 +20,7 @@ protocol RegisterViewInput: AnyObject {
 
 protocol RegisterViewOutput: AnyObject {
     func backButtonAction()
+    func didTapEnterButton()
 }
 
 protocol RegisterInteractorInput: AnyObject {
@@ -30,4 +31,5 @@ protocol RegisterInteractorOutput: AnyObject {
 
 protocol RegisterRouterInput: AnyObject {
     func backButtonTapped()
+    func openMainFlow()
 }

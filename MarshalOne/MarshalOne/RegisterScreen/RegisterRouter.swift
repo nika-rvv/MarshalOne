@@ -17,4 +17,12 @@ extension RegisterRouter: RegisterRouterInput {
     func backButtonTapped(){
         self.viewController?.navigationController?.popViewController(animated: true)
     }
+    
+    func openMainFlow() {
+        guard let window = window else {
+            return
+        }
+        let coordinator = AppCoordinator(window: window, instructor: .main)
+        coordinator.start()
+    }
 }

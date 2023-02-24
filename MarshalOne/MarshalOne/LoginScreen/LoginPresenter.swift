@@ -25,6 +25,10 @@ extension LoginPresenter: LoginModuleInput {
 }
 
 extension LoginPresenter: LoginViewOutput {
+    func didTapSignInButton() {
+        router.openMainFlow()
+    }
+    
     func didTapRegButton() {
         router.openRegScreen()
     }

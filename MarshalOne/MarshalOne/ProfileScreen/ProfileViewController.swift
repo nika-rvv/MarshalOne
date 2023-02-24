@@ -8,10 +8,10 @@
 
 import UIKit
 
-final class ProfileScreenViewController: UIViewController {
-	private let output: ProfileScreenViewOutput
+final class ProfileViewController: UIViewController {
+	private let output: ProfileViewOutput
 
-    init(output: ProfileScreenViewOutput) {
+    init(output: ProfileViewOutput) {
         self.output = output
         
         super.init(nibName: nil, bundle: nil)
@@ -26,5 +26,5 @@ final class ProfileScreenViewController: UIViewController {
 	}
 }
 
-extension ProfileScreenViewController: ProfileScreenViewInput {
+extension ProfileViewController: ProfileViewInput {
 }

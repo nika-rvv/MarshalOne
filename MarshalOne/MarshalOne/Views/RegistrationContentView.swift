@@ -229,7 +229,7 @@ private extension RegistrationContentView {
 //        let registerInfo = textFields.map { tf in
 //            return tf.text
 //        }
-//        registerAction?(registerInfo)
+        registerAction?([""])
     }
 }
 
