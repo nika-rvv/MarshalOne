@@ -59,6 +59,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .screenColor
+        self.navigationController?.navigationBar.isHidden = true
         setupConstraints()
         setupViews()
         setupActions()
@@ -77,23 +78,25 @@ extension LoginViewController {
         view.addSubview(loginImage)
         loginImage.top(isIncludeSafeArea: true)
         loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = false
+        loginImage.clipsToBounds = false
+        loginImage.layer.cornerRadius = 0
+        loginImage.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        loginImage.heightAnchor.constraint(equalToConstant: 350).isActive = true
         loginImage.widthAnchor.constraint(equalToConstant: 160).isActive = false
         loginImage.heightAnchor.constraint(equalToConstant: 160).isActive = false
-        loginImage.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        loginImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        loginImage.layer.cornerRadius = 0
     }
     
     func setupRoundLognImageConstraints(){
         loginImage.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = false
         loginImage.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = false
-        loginImage.heightAnchor.constraint(equalToConstant: 300).isActive = false
+        loginImage.heightAnchor.constraint(equalToConstant: 350).isActive = false
         loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginImage.widthAnchor.constraint(equalToConstant: 160).isActive = true
         loginImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
         loginImage.layer.cornerRadius = 80
         loginImage.clipsToBounds = true
     }
+    
     func setupConstraints(){
         setupBigLoginImageConstraints()
         
@@ -168,7 +171,8 @@ extension LoginViewController {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         print(keyboardFrame.height)
-        if loginContentView.frame.origin.y == 462 {
+        print(loginContentView.frame.origin.y)
+        if loginContentView.frame.origin.y == 433 {
             UIView.animate(withDuration: 0.3){ [weak self] in
                 self?.loginContentView.frame.origin.y = keyboardFrame.height - 10
                 self?.setupRoundLognImageConstraints()
@@ -179,9 +183,11 @@ extension LoginViewController {
     
     @objc
     func keyboardWillHide(notification: NSNotification) {
-        loginContentView.frame.origin.y = 462
-        setupBigLoginImageConstraints()
-        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.loginContentView.frame.origin.y = 433
+            self?.setupBigLoginImageConstraints()
+            self?.view.layoutIfNeeded()
+        }
     }
     
     @objc
