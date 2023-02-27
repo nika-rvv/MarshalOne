@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  MarshalOne
+
+  Created by Veronika on 16.02.2023.
+  
+*/
+
+// login
+"welcomeLabel" = "Welcome to \n MarshalOne";
+"noAccount" = "If you don't have an account, ";
+"register" = "Sign up";
+"enterEmail" = "Enter email";
+"enterPassword" = "Enter password";
+"enter" = "Sign in";
+
+// registration
+"createAccount" = "Create an account";
+"fillFields" = "Please fill in all fields";
+"enterName" = "Enter a name";
+"enterSurname" = "Enter a surname";
+"birthdate" = "Date of birth";
+"enterCity" = "Enter city of residence";
+"createPassword" = "Create password";
+"confirmPassword" = "Confirm your password";
+"acceptRules" = "By registering, I agree with";
+"acceptRules2" = "\n user agreement";
+"man" = "man";
+"woman" = "woman";
+"sex" = "Sex";
+"name" = "Name";
+"surname" = "Surname";
+"city" = "City";
+"email" = "Email";
+"password" = "Password";
+"passwordConfirmation" = "Password confirmation";
+
+// tabBar
+"events" = "Events";
+"myEvents" = "My events";
+"profile" = "Profile";

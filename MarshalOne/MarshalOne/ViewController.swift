@@ -1,10 +1,11 @@
 //
-//  ViewController.swift
+//  ViewConroller.swift
 //  MarshalOne
 //
-//  Created by Veronika on 09.02.2023.
+//  Created by Veronika on 17.02.2023.
 //
 
+import Foundation
 import UIKit
 
 class ViewController: UIViewController {
@@ -16,4 +17,3 @@ class ViewController: UIViewController {
 
 
 }
-
