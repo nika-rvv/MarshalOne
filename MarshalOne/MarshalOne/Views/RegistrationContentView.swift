@@ -25,7 +25,6 @@ final class RegistrationContentView: UIView {
         let bike = UIImageView()
         bike.translatesAutoresizingMaskIntoConstraints = false
         bike.image = R.image.registrationImage()
-//        bike.contentMode = .scaleToFill
         return bike
     }()
     
@@ -109,8 +108,8 @@ extension RegistrationContentView {
     func setupConstraints(){
         self.addSubview(bikeImage)
         bikeImage.top(isIncludeSafeArea: true)
-        bikeImage.leading()
-        bikeImage.trailing()
+        bikeImage.width(350)
+        bikeImage.centerX()
         bikeImage.height(350)
         
         self.addSubview(createLabel)

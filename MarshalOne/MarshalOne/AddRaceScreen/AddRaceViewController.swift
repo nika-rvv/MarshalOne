@@ -1,17 +1,17 @@
 //
-//  MyEventsViewController.swift
+//  AddRaceViewController.swift
 //  MarshalOne
 //
-//  Created by Veronika on 24.02.2023.
+//  Created by Veronika on 27.02.2023.
 //  
 //
 
 import UIKit
 
-final class MyEventsViewController: UIViewController {
-	private let output: MyEventsViewOutput
+final class AddRaceViewController: UIViewController {
+	private let output: AddRaceViewOutput
 
-    init(output: MyEventsViewOutput) {
+    init(output: AddRaceViewOutput) {
         self.output = output
         
         super.init(nibName: nil, bundle: nil)
@@ -23,9 +23,8 @@ final class MyEventsViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        view.backgroundColor = .purple
 	}
 }
 
-extension MyEventsViewController: MyEventsViewInput {
+extension AddRaceViewController: AddRaceViewInput {
 }

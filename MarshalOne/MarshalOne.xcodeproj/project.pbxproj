@@ -27,12 +27,6 @@
 		946C3B6529A92A8600C24AF4 /* EventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5F29A92A8600C24AF4 /* EventsProtocols.swift */; };
 		946C3B6629A92A8600C24AF4 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6029A92A8600C24AF4 /* EventsInteractor.swift */; };
 		946C3B6729A92A8600C24AF4 /* EventsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6129A92A8600C24AF4 /* EventsContainer.swift */; };
-		946C3B6E29A92A9300C24AF4 /* MyEventsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6829A92A9300C24AF4 /* MyEventsPresenter.swift */; };
-		946C3B6F29A92A9300C24AF4 /* MyEventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6929A92A9300C24AF4 /* MyEventsRouter.swift */; };
-		946C3B7029A92A9300C24AF4 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6A29A92A9300C24AF4 /* MyEventsViewController.swift */; };
-		946C3B7129A92A9300C24AF4 /* MyEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6B29A92A9300C24AF4 /* MyEventsProtocols.swift */; };
-		946C3B7229A92A9300C24AF4 /* MyEventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6C29A92A9300C24AF4 /* MyEventsInteractor.swift */; };
-		946C3B7329A92A9300C24AF4 /* MyEventsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6D29A92A9300C24AF4 /* MyEventsContainer.swift */; };
 		946C3B7A29A92C2500C24AF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B7429A92C2500C24AF4 /* ProfilePresenter.swift */; };
 		946C3B7B29A92C2500C24AF4 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B7529A92C2500C24AF4 /* ProfileRouter.swift */; };
 		946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B7629A92C2500C24AF4 /* ProfileViewController.swift */; };
@@ -42,6 +36,14 @@
 		946C3B8129A92C4D00C24AF4 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8029A92C4D00C24AF4 /* MainFlowCoordinator.swift */; };
 		946C3B8329A92EC400C24AF4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8229A92EC400C24AF4 /* AppCoordinator.swift */; };
 		946C3B8529ABA20400C24AF4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8429ABA20400C24AF4 /* CustomTabBar.swift */; };
+		946C3B8D29AD2F9D00C24AF4 /* AddRacePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8729AD2F9D00C24AF4 /* AddRacePresenter.swift */; };
+		946C3B8E29AD2F9D00C24AF4 /* AddRaceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8829AD2F9D00C24AF4 /* AddRaceRouter.swift */; };
+		946C3B8F29AD2F9D00C24AF4 /* AddRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8929AD2F9D00C24AF4 /* AddRaceViewController.swift */; };
+		946C3B9029AD2F9D00C24AF4 /* AddRaceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8A29AD2F9D00C24AF4 /* AddRaceProtocols.swift */; };
+		946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8B29AD2F9D00C24AF4 /* AddRaceInteractor.swift */; };
+		946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */; };
+		946C3B9529AD312900C24AF4 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B9429AD312900C24AF4 /* EventCell.swift */; };
+		946C3B9729AD374100C24AF4 /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */; };
 		94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3C2995358F009FB37F /* AppDelegate.swift */; };
 		94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3E2995358F009FB37F /* SceneDelegate.swift */; };
 		94C58D442995358F009FB37F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C58D422995358F009FB37F /* Main.storyboard */; };
@@ -90,12 +92,6 @@
 		946C3B5F29A92A8600C24AF4 /* EventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProtocols.swift; sourceTree = "<group>"; };
 		946C3B6029A92A8600C24AF4 /* EventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInteractor.swift; sourceTree = "<group>"; };
 		946C3B6129A92A8600C24AF4 /* EventsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsContainer.swift; sourceTree = "<group>"; };
-		946C3B6829A92A9300C24AF4 /* MyEventsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsPresenter.swift; sourceTree = "<group>"; };
-		946C3B6929A92A9300C24AF4 /* MyEventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsRouter.swift; sourceTree = "<group>"; };
-		946C3B6A29A92A9300C24AF4 /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
-		946C3B6B29A92A9300C24AF4 /* MyEventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsProtocols.swift; sourceTree = "<group>"; };
-		946C3B6C29A92A9300C24AF4 /* MyEventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsInteractor.swift; sourceTree = "<group>"; };
-		946C3B6D29A92A9300C24AF4 /* MyEventsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsContainer.swift; sourceTree = "<group>"; };
 		946C3B7429A92C2500C24AF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		946C3B7529A92C2500C24AF4 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		946C3B7629A92C2500C24AF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +101,14 @@
 		946C3B8029A92C4D00C24AF4 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		946C3B8229A92EC400C24AF4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		946C3B8429ABA20400C24AF4 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		946C3B8729AD2F9D00C24AF4 /* AddRacePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRacePresenter.swift; sourceTree = "<group>"; };
+		946C3B8829AD2F9D00C24AF4 /* AddRaceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceRouter.swift; sourceTree = "<group>"; };
+		946C3B8929AD2F9D00C24AF4 /* AddRaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceViewController.swift; sourceTree = "<group>"; };
+		946C3B8A29AD2F9D00C24AF4 /* AddRaceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceProtocols.swift; sourceTree = "<group>"; };
+		946C3B8B29AD2F9D00C24AF4 /* AddRaceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceInteractor.swift; sourceTree = "<group>"; };
+		946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceContainer.swift; sourceTree = "<group>"; };
+		946C3B9429AD312900C24AF4 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
 		94C58D392995358F009FB37F /* MarshalOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshalOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C58D3C2995358F009FB37F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94C58D3E2995358F009FB37F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				946C3B5629A9137200C24AF4 /* Coordinator */,
-				946C3B8429ABA20400C24AF4 /* CustomTabBar.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 		946C3B5929A92A5300C24AF4 /* EventsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				946C3B9329AD311900C24AF4 /* Cells */,
 				946C3B5C29A92A8600C24AF4 /* EventsPresenter.swift */,
 				946C3B5D29A92A8600C24AF4 /* EventsRouter.swift */,
 				946C3B5E29A92A8600C24AF4 /* EventsViewController.swift */,
@@ -214,19 +218,6 @@
 				946C3B6129A92A8600C24AF4 /* EventsContainer.swift */,
 			);
 			path = EventsScreen;
-			sourceTree = "<group>";
-		};
-		946C3B5A29A92A6100C24AF4 /* MyEventsScreen */ = {
-			isa = PBXGroup;
-			children = (
-				946C3B6829A92A9300C24AF4 /* MyEventsPresenter.swift */,
-				946C3B6929A92A9300C24AF4 /* MyEventsRouter.swift */,
-				946C3B6A29A92A9300C24AF4 /* MyEventsViewController.swift */,
-				946C3B6B29A92A9300C24AF4 /* MyEventsProtocols.swift */,
-				946C3B6C29A92A9300C24AF4 /* MyEventsInteractor.swift */,
-				946C3B6D29A92A9300C24AF4 /* MyEventsContainer.swift */,
-			);
-			path = MyEventsScreen;
 			sourceTree = "<group>";
 		};
 		946C3B5B29A92A7000C24AF4 /* ProfileScreen */ = {
@@ -240,6 +231,27 @@
 				946C3B7929A92C2500C24AF4 /* ProfileContainer.swift */,
 			);
 			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		946C3B8629AD2F6C00C24AF4 /* AddRaceScreen */ = {
+			isa = PBXGroup;
+			children = (
+				946C3B8729AD2F9D00C24AF4 /* AddRacePresenter.swift */,
+				946C3B8829AD2F9D00C24AF4 /* AddRaceRouter.swift */,
+				946C3B8929AD2F9D00C24AF4 /* AddRaceViewController.swift */,
+				946C3B8A29AD2F9D00C24AF4 /* AddRaceProtocols.swift */,
+				946C3B8B29AD2F9D00C24AF4 /* AddRaceInteractor.swift */,
+				946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */,
+			);
+			path = AddRaceScreen;
+			sourceTree = "<group>";
+		};
+		946C3B9329AD311900C24AF4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				946C3B9429AD312900C24AF4 /* EventCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		94C58D302995358F009FB37F = {
@@ -265,8 +277,8 @@
 		94C58D3B2995358F009FB37F /* MarshalOne */ = {
 			isa = PBXGroup;
 			children = (
+				946C3B8629AD2F6C00C24AF4 /* AddRaceScreen */,
 				946C3B5B29A92A7000C24AF4 /* ProfileScreen */,
-				946C3B5A29A92A6100C24AF4 /* MyEventsScreen */,
 				946C3B5929A92A5300C24AF4 /* EventsScreen */,
 				946C3B5529A9136C00C24AF4 /* Helpers */,
 				946C3B4229A13C5800C24AF4 /* RegisterScreen */,
@@ -312,6 +324,7 @@
 				94C58D5F29953A08009FB37F /* UIView+Layout.swift */,
 				94C58D6129953BE0009FB37F /* ColorExtension.swift */,
 				94C58D6329953BF8009FB37F /* ImageExtension.swift */,
+				946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,6 +345,7 @@
 		94C58D722996A17C009FB37F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				946C3B8429ABA20400C24AF4 /* CustomTabBar.swift */,
 				94C58D732996A196009FB37F /* CustomTF.swift */,
 				94C58D752996A313009FB37F /* LoginStackView.swift */,
 				94542F5E299E300F005EDB9D /* CustomButton.swift */,
@@ -479,27 +493,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				94C58D6E29969D00009FB37F /* LoginViewController.swift in Sources */,
-				946C3B7229A92A9300C24AF4 /* MyEventsInteractor.swift in Sources */,
 				94C58D6C29969D00009FB37F /* LoginPresenter.swift in Sources */,
 				94C58D5D29953985009FB37F /* EnterContainer.swift in Sources */,
 				94C58D5B29953985009FB37F /* EnterProtocols.swift in Sources */,
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,
+				946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */,
 				946C3B6429A92A8600C24AF4 /* EventsViewController.swift in Sources */,
 				94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */,
 				94C58D7029969D00009FB37F /* LoginInteractor.swift in Sources */,
 				94C58D5A29953985009FB37F /* EnterViewController.swift in Sources */,
+				946C3B9529AD312900C24AF4 /* EventCell.swift in Sources */,
 				946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */,
 				946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */,
 				946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */,
-				946C3B6F29A92A9300C24AF4 /* MyEventsRouter.swift in Sources */,
 				946C3B5829A913BF00C24AF4 /* CoordinatorProtocol.swift in Sources */,
+				946C3B8D29AD2F9D00C24AF4 /* AddRacePresenter.swift in Sources */,
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,
-				946C3B6E29A92A9300C24AF4 /* MyEventsPresenter.swift in Sources */,
 				94542F70299E5987005EDB9D /* R.generated.swift in Sources */,
+				946C3B8E29AD2F9D00C24AF4 /* AddRaceRouter.swift in Sources */,
 				946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */,
 				946C3B7E29A92C2500C24AF4 /* ProfileInteractor.swift in Sources */,
 				946C3B6229A92A8600C24AF4 /* EventsPresenter.swift in Sources */,
-				946C3B7129A92A9300C24AF4 /* MyEventsProtocols.swift in Sources */,
 				946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
 				946C3B6729A92A8600C24AF4 /* EventsContainer.swift in Sources */,
@@ -516,21 +530,23 @@
 				946C3B6329A92A8600C24AF4 /* EventsRouter.swift in Sources */,
 				94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */,
 				94C58D5929953985009FB37F /* EnterRouter.swift in Sources */,
+				946C3B9729AD374100C24AF4 /* ReuseIdentifier.swift in Sources */,
 				946C3B7F29A92C2500C24AF4 /* ProfileContainer.swift in Sources */,
 				94C58D7129969D00009FB37F /* LoginContainer.swift in Sources */,
 				946C3B5429A9136900C24AF4 /* AuthCoordinator.swift in Sources */,
+				946C3B9029AD2F9D00C24AF4 /* AddRaceProtocols.swift in Sources */,
 				94C58D5C29953985009FB37F /* EnterInteractor.swift in Sources */,
 				946C3B8529ABA20400C24AF4 /* CustomTabBar.swift in Sources */,
 				946C3B6529A92A8600C24AF4 /* EventsProtocols.swift in Sources */,
 				946C3B4C29A2691500C24AF4 /* RegisterRouter.swift in Sources */,
 				94C58D6429953BF8009FB37F /* ImageExtension.swift in Sources */,
 				946C3B4D29A2691500C24AF4 /* RegisterViewController.swift in Sources */,
-				946C3B7329A92A9300C24AF4 /* MyEventsContainer.swift in Sources */,
+				946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */,
 				94C58D6D29969D00009FB37F /* LoginRouter.swift in Sources */,
 				946C3B8129A92C4D00C24AF4 /* MainFlowCoordinator.swift in Sources */,
+				946C3B8F29AD2F9D00C24AF4 /* AddRaceViewController.swift in Sources */,
 				946C3B7D29A92C2500C24AF4 /* ProfileProtocols.swift in Sources */,
 				94C58D6229953BE0009FB37F /* ColorExtension.swift in Sources */,
-				946C3B7029A92A9300C24AF4 /* MyEventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +713,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -726,6 +743,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -29,12 +29,14 @@ extension CustomTabBar {
             configureViewController(with: setupEvents(),
                                     with: R.string.localizable.events(),
                                     and: R.image.events()),
-            configureViewController(with: setupMyEvents(),
-                                    with: R.string.localizable.myEvents(),
+            configureViewController(with: setupAddRace(),
+                                    with: R.string.localizable.addRace(),
                                     and: R.image.myEvents()),
             configureViewController(with: setupProfile(),
                                     with: R.string.localizable.profile(),
-                                    and: R.image.profile())], animated: true)
+                                    and: R.image.profile())
+        ],
+                           animated: true)
         
         setupUI()
     }
@@ -51,9 +53,9 @@ extension CustomTabBar {
         return eventsContainer.viewController
     }
     
-    private func setupMyEvents() -> UIViewController {
-        let myEventsContext = MyEventsContext(moduleOutput: nil)
-        let myEventsContainer = MyEventsContainer.assemble(with: myEventsContext)
+    private func setupAddRace() -> UIViewController {
+        let myEventsContext = AddRaceContext(moduleOutput: nil)
+        let myEventsContainer = AddRaceContainer.assemble(with: myEventsContext)
         return myEventsContainer.viewController
     }
     
@@ -85,5 +87,8 @@ extension CustomTabBar {
         tabBar.itemWidth = width / 5
         tabBar.itemPositioning = .centered
         
+        roundLayer.fillColor = R.color.tabBarColor()?.cgColor
+        tabBar.tintColor = R.color.mainOrange()
+        tabBar.unselectedItemTintColor = R.color.mainBlue()
     }
 }
