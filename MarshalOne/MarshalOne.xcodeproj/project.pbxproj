@@ -44,6 +44,7 @@
 		946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */; };
 		946C3B9529AD312900C24AF4 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B9429AD312900C24AF4 /* EventCell.swift */; };
 		946C3B9729AD374100C24AF4 /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */; };
+		94B113CF29B0E0A200856A5B /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B113CE29B0E0A200856A5B /* CustomNavigationBar.swift */; };
 		94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3C2995358F009FB37F /* AppDelegate.swift */; };
 		94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D3E2995358F009FB37F /* SceneDelegate.swift */; };
 		94C58D442995358F009FB37F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C58D422995358F009FB37F /* Main.storyboard */; };
@@ -109,6 +110,7 @@
 		946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceContainer.swift; sourceTree = "<group>"; };
 		946C3B9429AD312900C24AF4 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
+		94B113CE29B0E0A200856A5B /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		94C58D392995358F009FB37F /* MarshalOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshalOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C58D3C2995358F009FB37F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94C58D3E2995358F009FB37F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				94542F5E299E300F005EDB9D /* CustomButton.swift */,
 				946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */,
 				946C3B5129A27B4300C24AF4 /* LoginContentView.swift */,
+				94B113CE29B0E0A200856A5B /* CustomNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				94542F70299E5987005EDB9D /* R.generated.swift in Sources */,
 				946C3B8E29AD2F9D00C24AF4 /* AddRaceRouter.swift in Sources */,
 				946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */,
+				94B113CF29B0E0A200856A5B /* CustomNavigationBar.swift in Sources */,
 				946C3B7E29A92C2500C24AF4 /* ProfileInteractor.swift in Sources */,
 				946C3B6229A92A8600C24AF4 /* EventsPresenter.swift in Sources */,
 				946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */,

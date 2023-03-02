@@ -20,14 +20,10 @@ final class RegisterViewController: UIViewController {
                   R.string.localizable.password(),
                   R.string.localizable.passwordConfirmation()]
     
-    private let backButton: UIButton = {
-        let back = UIButton()
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(R.image.backButton(), for: .normal)
-        back.clipsToBounds = true
-        back.tintColor = R.color.mainBlue()
-        back.isEnabled = true
-        return back
+    private let customNavigationBarView: NavigationBarView = {
+        let navBar = NavigationBarView()
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        return navBar
     }()
     
     private let scrollView: UIScrollView = {
@@ -104,18 +100,6 @@ final class RegisterViewController: UIViewController {
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-    @objc
-    func backButtonTapped(){
-        UIView.animate(withDuration: 0.2){ [weak self] in
-            self?.backButton.alpha = 0.7
-        } completion: { [weak self] finished in
-            if finished {
-                self?.output.backButtonAction()
-                self?.backButton.alpha = 1
-            }
-        }
-    }
 }
 
 extension RegisterViewController: UIGestureRecognizerDelegate {
@@ -127,17 +111,18 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            regContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            customNavigationBarView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            customNavigationBarView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            customNavigationBarView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            customNavigationBarView.heightAnchor.constraint(equalToConstant: 40),
+            
+            regContentView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor),
             regContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             regContentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             regContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             regContentView.widthAnchor.constraint(equalTo: view.widthAnchor),
             regContentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 70),
-            
-            backButton.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            backButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            backButton.heightAnchor.constraint(equalToConstant: 35),
-            backButton.widthAnchor.constraint(equalToConstant: 35)
+        
         ])
         
         registrationScrollViewConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -163,7 +148,8 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
     }
     
     func setupBackButton() {
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        customNavigationBarView.setupConfigForRegisterScreen()
+        customNavigationBarView.delegate = self
     }
     
     func setupGestureRecognizer(){
@@ -174,7 +160,7 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
     func addViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(regContentView)
-        scrollView.addSubview(backButton)
+        scrollView.addSubview(customNavigationBarView)
     }
     
     func setupObserversForKeyboard(){
@@ -193,6 +179,19 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillHideNotification,
                                                   object: self.view.window)
+    }
+}
+
+extension RegisterViewController: NavigationBarDelegate {
+    func backButtonAction() {
+        UIView.animate(withDuration: 0.2){ [weak self] in
+            self?.customNavigationBarView.backButton.alpha = 0.7
+        } completion: { [weak self] finished in
+            if finished {
+                self?.output.backButtonAction()
+                self?.customNavigationBarView.backButton.alpha = 1
+            }
+        }
     }
 }
 

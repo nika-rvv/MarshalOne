@@ -11,6 +11,12 @@ import UIKit
 final class EventsViewController: UIViewController {
 	private let output: EventsViewOutput
     
+    private let customNavBar: NavigationBarView = {
+        let navBar = NavigationBarView()
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        return navBar
+    }()
+    
     private let eventsTable = UITableView()
 
     init(output: EventsViewOutput) {
@@ -26,18 +32,30 @@ final class EventsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         view.backgroundColor = R.color.cellBackgroundColor()
-        title = R.string.localizable.events()
         setupTableView()
+        setupNavBar()
         setupConstraints()
 	}
 }
 
 extension EventsViewController: EventsViewInput {
     private func setupConstraints() {
-        eventsTable.top(isIncludeSafeArea: true)
+        customNavBar.top(isIncludeSafeArea: false)
+        customNavBar.leading()
+        customNavBar.trailing()
+        customNavBar.height(88)
+        
+        NSLayoutConstraint.activate([
+            eventsTable.topAnchor.constraint(equalTo: customNavBar.bottomAnchor)
+        ])
         eventsTable.leading(12)
         eventsTable.trailing(-12)
         eventsTable.bottom(isIncludeSafeArea: false)
+    }
+    
+    private func setupNavBar(){
+        view.addSubview(customNavBar)
+        customNavBar.setConfigForEventsScreen()
     }
     
     private func setupTableView() {
