@@ -67,27 +67,28 @@ extension CustomTabBar {
     
     private func setupUI() {
         let positionX: CGFloat = 10.0
-        let positionY: CGFloat = 10.0
+//        let positionY: CGFloat = 10.0
+//
+//        let width = tabBar.bounds.width - positionX * 2
+//        let height = tabBar.bounds.height + positionY * 2
+//
+//        let roundLayer = CAShapeLayer()
+//
+//        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionX,
+//                                                          y: tabBar.bounds.minY - positionY,
+//                                                          width: width,
+//                                                          height: height),
+//                                      cornerRadius: height / 2)
+//
+//        roundLayer.path = bezierPath.cgPath
+//
+//        tabBar.layer.insertSublayer(roundLayer, at: 0)
         
-        let width = tabBar.bounds.width - positionX * 2
-        let height = tabBar.bounds.height + positionY * 2
-        
-        let roundLayer = CAShapeLayer()
-        
-        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionX,
-                                                          y: tabBar.bounds.minY - positionY,
-                                                          width: width,
-                                                          height: height),
-                                      cornerRadius: height / 2)
-        
-        roundLayer.path = bezierPath.cgPath
-        
-        tabBar.layer.insertSublayer(roundLayer, at: 0)
-        
-        tabBar.itemWidth = width / 5
+        tabBar.itemWidth = (tabBar.bounds.width - positionX * 2) / 5
         tabBar.itemPositioning = .centered
+        tabBar.isTranslucent = false
         
-        roundLayer.fillColor = R.color.tabBarColor()?.cgColor
+//        roundLayer.fillColor = R.color.tabBarColor()?.cgColor
         tabBar.tintColor = R.color.mainOrange()
         tabBar.unselectedItemTintColor = R.color.mainBlue()
     }
