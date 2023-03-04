@@ -9,7 +9,7 @@
 import UIKit
 
 final class EventsViewController: UIViewController {
-	private let output: EventsViewOutput
+    private let output: EventsViewOutput
     
     private let customNavBar: NavigationBarView = {
         let navBar = NavigationBarView()
@@ -18,7 +18,7 @@ final class EventsViewController: UIViewController {
     }()
     
     private let eventsTable = UITableView()
-
+    
     init(output: EventsViewOutput) {
         self.output = output
         
@@ -29,13 +29,13 @@ final class EventsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = R.color.cellBackgroundColor()
         setupTableView()
         setupNavBar()
         setupConstraints()
-	}
+    }
 }
 
 extension EventsViewController: EventsViewInput {
@@ -78,13 +78,16 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueCell(cellType: EventCell.self, for: indexPath)
         cell.configureCellWith(title: "Title should be bigger than this one to check number of rows",
                                date: "28/02/2023",
-                               place: "Moscow")
+                               place: "Moscow",
+                               likes: "20",
+                               views: "11114",
+                               participants: "12")
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 340
+        return 360
     }
     
 }

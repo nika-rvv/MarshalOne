@@ -114,7 +114,7 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
             customNavigationBarView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             customNavigationBarView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             customNavigationBarView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            customNavigationBarView.heightAnchor.constraint(equalToConstant: 40),
+            customNavigationBarView.heightAnchor.constraint(equalToConstant: 60),
             
             regContentView.topAnchor.constraint(equalTo: customNavigationBarView.bottomAnchor),
             regContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),

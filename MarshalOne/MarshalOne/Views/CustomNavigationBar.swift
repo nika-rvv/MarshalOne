@@ -73,6 +73,7 @@ extension NavigationBarView {
     
     func setupConfigForRegisterScreen() {
         backButton.isHidden = false
+        backButton.isUserInteractionEnabled = true
         mainLabel.isHidden = true
     }
 }

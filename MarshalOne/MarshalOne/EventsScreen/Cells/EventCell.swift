@@ -66,7 +66,35 @@ final class EventCell: UITableViewCell {
         image.image = .loginImage
         image.layer.cornerRadius = 8
         image.clipsToBounds = true
+        image.layer.borderWidth = 2
+        image.layer.borderColor = R.color.mainBlue()?.cgColor
         return image
+    }()
+    
+    private let likeStackView: EventsInfoStackView = {
+        let like = EventsInfoStackView()
+        like.translatesAutoresizingMaskIntoConstraints = false
+        return like
+    }()
+    
+    private let viewsStackView: EventsInfoStackView = {
+        let views = EventsInfoStackView()
+        views.translatesAutoresizingMaskIntoConstraints = false
+        return views
+    }()
+    
+    private let participantsStackView: EventsInfoStackView = {
+        let participants = EventsInfoStackView()
+        participants.translatesAutoresizingMaskIntoConstraints = false
+        return participants
+    }()
+    
+    private let infoStackView: UIStackView = {
+        let info = UIStackView()
+        info.translatesAutoresizingMaskIntoConstraints = false
+        info.axis = .horizontal
+        info.spacing = 8
+        return info
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,43 +116,65 @@ extension EventCell {
         
         self.addSubview(titleLabel)
         self.addSubview(dateLabel)
+        
         self.addSubview(placeStackView)
         placeStackView.addArrangedSubview(placeImage)
         placeStackView.addArrangedSubview(placeLabel)
+        
         self.addSubview(raceImage)
+        
+        self.addSubview(infoStackView)
+        infoStackView.addArrangedSubview(likeStackView)
+        infoStackView.addArrangedSubview(viewsStackView)
+        infoStackView.addArrangedSubview(participantsStackView)
     }
     
     private func setupConstraints() {
         cellView.top(isIncludeSafeArea: false)
         cellView.leading()
         cellView.trailing()
-        cellView.height(320)
+        cellView.height(340)
         
         titleLabel.top(16, isIncludeSafeArea: false)
         titleLabel.leading(24)
         titleLabel.trailing(-24)
         
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10)
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
         ])
         dateLabel.leading(24)
         
         NSLayoutConstraint.activate([
-            placeStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10)
+            placeStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8)
         ])
         placeStackView.leading(24)
         
         NSLayoutConstraint.activate([
-            raceImage.topAnchor.constraint(equalTo: placeStackView.bottomAnchor, constant: 10)
+            raceImage.topAnchor.constraint(equalTo: placeStackView.bottomAnchor, constant: 8)
         ])
         raceImage.leading(12)
         raceImage.trailing(-12)
         raceImage.height(180)
+        
+        NSLayoutConstraint.activate([
+            infoStackView.topAnchor.constraint(equalTo: raceImage.bottomAnchor, constant: 8),
+            infoStackView.trailingAnchor.constraint(equalTo: raceImage.centerXAnchor)
+        ])
+        infoStackView.leading(18)
+        infoStackView.height(24)
     }
     
-    func configureCellWith(title: String, date: String, place: String) {
+    func configureCellWith(title: String,
+                           date: String,
+                           place: String,
+                           likes: String,
+                           views: String,
+                           participants: String) {
         titleLabel.text = title
         dateLabel.text = date
         placeLabel.text = place
+        likeStackView.configureStackView(with: R.image.notLikedImage(), and: likes)
+        viewsStackView.configureStackView(with: R.image.viewsImage(), and: views)
+        participantsStackView.configureStackView(with: R.image.participantsImage(), and: participants)
     }
 }
