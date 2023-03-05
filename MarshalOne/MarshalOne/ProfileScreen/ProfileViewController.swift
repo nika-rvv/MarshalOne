@@ -23,7 +23,6 @@ final class ProfileViewController: UIViewController {
         let actions = UIStackView()
         actions.translatesAutoresizingMaskIntoConstraints = false
         actions.axis = .horizontal
-        actions.spacing = 28
         return actions
     }()
     
@@ -32,7 +31,9 @@ final class ProfileViewController: UIViewController {
         logout.translatesAutoresizingMaskIntoConstraints = false
         logout.layer.cornerRadius = 10
         logout.clipsToBounds = true
-        logout.configureViewWith(text: "Выйти из аккаунта", textColor: R.color.mainTextColor(), image: R.image.logoutImage())
+        logout.configureViewWith(text: "Выйти из аккаунта",
+                                 textColor: R.color.mainTextColor(),
+                                 image: R.image.logoutImage())
         return logout
     }()
     
@@ -41,7 +42,9 @@ final class ProfileViewController: UIViewController {
         delete.translatesAutoresizingMaskIntoConstraints = false
         delete.layer.cornerRadius = 10
         delete.clipsToBounds = true
-        delete.configureViewWith(text: "Удалить аккаунт", textColor: R.color.deleteActionColor(), image: R.image.deleteAccountImage())
+        delete.configureViewWith(text: "Удалить аккаунт",
+                                 textColor: R.color.deleteActionColor(),
+                                 image: R.image.deleteAccountImage())
         return delete
     }()
     

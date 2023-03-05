@@ -25,19 +25,20 @@ final class CustomTabBar: UITabBarController {
 }
 extension CustomTabBar {
     func configureTabBar() {
-        setViewControllers([
-            configureViewController(with: setupEvents(),
-                                    with: R.string.localizable.events(),
-                                    and: R.image.events()),
-            configureViewController(with: setupAddRace(),
-                                    with: R.string.localizable.addRace(),
-                                    and: R.image.myEvents()),
-            configureViewController(with: setupProfile(),
-                                    with: R.string.localizable.profile(),
-                                    and: R.image.profile())
-        ],
-                           animated: true)
+        let eventsViewController = setupEvents()
+        eventsViewController.tabBarItem = UITabBarItem(title: R.string.localizable.events(), image: R.image.events(), tag: 0)
+        let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
         
+        let addRaceViewController = setupAddRace()
+        let addRaceNavigationController = UINavigationController(rootViewController: addRaceViewController)
+        
+        let profileViewController = setupProfile()
+        profileViewController.tabBarItem = UITabBarItem(title: R.string.localizable.profile(), image: R.image.profile(), tag: 2)
+        let profileNavigationController = UINavigationController(rootViewController: profileViewController)
+        
+        viewControllers = [eventsNavigationController, addRaceNavigationController, profileNavigationController]
+        
+        setupMiddleButton()
         setupUI()
     }
     
@@ -54,9 +55,9 @@ extension CustomTabBar {
     }
     
     private func setupAddRace() -> UIViewController {
-        let myEventsContext = AddRaceContext(moduleOutput: nil)
-        let myEventsContainer = AddRaceContainer.assemble(with: myEventsContext)
-        return myEventsContainer.viewController
+        let addRaceContext = AddRaceContext(moduleOutput: nil)
+        let addRaceContainer = AddRaceContainer.assemble(with: addRaceContext)
+        return addRaceContainer.viewController
     }
     
     private func setupProfile() -> UIViewController {
@@ -67,29 +68,36 @@ extension CustomTabBar {
     
     private func setupUI() {
         let positionX: CGFloat = 10.0
-//        let positionY: CGFloat = 10.0
-//
-//        let width = tabBar.bounds.width - positionX * 2
-//        let height = tabBar.bounds.height + positionY * 2
-//
-//        let roundLayer = CAShapeLayer()
-//
-//        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionX,
-//                                                          y: tabBar.bounds.minY - positionY,
-//                                                          width: width,
-//                                                          height: height),
-//                                      cornerRadius: height / 2)
-//
-//        roundLayer.path = bezierPath.cgPath
-//
-//        tabBar.layer.insertSublayer(roundLayer, at: 0)
-        
         tabBar.itemWidth = (tabBar.bounds.width - positionX * 2) / 5
         tabBar.itemPositioning = .centered
         tabBar.isTranslucent = false
-        
-//        roundLayer.fillColor = R.color.tabBarColor()?.cgColor
         tabBar.tintColor = R.color.mainOrange()
         tabBar.unselectedItemTintColor = R.color.mainBlue()
     }
+    
+    func setupMiddleButton() {
+        let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+        
+        var menuButtonFrame = menuButton.frame
+        menuButtonFrame.origin.y = view.bounds.height - 1.5 * menuButtonFrame.height
+        menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
+        menuButton.frame = menuButtonFrame
+        
+        menuButton.backgroundColor = R.color.mainOrange()
+        menuButton.layer.cornerRadius = menuButtonFrame.height/2
+        view.addSubview(menuButton)
+        
+        menuButton.setImage(R.image.addRace(), for: .normal)
+        menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
+        
+        view.layoutIfNeeded()
+    }
+    
+    @objc
+    func menuButtonAction(sender: UIButton) {
+        selectedIndex = 1
+        print(selectedIndex)
+    }
 }
+
+
