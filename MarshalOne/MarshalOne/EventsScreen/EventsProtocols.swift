@@ -19,6 +19,7 @@ protocol EventsViewInput: AnyObject {
 }
 
 protocol EventsViewOutput: AnyObject {
+    func openEventScreen()
 }
 
 protocol EventsInteractorInput: AnyObject {
@@ -28,4 +29,5 @@ protocol EventsInteractorOutput: AnyObject {
 }
 
 protocol EventsRouterInput: AnyObject {
+    func didtapEvent()
 }

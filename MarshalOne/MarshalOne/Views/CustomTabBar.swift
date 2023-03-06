@@ -31,6 +31,7 @@ extension CustomTabBar {
         
         let addRaceViewController = setupAddRace()
         let addRaceNavigationController = UINavigationController(rootViewController: addRaceViewController)
+        addRaceNavigationController.title = R.string.localizable.addRace()
         
         let profileViewController = setupProfile()
         profileViewController.tabBarItem = UITabBarItem(title: R.string.localizable.profile(), image: R.image.profile(), tag: 2)
@@ -40,12 +41,6 @@ extension CustomTabBar {
         
         setupMiddleButton()
         setupUI()
-    }
-    
-    func configureViewController(with viewController: UIViewController, with title: String, and image: UIImage?) -> UIViewController {
-        viewController.tabBarItem.title = title
-        viewController.tabBarItem.image = image
-        return viewController
     }
     
     private func setupEvents() -> UIViewController {
@@ -70,16 +65,23 @@ extension CustomTabBar {
         let positionX: CGFloat = 10.0
         tabBar.itemWidth = (tabBar.bounds.width - positionX * 2) / 5
         tabBar.itemPositioning = .centered
-        tabBar.isTranslucent = false
+//        tabBar.isTranslucent = false
         tabBar.tintColor = R.color.mainOrange()
         tabBar.unselectedItemTintColor = R.color.mainBlue()
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
+//        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = R.color.cellColor()
+        
+        self.tabBarController?.tabBar.standardAppearance = appearance
+        self.tabBarController?.tabBar.scrollEdgeAppearance = tabBar.standardAppearance
     }
     
     func setupMiddleButton() {
         let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         
         var menuButtonFrame = menuButton.frame
-        menuButtonFrame.origin.y = view.bounds.height - 1.5 * menuButtonFrame.height
+        menuButtonFrame.origin.y = view.bounds.height - 1.75 * menuButtonFrame.height
         menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
         menuButton.frame = menuButtonFrame
         

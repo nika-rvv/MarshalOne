@@ -25,6 +25,9 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
+    func openEventScreen() {
+        router.didtapEvent()
+    }
 }
 
 extension EventsPresenter: EventsInteractorOutput {

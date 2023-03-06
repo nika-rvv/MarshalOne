@@ -14,4 +14,14 @@ final class EventsRouter {
 }
 
 extension EventsRouter: EventsRouterInput {
+    func didtapEvent() {
+        guard let window = window else {
+            return
+        }
+        
+        let eventContext = EventContext(window: window)
+        let eventContainer = EventContainer.assemble(with: eventContext)
+        let eventViewController = eventContainer.viewController
+        viewController?.navigationController?.pushViewController(eventViewController, animated: true)
+    }
 }

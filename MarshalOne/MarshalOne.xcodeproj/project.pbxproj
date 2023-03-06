@@ -71,6 +71,13 @@
 		94C58D7129969D00009FB37F /* LoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D6B29969D00009FB37F /* LoginContainer.swift */; };
 		94C58D742996A196009FB37F /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D732996A196009FB37F /* CustomTF.swift */; };
 		94C58D762996A313009FB37F /* LoginStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58D752996A313009FB37F /* LoginStackView.swift */; };
+		94C8E4DB29B4A3CF00CAC844 /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4D529B4A3CF00CAC844 /* EventPresenter.swift */; };
+		94C8E4DC29B4A3CF00CAC844 /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4D629B4A3CF00CAC844 /* EventRouter.swift */; };
+		94C8E4DD29B4A3CF00CAC844 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4D729B4A3CF00CAC844 /* EventViewController.swift */; };
+		94C8E4DE29B4A3CF00CAC844 /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4D829B4A3CF00CAC844 /* EventProtocols.swift */; };
+		94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4D929B4A3CF00CAC844 /* EventInteractor.swift */; };
+		94C8E4E029B4A3CF00CAC844 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4DA29B4A3CF00CAC844 /* EventContainer.swift */; };
+		94C8E4E229B4A4C100CAC844 /* EventContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4E129B4A4C100CAC844 /* EventContentView.swift */; };
 		F110385A63270B25A95DC4E1 /* Pods_MarshalOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +150,13 @@
 		94C58D6B29969D00009FB37F /* LoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainer.swift; sourceTree = "<group>"; };
 		94C58D732996A196009FB37F /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
 		94C58D752996A313009FB37F /* LoginStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStackView.swift; sourceTree = "<group>"; };
+		94C8E4D529B4A3CF00CAC844 /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
+		94C8E4D629B4A3CF00CAC844 /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
+		94C8E4D729B4A3CF00CAC844 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		94C8E4D829B4A3CF00CAC844 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
+		94C8E4D929B4A3CF00CAC844 /* EventInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInteractor.swift; sourceTree = "<group>"; };
+		94C8E4DA29B4A3CF00CAC844 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
+		94C8E4E129B4A4C100CAC844 /* EventContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentView.swift; sourceTree = "<group>"; };
 		B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarshalOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F0E39A978B961C4652411 /* Pods-MarshalOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarshalOne.release.xcconfig"; path = "Target Support Files/Pods-MarshalOne/Pods-MarshalOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +310,7 @@
 		94C58D3B2995358F009FB37F /* MarshalOne */ = {
 			isa = PBXGroup;
 			children = (
+				94C8E4D429B4A3B100CAC844 /* EventScreen */,
 				946C3B8629AD2F6C00C24AF4 /* AddRaceScreen */,
 				946C3B5B29A92A7000C24AF4 /* ProfileScreen */,
 				946C3B5929A92A5300C24AF4 /* EventsScreen */,
@@ -374,8 +389,22 @@
 				94B113D029B34F0B00856A5B /* EventsInfoStackView.swift */,
 				94B113D229B3C55700856A5B /* ProfileView.swift */,
 				94B113D929B3D5E800856A5B /* ProfileActionView.swift */,
+				94C8E4E129B4A4C100CAC844 /* EventContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		94C8E4D429B4A3B100CAC844 /* EventScreen */ = {
+			isa = PBXGroup;
+			children = (
+				94C8E4D529B4A3CF00CAC844 /* EventPresenter.swift */,
+				94C8E4D629B4A3CF00CAC844 /* EventRouter.swift */,
+				94C8E4D729B4A3CF00CAC844 /* EventViewController.swift */,
+				94C8E4D829B4A3CF00CAC844 /* EventProtocols.swift */,
+				94C8E4D929B4A3CF00CAC844 /* EventInteractor.swift */,
+				94C8E4DA29B4A3CF00CAC844 /* EventContainer.swift */,
+			);
+			path = EventScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -538,11 +567,15 @@
 				946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */,
 				94B113CF29B0E0A200856A5B /* CustomNavigationBar.swift in Sources */,
 				946C3B7E29A92C2500C24AF4 /* ProfileInteractor.swift in Sources */,
+				94C8E4DD29B4A3CF00CAC844 /* EventViewController.swift in Sources */,
+				94C8E4DC29B4A3CF00CAC844 /* EventRouter.swift in Sources */,
 				946C3B6229A92A8600C24AF4 /* EventsPresenter.swift in Sources */,
 				946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */,
+				94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
 				946C3B6729A92A8600C24AF4 /* EventsContainer.swift in Sources */,
 				946C3B6629A92A8600C24AF4 /* EventsInteractor.swift in Sources */,
+				94C8E4E229B4A4C100CAC844 /* EventContentView.swift in Sources */,
 				94C58D742996A196009FB37F /* CustomTF.swift in Sources */,
 				946C3B4F29A2691500C24AF4 /* RegisterInteractor.swift in Sources */,
 				946C3B8329A92EC400C24AF4 /* AppCoordinator.swift in Sources */,
@@ -567,14 +600,17 @@
 				946C3B6529A92A8600C24AF4 /* EventsProtocols.swift in Sources */,
 				946C3B4C29A2691500C24AF4 /* RegisterRouter.swift in Sources */,
 				94C58D6429953BF8009FB37F /* ImageExtension.swift in Sources */,
+				94C8E4DE29B4A3CF00CAC844 /* EventProtocols.swift in Sources */,
 				94B113DA29B3D5E800856A5B /* ProfileActionView.swift in Sources */,
 				946C3B4D29A2691500C24AF4 /* RegisterViewController.swift in Sources */,
 				946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */,
 				94C58D6D29969D00009FB37F /* LoginRouter.swift in Sources */,
+				94C8E4E029B4A3CF00CAC844 /* EventContainer.swift in Sources */,
 				946C3B8129A92C4D00C24AF4 /* MainFlowCoordinator.swift in Sources */,
 				946C3B8F29AD2F9D00C24AF4 /* AddRaceViewController.swift in Sources */,
 				946C3B7D29A92C2500C24AF4 /* ProfileProtocols.swift in Sources */,
 				94C58D6229953BE0009FB37F /* ColorExtension.swift in Sources */,
+				94C8E4DB29B4A3CF00CAC844 /* EventPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

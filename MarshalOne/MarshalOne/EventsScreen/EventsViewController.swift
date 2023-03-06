@@ -91,4 +91,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
         return 360
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.openEventScreen()
+    }
 }
