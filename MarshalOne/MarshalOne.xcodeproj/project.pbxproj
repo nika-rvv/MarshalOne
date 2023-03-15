@@ -10,6 +10,7 @@
 		94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F5E299E300F005EDB9D /* CustomButton.swift */; };
 		94542F70299E5987005EDB9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F6F299E5987005EDB9D /* R.generated.swift */; };
 		94542F74299E59A1005EDB9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94542F76299E59A1005EDB9D /* Localizable.strings */; };
+		9462BB7A29C21B11008FFB18 /* TabBarCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */; };
 		946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B40299FD36300C24AF4 /* ViewController.swift */; };
 		946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */; };
 		946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4529A2691500C24AF4 /* RegisterPresenter.swift */; };
@@ -87,6 +88,7 @@
 		94542F6F299E5987005EDB9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		94542F75299E59A1005EDB9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94542F77299E59BA005EDB9D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCenterButton.swift; sourceTree = "<group>"; };
 		946C3B40299FD36300C24AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContentView.swift; sourceTree = "<group>"; };
 		946C3B4529A2691500C24AF4 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				94B113D229B3C55700856A5B /* ProfileView.swift */,
 				94B113D929B3D5E800856A5B /* ProfileActionView.swift */,
 				94C8E4E129B4A4C100CAC844 /* EventContentView.swift */,
+				9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,
 				94542F70299E5987005EDB9D /* R.generated.swift in Sources */,
 				946C3B8E29AD2F9D00C24AF4 /* AddRaceRouter.swift in Sources */,
+				9462BB7A29C21B11008FFB18 /* TabBarCenterButton.swift in Sources */,
 				946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */,
 				94B113CF29B0E0A200856A5B /* CustomNavigationBar.swift in Sources */,
 				946C3B7E29A92C2500C24AF4 /* ProfileInteractor.swift in Sources */,

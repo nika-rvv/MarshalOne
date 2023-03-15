@@ -20,6 +20,7 @@ final class CustomTabBar: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.isTranslucent = false
         configureTabBar()
     }
 }
@@ -29,15 +30,11 @@ extension CustomTabBar {
         eventsViewController.tabBarItem = UITabBarItem(title: R.string.localizable.events(), image: R.image.events(), tag: 0)
         let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
         
-        let addRaceViewController = setupAddRace()
-        let addRaceNavigationController = UINavigationController(rootViewController: addRaceViewController)
-        addRaceNavigationController.title = R.string.localizable.addRace()
-        
         let profileViewController = setupProfile()
         profileViewController.tabBarItem = UITabBarItem(title: R.string.localizable.profile(), image: R.image.profile(), tag: 2)
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
         
-        viewControllers = [eventsNavigationController, addRaceNavigationController, profileNavigationController]
+        viewControllers = [eventsNavigationController, profileNavigationController]
         
         setupMiddleButton()
         setupUI()
@@ -63,14 +60,12 @@ extension CustomTabBar {
     
     private func setupUI() {
         let positionX: CGFloat = 10.0
-        tabBar.itemWidth = (tabBar.bounds.width - positionX * 2) / 5
+        tabBar.itemWidth = (tabBar.bounds.width - positionX * 2)
         tabBar.itemPositioning = .centered
-//        tabBar.isTranslucent = false
         tabBar.tintColor = R.color.mainOrange()
         tabBar.unselectedItemTintColor = R.color.mainBlue()
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
-//        appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = R.color.cellColor()
         
         self.tabBarController?.tabBar.standardAppearance = appearance
@@ -78,27 +73,24 @@ extension CustomTabBar {
     }
     
     func setupMiddleButton() {
-        let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+        let centerButton = TabBarCenterButton(frame: CGRect(x: 0, y: 0, width: 64, height: 80))
+        centerButton.center = CGPoint(x: self.tabBar.center.x, y: self.tabBar.bounds.height / 2 - 18)
+        self.tabBar.addSubview(centerButton)
         
-        var menuButtonFrame = menuButton.frame
-        menuButtonFrame.origin.y = view.bounds.height - 1.75 * menuButtonFrame.height
-        menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
-        menuButton.frame = menuButtonFrame
+        centerButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
-        menuButton.backgroundColor = R.color.mainOrange()
-        menuButton.layer.cornerRadius = menuButtonFrame.height/2
-        view.addSubview(menuButton)
-        
-        menuButton.setImage(R.image.addRace(), for: .normal)
-        menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
-        
-        view.layoutIfNeeded()
     }
     
     @objc
-    func menuButtonAction(sender: UIButton) {
-        selectedIndex = 1
-        print(selectedIndex)
+    func buttonAction() {
+        let newAddRaceViewController = setupAddRace()
+        newAddRaceViewController.view.backgroundColor = .red
+        
+        if let navigationController = navigationController {
+            navigationController.present(newAddRaceViewController, animated: true)
+        } else {
+            present(newAddRaceViewController, animated: true)
+        }
     }
 }
 

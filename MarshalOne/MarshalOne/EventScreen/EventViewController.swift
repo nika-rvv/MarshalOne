@@ -54,6 +54,7 @@ final class EventViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor.white
         setupViews()
         setupConstraints()
         configureView()
