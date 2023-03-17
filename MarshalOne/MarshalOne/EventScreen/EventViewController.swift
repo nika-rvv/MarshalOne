@@ -9,8 +9,8 @@
 import UIKit
 
 final class EventViewController: UIViewController {
-	private let output: EventViewOutput
-
+    private let output: EventViewOutput
+    
     private let navigationBar: NavigationBarView = {
         let navBar = NavigationBarView()
         navBar.translatesAutoresizingMaskIntoConstraints = false
@@ -52,13 +52,13 @@ final class EventViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor.white
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         setupViews()
         setupConstraints()
         configureView()
-	}
+    }
 }
 
 extension EventViewController: EventViewInput {

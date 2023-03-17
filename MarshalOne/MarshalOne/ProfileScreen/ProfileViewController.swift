@@ -23,6 +23,8 @@ final class ProfileViewController: UIViewController {
         let actions = UIStackView()
         actions.translatesAutoresizingMaskIntoConstraints = false
         actions.axis = .horizontal
+        actions.spacing = 24
+        actions.distribution = .fillProportionally
         return actions
     }()
     
@@ -103,13 +105,13 @@ extension ProfileViewController {
         logoutActionView.top(isIncludeSafeArea: false)
         logoutActionView.leading()
         NSLayoutConstraint.activate([
-            logoutActionView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -12),
+//            logoutActionView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -12),
             logoutActionView.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
         ])
         
         deleteActionVeiw.top(isIncludeSafeArea: false)
         NSLayoutConstraint.activate([
-            deleteActionVeiw.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 12),
+//            deleteActionVeiw.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 12),
             deleteActionVeiw.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
         ])
         deleteActionVeiw.trailing()

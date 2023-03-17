@@ -15,7 +15,7 @@ class LoginContentView: UIView {
         loginLa.textColor = .mainTextColor
         loginLa.numberOfLines = 0
         loginLa.textAlignment = .center
-        loginLa.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        loginLa.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         return loginLa
     }()
     

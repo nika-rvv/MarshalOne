@@ -46,6 +46,9 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
+    private var heightConstraint: NSLayoutConstraint!
+    private var widthConstraint: NSLayoutConstraint!
+    
     private var contentViewConstraint: CGFloat = 0
     
     init(output: LoginViewOutput) {
@@ -76,35 +79,19 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController {
     
-    func setupBigLoginImageConstraints(){
-        loginImage.top(isIncludeSafeArea: true)
-        loginImage.clipsToBounds = false
-        loginImage.layer.cornerRadius = 0
-        loginImage.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        loginImage.heightAnchor.constraint(equalToConstant: view.frame.height / 2.2).isActive = true
-        NSLayoutConstraint.deactivate([
-            loginImage.widthAnchor.constraint(equalToConstant: 160),
-            loginImage.heightAnchor.constraint(equalToConstant: 160),
-            loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-    }
-    
-    func setupRoundLognImageConstraints(){
-        NSLayoutConstraint.deactivate([
-            loginImage.widthAnchor.constraint(equalToConstant: view.frame.width),
-            loginImage.heightAnchor.constraint(equalToConstant: view.frame.height / 2.2)
-        ])
-
-        loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginImage.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        loginImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        loginImage.layer.cornerRadius = 80
-        loginImage.clipsToBounds = true
+    func setupImageConstraints(){
+        let topConstraint = loginImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        heightConstraint = loginImage.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.2)
+        widthConstraint = loginImage.widthAnchor.constraint(equalToConstant: view.bounds.width)
+        NSLayoutConstraint.activate([topConstraint,
+                                     loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     heightConstraint,
+                                     widthConstraint])
     }
     
     func setupConstraints(){
         view.addSubview(loginImage)
-        setupBigLoginImageConstraints()
+        setupImageConstraints()
         
         view.addSubview(loginContentView)
         NSLayoutConstraint.activate([
@@ -191,17 +178,22 @@ extension LoginViewController {
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
-        print(keyboardFrame.height)
-        print(loginContentView.frame.origin.y)
         if loginContentView.frame.origin.y > keyboardFrame.height {
             UIView.animate(withDuration: 0.3){ [weak self] in
                 self?.contentViewConstraint = self?.loginContentView.frame.origin.y ?? 0
                 self?.loginContentView.frame.origin.y -= keyboardFrame.height - 10
-                self?.setupRoundLognImageConstraints()
+                self?.setupImageForShownKeyboard()
                 self?.view.layoutIfNeeded()
-                
             }
         }
+    }
+    func setupImageForShownKeyboard() {
+        heightConstraint.constant = 160
+        widthConstraint.constant = 160
+        loginImage.layer.cornerRadius = 80
+        loginImage.layer.borderColor = R.color.mainBlue()?.cgColor
+        loginImage.layer.borderWidth = 1
+        loginImage.clipsToBounds = true
     }
     
     @objc
@@ -211,11 +203,18 @@ extension LoginViewController {
         let keyboardFrame = keyboardSize.cgRectValue
         if loginContentView.frame.origin.y < keyboardFrame.height {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.setupBigLoginImageConstraints()
+                self?.setupImageForDismissedKeyboard()
                 self?.loginContentView.frame.origin.y += keyboardFrame.height - 10
                 self?.view.layoutIfNeeded()
             }
         }
+    }
+    
+    func setupImageForDismissedKeyboard() {
+        heightConstraint.constant = view.bounds.height / 2.2
+        widthConstraint.constant = view.bounds.width
+        loginImage.layer.borderWidth = 0
+        loginImage.layer.cornerRadius = 0
     }
     
     @objc
