@@ -39,7 +39,7 @@ class LoginContentView: UIView {
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         return passwordTF
     }()
-    
+        
     override init(frame: CGRect){
         super.init(frame: frame)
         setupConstraints()

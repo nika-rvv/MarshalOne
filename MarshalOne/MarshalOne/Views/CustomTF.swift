@@ -14,7 +14,7 @@ class CustomTF: UIView {
         tf.borderStyle = .roundedRect
         tf.backgroundColor = .tfColor
         tf.font = .systemFont(ofSize: 13)
-        tf.textColor = .tfText
+        tf.textColor = R.color.mainTextColor()
         tf.layer.borderColor = UIColor.tfText?.cgColor
         tf.layer.borderWidth = 1
         tf.layer.cornerRadius = 4
