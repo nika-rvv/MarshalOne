@@ -36,11 +36,9 @@ final class EventViewController: UIViewController {
         return event
     }()
     
-    lazy var dimmedView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }()
+    private lazy var backgroundOfContentListView = UIView()
+    
+    private let scrollView = UIScrollView()
     
     init(output: EventViewOutput) {
         self.output = output
@@ -58,18 +56,35 @@ final class EventViewController: UIViewController {
         setupViews()
         setupConstraints()
         configureView()
+        makeScrollViewSize()
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        makeScrollViewSize()
+//    }
 }
 
 extension EventViewController: EventViewInput {
     private func setupViews(){
         view.backgroundColor = R.color.launchScreenColor()
-        view.addSubview(raceImageView)
+        view.addSubview(scrollView)
+        scrollView.backgroundColor = .red
+        scrollView.addSubview(raceImageView)
         view.addSubview(navigationBar)
-        view.addSubview(eventContentView)
+        scrollView.addSubview(eventContentView)
+        scrollView.resignFirstResponder()
     }
     
     private func setupConstraints(){
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
+//        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 16)
         ])
@@ -79,11 +94,11 @@ extension EventViewController: EventViewInput {
         navigationBar.height(80)
         
         NSLayoutConstraint.activate([
-            raceImageView.topAnchor.constraint(equalTo: navigationBar.topAnchor)
+            raceImageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
         ])
         raceImageView.leading()
         raceImageView.trailing()
-        raceImageView.height(view.frame.height / 2)
+        raceImageView.height(scrollView.frame.height / 2.2)
         
         
         NSLayoutConstraint.activate([
@@ -92,6 +107,15 @@ extension EventViewController: EventViewInput {
         eventContentView.leading()
         eventContentView.trailing()
         eventContentView.bottom(isIncludeSafeArea: false)
+        
+//        scrollView.isDirectionalLockEnabled = true
+//        scrollView.alwaysBounceVertical = true
+    }
+    
+    func makeScrollViewSize() {
+//        let height = raceImageView.frame.size.height + eventContentView.bounds.height
+        scrollView.contentSize = CGSize(width: view.frame.width,
+                                        height: view.frame.height * 2)
     }
     
     private func configureView() {
@@ -102,6 +126,7 @@ extension EventViewController: EventViewInput {
                                            additionalText: "Пролог в темное время: часовой (эндуро-стадион + небольшой трек для двух классов Pro и B3. Наличие фары, фонариков - спереди, заднего габарита либо отражающих элементов красного цвета - ОБЯЗАТЕЛЬНО. Первый внедорожный гоночный день классов Profi (Pro) (сложность трека - heavy) и Base 3 (B3) (сложность трека - medium).")
     }
 }
+
 
 extension EventViewController: NavigationBarDelegate {
     func backButtonAction() {

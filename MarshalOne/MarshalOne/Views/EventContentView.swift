@@ -73,7 +73,7 @@ extension EventContentView {
     }
     
     private func setupConstraits(){
-        mainLabel.top(12, isIncludeSafeArea: false)
+        mainLabel.top(24, isIncludeSafeArea: true)
         mainLabel.leading(20)
         mainLabel.trailing(-20)
         

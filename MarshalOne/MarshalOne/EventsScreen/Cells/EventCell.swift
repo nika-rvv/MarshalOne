@@ -93,7 +93,8 @@ final class EventCell: UITableViewCell {
         let info = UIStackView()
         info.translatesAutoresizingMaskIntoConstraints = false
         info.axis = .horizontal
-        info.spacing = 8
+        info.distribution = .fillProportionally
+//        info.spacing = 8
         return info
     }()
     
@@ -158,10 +159,10 @@ extension EventCell {
         
         NSLayoutConstraint.activate([
             infoStackView.topAnchor.constraint(equalTo: raceImage.bottomAnchor, constant: 8),
-            infoStackView.trailingAnchor.constraint(equalTo: raceImage.centerXAnchor)
         ])
         infoStackView.leading(18)
         infoStackView.height(24)
+        infoStackView.trailing(-18)
     }
     
     func configureCellWith(title: String,

@@ -11,7 +11,7 @@ class CustomButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configuration = .filled()
-        self.tintColor = .mainBlueColor
+        self.tintColor = R.color.mainBlue()
         self.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 20, weight: .bold)

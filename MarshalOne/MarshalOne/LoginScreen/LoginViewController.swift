@@ -81,8 +81,8 @@ extension LoginViewController {
     
     func setupImageConstraints(){
         let topConstraint = loginImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        heightConstraint = loginImage.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.2)
-        widthConstraint = loginImage.widthAnchor.constraint(equalToConstant: view.bounds.width)
+        heightConstraint = loginImage.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.3)
+        widthConstraint = loginImage.widthAnchor.constraint(equalToConstant: view.bounds.width - 20)
         NSLayoutConstraint.activate([topConstraint,
                                      loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      heightConstraint,

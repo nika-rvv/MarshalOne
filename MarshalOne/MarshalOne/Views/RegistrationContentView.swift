@@ -91,12 +91,19 @@ final class RegistrationContentView: UIView {
         return registration
     }()
     
+    var viewHeight: CGFloat = 0
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         setupConstraints()
         setupTextFields()
         setupGenderField()
         setupDatePicker()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        viewHeight = self.frame.height
     }
     
     required init?(coder: NSCoder) {
@@ -108,9 +115,12 @@ extension RegistrationContentView {
     func setupConstraints(){
         self.addSubview(bikeImage)
         bikeImage.top(isIncludeSafeArea: true)
-        bikeImage.width(350)
+        NSLayoutConstraint.activate([
+            bikeImage.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
+            bikeImage.heightAnchor.constraint(equalToConstant: 300)
+        ])
         bikeImage.centerX()
-        bikeImage.height(350)
+        
         
         self.addSubview(createLabel)
         NSLayoutConstraint.activate([
