@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import Lottie
 
 final class EnterViewController: UIViewController {
 	private let output: EnterViewOutput
 
     var timer = Timer()
     let timeInterval = 1.0
+    
+    let animationView: LottieAnimationView = {
+        let animation = LottieAnimationView()
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        animation.animation = LottieAnimation.named(JSONName.animation.rawValue)
+        animation.loopMode = .loop
+        return animation
+    }()
     
     let lauchImage: UIImageView = {
         let image = UIImageView()
@@ -46,6 +55,7 @@ final class EnterViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        animationView.play()
         timer = Timer.scheduledTimer(timeInterval: timeInterval,
                                      target: self,
                                      selector: #selector(nextView),
@@ -65,16 +75,23 @@ final class EnterViewController: UIViewController {
 extension EnterViewController {
     func setupConstraints(){
         view.backgroundColor = .screenColor
-
-        view.addSubview(lauchImage)
-        lauchImage.centerX()
-        lauchImage.centerY()
-        lauchImage.leading(60)
-        lauchImage.trailing(-60)
+//
+//        view.addSubview(lauchImage)
+//        lauchImage.centerX()
+//        lauchImage.centerY()
+//        lauchImage.leading(60)
+//        lauchImage.trailing(-60)
+        
+        view.addSubview(animationView)
+        animationView.centerX()
+        animationView.centerY()
+        animationView.leading(60)
+        animationView.trailing(-60)
+        animationView.height(300)
         
         view.addSubview(progressView)
         NSLayoutConstraint.activate([
-            progressView.topAnchor.constraint(equalTo: lauchImage.bottomAnchor, constant: 50)
+            progressView.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 50)
         ])
         progressView.leading(60)
         progressView.trailing(-60)

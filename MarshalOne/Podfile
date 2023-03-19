@@ -6,6 +6,7 @@ target 'MarshalOne' do
   use_frameworks!
 
   # Pods for MarshalOne
+  pod 'lottie-ios'
   pod 'R.swift'
 
 end

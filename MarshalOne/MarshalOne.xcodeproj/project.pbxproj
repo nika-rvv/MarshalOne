@@ -45,6 +45,8 @@
 		946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */; };
 		946C3B9529AD312900C24AF4 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B9429AD312900C24AF4 /* EventCell.swift */; };
 		946C3B9729AD374100C24AF4 /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */; };
+		94A85FDC29C723CD00C0544E /* HelmetAnimation2.json in Resources */ = {isa = PBXBuildFile; fileRef = 94A85FDB29C723CD00C0544E /* HelmetAnimation2.json */; };
+		94A85FDE29C724A800C0544E /* JSONEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A85FDD29C724A800C0544E /* JSONEnum.swift */; };
 		94B113CF29B0E0A200856A5B /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B113CE29B0E0A200856A5B /* CustomNavigationBar.swift */; };
 		94B113D129B34F0C00856A5B /* EventsInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B113D029B34F0B00856A5B /* EventsInfoStackView.swift */; };
 		94B113D329B3C55700856A5B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B113D229B3C55700856A5B /* ProfileView.swift */; };
@@ -124,6 +126,8 @@
 		946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRaceContainer.swift; sourceTree = "<group>"; };
 		946C3B9429AD312900C24AF4 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
+		94A85FDB29C723CD00C0544E /* HelmetAnimation2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HelmetAnimation2.json; sourceTree = "<group>"; };
+		94A85FDD29C724A800C0544E /* JSONEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEnum.swift; sourceTree = "<group>"; };
 		94B113CE29B0E0A200856A5B /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		94B113D029B34F0B00856A5B /* EventsInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInfoStackView.swift; sourceTree = "<group>"; };
 		94B113D229B3C55700856A5B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 		94C58D3B2995358F009FB37F /* MarshalOne */ = {
 			isa = PBXGroup;
 			children = (
+				94A85FDB29C723CD00C0544E /* HelmetAnimation2.json */,
 				94C8E4D429B4A3B100CAC844 /* EventScreen */,
 				946C3B8629AD2F6C00C24AF4 /* AddRaceScreen */,
 				946C3B5B29A92A7000C24AF4 /* ProfileScreen */,
@@ -363,6 +368,7 @@
 				94C58D6129953BE0009FB37F /* ColorExtension.swift */,
 				94C58D6329953BF8009FB37F /* ImageExtension.swift */,
 				946C3B9629AD374100C24AF4 /* ReuseIdentifier.swift */,
+				94A85FDD29C724A800C0544E /* JSONEnum.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A85FDC29C723CD00C0544E /* HelmetAnimation2.json in Resources */,
 				94C58D4929953590009FB37F /* LaunchScreen.storyboard in Resources */,
 				94542F74299E59A1005EDB9D /* Localizable.strings in Resources */,
 				94C58D4629953590009FB37F /* Assets.xcassets in Resources */,
@@ -598,6 +605,7 @@
 				94B113D329B3C55700856A5B /* ProfileView.swift in Sources */,
 				946C3B9729AD374100C24AF4 /* ReuseIdentifier.swift in Sources */,
 				94B113D629B3C75900856A5B /* ProfileCell.swift in Sources */,
+				94A85FDE29C724A800C0544E /* JSONEnum.swift in Sources */,
 				946C3B7F29A92C2500C24AF4 /* ProfileContainer.swift in Sources */,
 				94C58D7129969D00009FB37F /* LoginContainer.swift in Sources */,
 				946C3B5429A9136900C24AF4 /* AuthCoordinator.swift in Sources */,
