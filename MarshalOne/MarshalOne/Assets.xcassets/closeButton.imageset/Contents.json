@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "log-out-outline.svg",
+      "filename" : "close.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,12 +12,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "log-out-outline 3.svg",
+      "filename" : "close 3.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "log-out-outline 1.svg",
+      "filename" : "close 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -28,12 +28,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "log-out-outline 4.svg",
+      "filename" : "close 4.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "log-out-outline 2.svg",
+      "filename" : "close 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -44,7 +44,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "log-out-outline 5.svg",
+      "filename" : "close 5.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

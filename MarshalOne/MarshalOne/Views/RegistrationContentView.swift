@@ -132,7 +132,7 @@ extension RegistrationContentView {
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: createLabel.bottomAnchor, constant: 7)
         ])
-        hintLabel.leading(43)
+        hintLabel.leading(24)
         
         self.addSubview(birthdayGenderStackView)
         
@@ -140,8 +140,8 @@ extension RegistrationContentView {
             self.addSubview(firstView)
             NSLayoutConstraint.activate([
                 firstView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 11),
-                firstView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 43),
-                firstView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -43),
+                firstView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+                firstView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
                 firstView.heightAnchor.constraint(equalToConstant: 42)
             ])
             
@@ -150,9 +150,9 @@ extension RegistrationContentView {
                     birthdayGenderStackView.addArrangedSubview(textFields[value])
                     NSLayoutConstraint.activate([
                         birthdayGenderStackView.topAnchor.constraint(equalTo: textFields[1].bottomAnchor, constant: 11),
-                        birthdayGenderStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 43),
+                        birthdayGenderStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
                         birthdayGenderStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                                                          constant: -43),
+                                                                          constant: -24),
                         birthdayGenderStackView.heightAnchor.constraint(equalToConstant: 42)
                     ])
                 } else {
@@ -160,8 +160,8 @@ extension RegistrationContentView {
                     NSLayoutConstraint.activate([
                         textFields[value].topAnchor.constraint(equalTo: textFields[value - 1].bottomAnchor,
                                                                constant: 11),
-                        textFields[value].leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 43),
-                        textFields[value].trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -43),
+                        textFields[value].leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+                        textFields[value].trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
                         textFields[value].heightAnchor.constraint(equalToConstant: 42)
                     ])
                 }
@@ -182,8 +182,8 @@ extension RegistrationContentView {
         self.addSubview(registrationButton)
         NSLayoutConstraint.activate([
             registrationButton.topAnchor.constraint(equalTo: rulesLabel.bottomAnchor, constant: 11),
-            registrationButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 43),
-            registrationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -43),
+            registrationButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            registrationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             registrationButton.heightAnchor.constraint(equalToConstant: 42)
         ])
     }

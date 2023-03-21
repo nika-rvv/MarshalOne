@@ -9,7 +9,11 @@
 import UIKit
 
 final class AddRaceRouter {
+    var viewController: UIViewController?
 }
 
 extension AddRaceRouter: AddRaceRouterInput {
+    func closeViewController() {
+        viewController?.dismiss(animated: true)
+    }
 }

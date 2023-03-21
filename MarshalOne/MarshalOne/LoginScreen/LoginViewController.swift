@@ -105,8 +105,8 @@ extension LoginViewController {
         NSLayoutConstraint.activate([
             enterButton.topAnchor.constraint(equalTo: loginContentView.bottomAnchor, constant: 24)
         ])
-        enterButton.leading(44)
-        enterButton.trailing(-44)
+        enterButton.leading(24)
+        enterButton.trailing(-24)
         enterButton.height(44)
         
         view.addSubview(registrationButton)

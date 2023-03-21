@@ -63,8 +63,8 @@ extension LoginContentView {
         NSLayoutConstraint.activate([
             loginStackView.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 20)
         ])
-        loginStackView.leading(43)
-        loginStackView.trailing(-43)
+        loginStackView.leading(24)
+        loginStackView.trailing(-24)
         
         loginStackView.addArrangedSubview(mailTextField)
         mailTextField.top(isIncludeSafeArea: false)

@@ -19,6 +19,7 @@ protocol AddRaceViewInput: AnyObject {
 }
 
 protocol AddRaceViewOutput: AnyObject {
+    func didTapCloseViewControllerButton()
 }
 
 protocol AddRaceInteractorInput: AnyObject {
@@ -28,4 +29,5 @@ protocol AddRaceInteractorOutput: AnyObject {
 }
 
 protocol AddRaceRouterInput: AnyObject {
+    func closeViewController() 
 }

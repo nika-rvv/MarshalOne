@@ -39,3 +39,11 @@
 "events" = "Соревнования";
 "addRace" = "Добавить гонку";
 "profile" = "Профиль";
+
+
+// addRace
+"eventName" = "Название гонки";
+"dateFrom" = "Дата начала";
+"dateTo" = "Дата окончания";
+"eventDescription" = "Описание гонки";
+"placeOfEvent" = "Место проведения";

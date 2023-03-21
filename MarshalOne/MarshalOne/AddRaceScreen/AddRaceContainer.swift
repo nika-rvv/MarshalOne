@@ -19,6 +19,7 @@ final class AddRaceContainer {
         let presenter = AddRacePresenter(router: router, interactor: interactor)
 		let viewController = AddRaceViewController(output: presenter)
 
+        router.viewController = viewController
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 

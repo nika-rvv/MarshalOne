@@ -9,8 +9,17 @@
 import UIKit
 
 final class AddRaceViewController: UIViewController {
-	private let output: AddRaceViewOutput
-
+    private let output: AddRaceViewOutput
+    
+    private let addRaceContenView: AddRaceContentView = {
+        let content = AddRaceContentView()
+        content.translatesAutoresizingMaskIntoConstraints = false
+        return content
+    }()
+    
+    private var imagePicker: ImagePicker?
+    
+    
     init(output: AddRaceViewOutput) {
         self.output = output
         
@@ -21,9 +30,53 @@ final class AddRaceViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        setupImagePicker()
+        setupAction()
+    }
+}
+
+extension AddRaceViewController {
+    private func setupUI() {
+        view.backgroundColor = R.color.launchScreenColor()
+        
+        view.addSubview(addRaceContenView)
+        
+        addRaceContenView.top(isIncludeSafeArea: false)
+        addRaceContenView.leading()
+        addRaceContenView.trailing()
+        addRaceContenView.bottom(isIncludeSafeArea: false)
+    }
+    
+    func setupImagePicker(){
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        addRaceContenView.raceImageView.isUserInteractionEnabled = true
+        
+        addRaceContenView.raceImageView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                                    action: #selector(selectPhoto)))
+    }
+    
+    @objc
+    func selectPhoto() {
+        imagePicker?.present(from: addRaceContenView.raceImageView)
+    }
+    
+    func setupAction(){
+        addRaceContenView.setAddAction {
+            print("add race")
+        }
+        addRaceContenView.setCloseAction {
+            self.output.didTapCloseViewControllerButton()
+        }
+    }
+    
+}
+extension AddRaceViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        self.addRaceContenView.raceImageView.image = image
+    }
 }
 
 extension AddRaceViewController: AddRaceViewInput {

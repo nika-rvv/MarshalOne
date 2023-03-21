@@ -39,3 +39,11 @@
 "events" = "Events";
 "addRace" = "Add race";
 "profile" = "Profile";
+
+// addEvent
+"eventName" = "Race name";
+"dateFrom" = "Date from";
+"dateTo" = "Date to";
+"eventDescription" = "Race description";
+"placeOfEvent" = "Location of a race";
+

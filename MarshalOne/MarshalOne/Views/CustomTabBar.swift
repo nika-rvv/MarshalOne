@@ -84,13 +84,7 @@ extension CustomTabBar {
     @objc
     func buttonAction() {
         let newAddRaceViewController = setupAddRace()
-        newAddRaceViewController.view.backgroundColor = .red
-        
-        if let navigationController = navigationController {
-            navigationController.present(newAddRaceViewController, animated: true)
-        } else {
-            present(newAddRaceViewController, animated: true)
-        }
+        present(newAddRaceViewController, animated: true)
     }
 }
 

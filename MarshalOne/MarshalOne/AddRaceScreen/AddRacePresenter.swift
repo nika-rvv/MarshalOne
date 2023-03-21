@@ -25,6 +25,9 @@ extension AddRacePresenter: AddRaceModuleInput {
 }
 
 extension AddRacePresenter: AddRaceViewOutput {
+    func didTapCloseViewControllerButton() {
+        router.closeViewController()
+    }
 }
 
 extension AddRacePresenter: AddRaceInteractorOutput {
