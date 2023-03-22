@@ -24,6 +24,14 @@ final class EventContentView: UIView {
         return stackView
     }()
     
+    private let infoStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     private let placeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +57,8 @@ final class EventContentView: UIView {
         return label
     }()
     
+    private let spacerView = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = R.color.cellBackgroundColor()
@@ -63,32 +73,34 @@ final class EventContentView: UIView {
 
 extension EventContentView {
     private func setupView(){
-        self.addSubview(mainLabel)
+        self.addSubview(infoStackView)
         
-        self.addSubview(placeDateStackView)
+        infoStackView.addArrangedSubview(mainLabel)
+        infoStackView.addArrangedSubview(placeDateStackView)
+        
         placeDateStackView.addArrangedSubview(placeLabel)
         placeDateStackView.addArrangedSubview(dateLabel)
         
-        self.addSubview(additionalInfoLabel)
+        infoStackView.addArrangedSubview(additionalInfoLabel)
+        infoStackView.addArrangedSubview(spacerView)
     }
     
     private func setupConstraits(){
-        mainLabel.top(24, isIncludeSafeArea: true)
-        mainLabel.leading(20)
-        mainLabel.trailing(-20)
+        infoStackView.top(isIncludeSafeArea: false)
+        infoStackView.leading(20)
+        infoStackView.trailing(-20)
+        infoStackView.bottom(isIncludeSafeArea: false)
         
-        NSLayoutConstraint.activate([
-            placeDateStackView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8)
-        ])
-        placeDateStackView.leading(20)
-        placeDateStackView.trailing(-20)
-        placeDateStackView.height(20)
+        mainLabel.leading()
+        mainLabel.trailing()
         
-        NSLayoutConstraint.activate([
-            additionalInfoLabel.topAnchor.constraint(equalTo: placeDateStackView.bottomAnchor, constant: 12)
-        ])
-        additionalInfoLabel.leading(20)
-        additionalInfoLabel.trailing(-20)
+        placeDateStackView.leading()
+        placeDateStackView.trailing()
+        
+        additionalInfoLabel.leading()
+        additionalInfoLabel.trailing()
+        
+        infoStackView.setCustomSpacing(12, after: placeDateStackView)
     }
     
     func configureViewWith(mainText: String, placeText: String, dateText: String, additionalText: String) {

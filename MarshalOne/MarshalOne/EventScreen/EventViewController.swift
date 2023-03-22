@@ -23,22 +23,21 @@ final class EventViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.image = R.image.loginImage()
-        imageView.layer.masksToBounds = true
         return imageView
     }()
     
     lazy var eventContentView: EventContentView = {
         let event = EventContentView()
         event.translatesAutoresizingMaskIntoConstraints = false
-        event.layer.cornerRadius = 40
+        event.layer.cornerRadius = 16
         event.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        event.clipsToBounds = true
         return event
     }()
     
     private lazy var backgroundOfContentListView = UIView()
     
     private let scrollView = UIScrollView()
+    private let contentView = UIView()
     
     init(output: EventViewOutput) {
         self.output = output
@@ -56,35 +55,27 @@ final class EventViewController: UIViewController {
         setupViews()
         setupConstraints()
         configureView()
-        makeScrollViewSize()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        makeScrollViewSize()
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = raceImageView.frame.height + eventContentView.frame.height
+        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
+    }
 }
 
 extension EventViewController: EventViewInput {
-    private func setupViews(){
+    private func setupViews() {
         view.backgroundColor = R.color.launchScreenColor()
         view.addSubview(scrollView)
-        scrollView.backgroundColor = .red
-        scrollView.addSubview(raceImageView)
-        view.addSubview(navigationBar)
-        scrollView.addSubview(eventContentView)
-        scrollView.resignFirstResponder()
+        scrollView.addSubview(contentView)
+        contentView.addSubview(raceImageView)
+        raceImageView.backgroundColor = .red
+                view.addSubview(navigationBar)
+        contentView.addSubview(eventContentView)
     }
     
     private func setupConstraints(){
-        
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
-//        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 16)
         ])
@@ -92,13 +83,24 @@ extension EventViewController: EventViewInput {
         navigationBar.leading()
         navigationBar.trailing()
         navigationBar.height(80)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
+        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         NSLayoutConstraint.activate([
-            raceImageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
+            raceImageView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
         raceImageView.leading()
         raceImageView.trailing()
-        raceImageView.height(scrollView.frame.height / 2.2)
+        raceImageView.height(view.frame.height / 2.2)
         
         
         NSLayoutConstraint.activate([
@@ -106,16 +108,10 @@ extension EventViewController: EventViewInput {
         ])
         eventContentView.leading()
         eventContentView.trailing()
-        eventContentView.bottom(isIncludeSafeArea: false)
+        eventContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
-//        scrollView.isDirectionalLockEnabled = true
-//        scrollView.alwaysBounceVertical = true
-    }
-    
-    func makeScrollViewSize() {
-//        let height = raceImageView.frame.size.height + eventContentView.bounds.height
-        scrollView.contentSize = CGSize(width: view.frame.width,
-                                        height: view.frame.height * 2)
+        //        scrollView.isDirectionalLockEnabled = true
+        //        scrollView.alwaysBounceVertical = true
     }
     
     private func configureView() {
@@ -123,7 +119,7 @@ extension EventViewController: EventViewInput {
         eventContentView.configureViewWith(mainText: "Чемпионат России. Гонки на льду - класс 500. Полуфинал - 1 этап",
                                            placeText: "респ. Башкортостан, Уфа",
                                            dateText: "7 янв. — 10 янв.",
-                                           additionalText: "Пролог в темное время: часовой (эндуро-стадион + небольшой трек для двух классов Pro и B3. Наличие фары, фонариков - спереди, заднего габарита либо отражающих элементов красного цвета - ОБЯЗАТЕЛЬНО. Первый внедорожный гоночный день классов Profi (Pro) (сложность трека - heavy) и Base 3 (B3) (сложность трека - medium).")
+                                           additionalText: "Пролог в темное время: часовой (эндуро-стадион + небольшой трек для хуй классов Pro и B3. Наличие фары, фонариков - спереди, заднего габарита либо отражающих элементов красного цвета - ОБЯЗАТЕЛЬНО. Первый внедорожный гоночный день классов Profi (Pro) (сложность трека - heavy) и Base 3 (B3) (сложность трека - medium).")
     }
 }
 

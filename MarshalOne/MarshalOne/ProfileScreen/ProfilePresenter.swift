@@ -25,6 +25,13 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
+    func didDeleteAcountViewTap() {
+        router.didTapDeleteAcount()
+    }
+    
+    func didLogoutViewTap(){
+        router.didTapLogout()
+    }
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {

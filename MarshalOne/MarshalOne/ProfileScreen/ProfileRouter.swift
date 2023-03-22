@@ -14,4 +14,23 @@ final class ProfileRouter {
 }
 
 extension ProfileRouter: ProfileRouterInput {
+    func didTapDeleteAcount() {
+        guard let window = window else {
+            return
+        }
+        
+        let coordinator = AppCoordinator(window: window, instructor: .authorization)
+        coordinator.start()
+        print("delete")
+    }
+    
+    func didTapLogout(){
+        guard let window = window else {
+            return
+        }
+        
+        let coordinator = AppCoordinator(window: window, instructor: .authorization)
+        coordinator.start()
+        print("logout")
+    }
 }

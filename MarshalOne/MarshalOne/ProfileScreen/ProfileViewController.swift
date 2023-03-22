@@ -67,6 +67,7 @@ final class ProfileViewController: UIViewController {
         setupConstraints()
         configureViewsWithData()
         setupTableView()
+        setupActions()
     }
 }
 
@@ -105,13 +106,11 @@ extension ProfileViewController {
         logoutActionView.top(isIncludeSafeArea: false)
         logoutActionView.leading()
         NSLayoutConstraint.activate([
-//            logoutActionView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -12),
             logoutActionView.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
         ])
         
         deleteActionVeiw.top(isIncludeSafeArea: false)
         NSLayoutConstraint.activate([
-//            deleteActionVeiw.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 12),
             deleteActionVeiw.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
         ])
         deleteActionVeiw.trailing()
@@ -131,6 +130,20 @@ extension ProfileViewController {
     
     private func configureViewsWithData() {
         profileView.configureView(with: R.string.localizable.name(), and: R.string.localizable.city())
+    }
+    
+    func setupActions() {
+        logoutActionView.setprofileAction {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.output.didLogoutViewTap()
+            }
+        }
+        
+        deleteActionVeiw.setprofileAction {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.output.didDeleteAcountViewTap()
+            }
+        }
     }
 }
 

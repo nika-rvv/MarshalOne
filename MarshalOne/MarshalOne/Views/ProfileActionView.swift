@@ -8,6 +8,11 @@
 import UIKit
 
 final class ProfileActionView: UIView {
+    
+    typealias ProfileAction = () -> ()
+    
+    private var profileAction: ProfileAction?
+    
     private let actionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +33,7 @@ final class ProfileActionView: UIView {
         self.backgroundColor = R.color.cellColor()
         setupViews()
         setupConstraints()
+        setupGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -53,6 +59,19 @@ extension ProfileActionView {
         actionImageView.trailing(-12)
         actionImageView.width(24)
         actionImageView.height(24)
+    }
+    
+    func setupGestureRecognizer() {
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gestureRecognizerAction)))
+    }
+    
+    @objc
+    func gestureRecognizerAction(){
+        profileAction?()
+    }
+    
+    func setprofileAction(_ action: @escaping ProfileAction) {
+        self.profileAction = action
     }
     
     func configureViewWith(text: String, textColor: UIColor?, image: UIImage?) {
