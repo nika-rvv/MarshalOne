@@ -30,16 +30,18 @@ class LoginContentView: UIView {
     
     private let mailTextField: CustomTF = {
         let mailTF = CustomTF()
+        mailTF.tag = 0
         mailTF.translatesAutoresizingMaskIntoConstraints = false
         return mailTF
     }()
     
     private let passwordTextField: CustomTF = {
         let passwordTF = CustomTF()
+        passwordTF.tag = 1
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         return passwordTF
     }()
-        
+            
     override init(frame: CGRect){
         super.init(frame: frame)
         setupConstraints()
@@ -84,5 +86,28 @@ extension LoginContentView {
     func setupViews() {
         mailTextField.setupPlaceholder(with: R.string.localizable.enterEmail())
         passwordTextField.setupPlaceholder(with: R.string.localizable.enterPassword())
+        passwordTextField.setupSecureEntry()
+    }
+    
+    func errorWithEmptyFields(for index: Int) {
+        if index == 0 {
+            mailTextField.errorEmptyField()
+        } else {
+            passwordTextField.errorEmptyField()
+        }
+    }
+    
+    func startEditingField() {
+        mailTextField.removeBorder()
+        passwordTextField.removeBorder()
+    }
+    
+    
+    func returnTextFromEmailTextField() -> String {
+        return mailTextField.returnTextFromTF()
+    }
+    
+    func returnTextFromPasswordTextField() -> String {
+        return passwordTextField.returnTextFromTF()
     }
 }

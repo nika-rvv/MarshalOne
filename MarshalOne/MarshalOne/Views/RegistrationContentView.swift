@@ -235,10 +235,10 @@ extension RegistrationContentView {
 private extension RegistrationContentView {
     @objc
     func registerButtonTapped() {
-//        let registerInfo = textFields.map { tf in
-//            return tf.text
-//        }
-        registerAction?([""])
+        let registerInfo = textFields.map { tf in
+            return tf.returnTextFromTF()
+        }
+        registerAction?(registerInfo)
     }
 }
 

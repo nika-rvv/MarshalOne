@@ -15,7 +15,7 @@ class CustomTF: UIView {
         tf.backgroundColor = .tfColor
         tf.font = .systemFont(ofSize: 13)
         tf.textColor = R.color.mainTextColor()
-        tf.layer.borderColor = UIColor.tfText?.cgColor
+        tf.layer.borderColor = R.color.tfText()?.cgColor
         tf.layer.borderWidth = 1
         tf.layer.cornerRadius = 4
         return tf
@@ -56,6 +56,18 @@ class CustomTF: UIView {
     
     func setupText(with text: String) {
         textField.text = text
+    }
+    
+    func errorEmptyField(){
+        textField.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func returnTextFromTF() -> String {
+        return textField.text ?? ""
+    }
+    
+    func removeBorder() {
+        textField.layer.borderColor = R.color.tfText()?.cgColor
     }
 }
 

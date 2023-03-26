@@ -47,3 +47,8 @@
 "dateTo" = "Дата окончания";
 "eventDescription" = "Описание гонки";
 "placeOfEvent" = "Место проведения";
+
+//alerts
+"ops" = "Ой";
+"chekFields" = "Проверьте данные поля: ";
+"correct" = "Исправлю";

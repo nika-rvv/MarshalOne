@@ -9,8 +9,8 @@
 import UIKit
 
 final class RegisterViewController: UIViewController {
-	private let output: RegisterViewOutput
-
+    private let output: RegisterViewOutput
+    
     let fields = [R.string.localizable.name(),
                   R.string.localizable.surname(),
                   R.string.localizable.birthdate(),
@@ -49,8 +49,8 @@ final class RegisterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
         view.backgroundColor = .screenColor
@@ -60,7 +60,7 @@ final class RegisterViewController: UIViewController {
         setupBackButton()
         setupObserversForKeyboard()
         setupGestureRecognizer()
-	}
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -122,7 +122,7 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
             regContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             regContentView.widthAnchor.constraint(equalTo: view.widthAnchor),
             regContentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 70),
-        
+            
         ])
         
         registrationScrollViewConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -135,17 +135,12 @@ extension RegisterViewController: UIGestureRecognizerDelegate {
     }
     
     func setupAction(){
-        regContentView.setRegisterAction { [weak self] _ in
-            UIView.animate(withDuration: 0.3) {
-                self?.regContentView.registrationButton.alpha = 0.7
-            } completion: { [weak self] finished in
-                if finished {
-                    self?.output.didTapEnterButton()
-                    self?.regContentView.registrationButton.alpha = 1
-                }
-            }
+        regContentView.setRegisterAction { [weak self] info in
+            self?.output.didTapEnterButton(regInfo: info)
+            
         }
     }
+    
     
     func setupBackButton() {
         customNavigationBarView.setupConfigForRegisterScreen()
@@ -196,4 +191,19 @@ extension RegisterViewController: NavigationBarDelegate {
 }
 
 extension RegisterViewController: RegisterViewInput {
+    func showEmptyFields(withIndexes indexes: [Int]){
+        var emptyFields = ""
+        for index in indexes {
+            emptyFields.append("\(fields[index]), ")
+        }
+        let alert = UIAlertController(title: "Ой", message: "Проверьте заполненность полей: \(emptyFields)", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Исправлю", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    func showCheckedPassword(){
+        let alert = UIAlertController(title: "Ой", message: "Пароли не совпаадают", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Исправлю", style: .default))
+        self.present(alert, animated: true)
+    }
 }

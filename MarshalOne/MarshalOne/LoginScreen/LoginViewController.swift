@@ -11,6 +11,8 @@ import UIKit
 final class LoginViewController: UIViewController {
     private let output: LoginViewOutput
     
+    private let fields = ["\(R.string.localizable.email()),", R.string.localizable.password()]
+    
     private let loginImage: UIImageView = {
         let loginIm = UIImageView()
         loginIm.translatesAutoresizingMaskIntoConstraints = false
@@ -145,11 +147,14 @@ extension LoginViewController {
     @objc
     private func didTapSignButton() {
         view.endEditing(true)
+        let email = loginContentView.returnTextFromEmailTextField()
+        let password = loginContentView.returnTextFromPasswordTextField()
+
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.enterButton.alpha = 0.7
         } completion: { [weak self] finished in
             if finished {
-                self?.output.didTapSignInButton()
+                self?.output.didTapSignInButton(with: email, and: password)
                 self?.enterButton.alpha = 1
             }
         }
@@ -220,9 +225,28 @@ extension LoginViewController {
     @objc
     func dismissKeyboard() {
         view.endEditing(true)
+        loginContentView.startEditingField()
     }
 }
 
 
 extension LoginViewController: LoginViewInput {
+    func showEmptyFields(withIndexes indexes: [Int]){
+        var emptyFields = ""
+        for index in indexes {
+            emptyFields.append("\(fields[index]) ")
+            loginContentView.errorWithEmptyFields(for: index)
+        }
+        let alert = UIAlertController(title: R.string.localizable.ops(),
+                                      message: "\(R.string.localizable.chekFields()) \(emptyFields)",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    func showNonAuthorized(with error: String) {
+        let alert = UIAlertController(title: R.string.localizable.ops(), message: "\(error)", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
+        self.present(alert, animated: true)
+    }
 }

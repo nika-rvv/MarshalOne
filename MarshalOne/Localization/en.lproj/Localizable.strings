@@ -47,3 +47,8 @@
 "eventDescription" = "Race description";
 "placeOfEvent" = "Location of a race";
 
+//alerts
+"ops" = "Oops";
+"chekFields" = "Please check this fields: ";
+"correct" = "I'll correct";
+

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventViewController: UIViewController {
+final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     private let output: EventViewOutput
     
     private let navigationBar: NavigationBarView = {
@@ -55,6 +55,8 @@ final class EventViewController: UIViewController {
         setupViews()
         setupConstraints()
         configureView()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func viewDidLayoutSubviews() {

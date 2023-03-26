@@ -16,17 +16,22 @@ protocol RegisterModuleOutput: AnyObject {
 }
 
 protocol RegisterViewInput: AnyObject {
+    func showEmptyFields(withIndexes indexes: [Int])
+    func showCheckedPassword()
 }
 
 protocol RegisterViewOutput: AnyObject {
     func backButtonAction()
-    func didTapEnterButton()
+    func didTapEnterButton(regInfo: [String?])
 }
 
 protocol RegisterInteractorInput: AnyObject {
+    func registerUser(with info: [String?])
 }
 
 protocol RegisterInteractorOutput: AnyObject {
+    func authorized()
+    func notAuthorized(withReason reason: String)
 }
 
 protocol RegisterRouterInput: AnyObject {

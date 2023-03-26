@@ -11,6 +11,20 @@
 		94542F70299E5987005EDB9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F6F299E5987005EDB9D /* R.generated.swift */; };
 		94542F74299E59A1005EDB9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94542F76299E59A1005EDB9D /* Localizable.strings */; };
 		9462BB7A29C21B11008FFB18 /* TabBarCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */; };
+		946625D529CF35A3001A38E0 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625D429CF35A3001A38E0 /* UserNetworkManager.swift */; };
+		946625D829CF3618001A38E0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625D729CF3618001A38E0 /* UserModel.swift */; };
+		946625DA29CF3637001A38E0 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625D929CF3637001A38E0 /* ErrorModel.swift */; };
+		946625E129CF36A8001A38E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625E029CF36A8001A38E0 /* NetworkManager.swift */; };
+		946625E329CF36E7001A38E0 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625E229CF36E7001A38E0 /* JSONParameterEncoder.swift */; };
+		946625E529CF3705001A38E0 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625E429CF3705001A38E0 /* URLParameterEncoder.swift */; };
+		946625E729CF371C001A38E0 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625E629CF371C001A38E0 /* ParameterEncoding.swift */; };
+		946625E929CF376D001A38E0 /* UserEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625E829CF376D001A38E0 /* UserEndPoint.swift */; };
+		946625EB29CF37C2001A38E0 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625EA29CF37C2001A38E0 /* EndPointType.swift */; };
+		946625ED29CF37D4001A38E0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625EC29CF37D4001A38E0 /* HTTPMethod.swift */; };
+		946625EF29CF37E8001A38E0 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625EE29CF37E8001A38E0 /* HTTPTask.swift */; };
+		946625F129CF37FF001A38E0 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F029CF37FF001A38E0 /* NetworkRouter.swift */; };
+		946625F329CF3810001A38E0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F229CF3810001A38E0 /* Router.swift */; };
+		946625F529CF382C001A38E0 /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F429CF382C001A38E0 /* NetworkEnvironment.swift */; };
 		946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B40299FD36300C24AF4 /* ViewController.swift */; };
 		946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */; };
 		946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4529A2691500C24AF4 /* RegisterPresenter.swift */; };
@@ -93,6 +107,20 @@
 		94542F75299E59A1005EDB9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94542F77299E59BA005EDB9D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCenterButton.swift; sourceTree = "<group>"; };
+		946625D429CF35A3001A38E0 /* UserNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
+		946625D729CF3618001A38E0 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		946625D929CF3637001A38E0 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		946625E029CF36A8001A38E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		946625E229CF36E7001A38E0 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		946625E429CF3705001A38E0 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		946625E629CF371C001A38E0 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		946625E829CF376D001A38E0 /* UserEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndPoint.swift; sourceTree = "<group>"; };
+		946625EA29CF37C2001A38E0 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		946625EC29CF37D4001A38E0 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		946625EE29CF37E8001A38E0 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		946625F029CF37FF001A38E0 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		946625F229CF3810001A38E0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		946625F429CF382C001A38E0 /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
 		946C3B40299FD36300C24AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContentView.swift; sourceTree = "<group>"; };
 		946C3B4529A2691500C24AF4 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
@@ -208,6 +236,73 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		946625D329CF357D001A38E0 /* NetworkManagers */ = {
+			isa = PBXGroup;
+			children = (
+				946625D429CF35A3001A38E0 /* UserNetworkManager.swift */,
+			);
+			path = NetworkManagers;
+			sourceTree = "<group>";
+		};
+		946625D629CF360A001A38E0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				946625D729CF3618001A38E0 /* UserModel.swift */,
+				946625D929CF3637001A38E0 /* ErrorModel.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		946625DB29CF3647001A38E0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				946625DF29CF3690001A38E0 /* Service */,
+				946625DE29CF3683001A38E0 /* EndPoint */,
+				946625DD29CF367D001A38E0 /* Manager */,
+				946625DC29CF3675001A38E0 /* Encoding */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		946625DC29CF3675001A38E0 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				946625E229CF36E7001A38E0 /* JSONParameterEncoder.swift */,
+				946625E429CF3705001A38E0 /* URLParameterEncoder.swift */,
+				946625E629CF371C001A38E0 /* ParameterEncoding.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		946625DD29CF367D001A38E0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				946625E029CF36A8001A38E0 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		946625DE29CF3683001A38E0 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				946625E829CF376D001A38E0 /* UserEndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		946625DF29CF3690001A38E0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				946625EA29CF37C2001A38E0 /* EndPointType.swift */,
+				946625EC29CF37D4001A38E0 /* HTTPMethod.swift */,
+				946625EE29CF37E8001A38E0 /* HTTPTask.swift */,
+				946625F029CF37FF001A38E0 /* NetworkRouter.swift */,
+				946625F229CF3810001A38E0 /* Router.swift */,
+				946625F429CF382C001A38E0 /* NetworkEnvironment.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		946C3B4229A13C5800C24AF4 /* RegisterScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +416,9 @@
 		94C58D3B2995358F009FB37F /* MarshalOne */ = {
 			isa = PBXGroup;
 			children = (
+				946625DB29CF3647001A38E0 /* Networking */,
+				946625D629CF360A001A38E0 /* Entities */,
+				946625D329CF357D001A38E0 /* NetworkManagers */,
 				94A85FDB29C723CD00C0544E /* HelmetAnimation2.json */,
 				94C8E4D429B4A3B100CAC844 /* EventScreen */,
 				946C3B8629AD2F6C00C24AF4 /* AddRaceScreen */,
@@ -564,6 +662,7 @@
 				94C58D6C29969D00009FB37F /* LoginPresenter.swift in Sources */,
 				94C58D5D29953985009FB37F /* EnterContainer.swift in Sources */,
 				94C58D5B29953985009FB37F /* EnterProtocols.swift in Sources */,
+				946625DA29CF3637001A38E0 /* ErrorModel.swift in Sources */,
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,
 				946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */,
 				946C3B6429A92A8600C24AF4 /* EventsViewController.swift in Sources */,
@@ -573,8 +672,11 @@
 				946C3B9529AD312900C24AF4 /* EventCell.swift in Sources */,
 				946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */,
 				946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */,
+				946625EF29CF37E8001A38E0 /* HTTPTask.swift in Sources */,
 				946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */,
+				946625E929CF376D001A38E0 /* UserEndPoint.swift in Sources */,
 				94B113D129B34F0C00856A5B /* EventsInfoStackView.swift in Sources */,
+				946625D529CF35A3001A38E0 /* UserNetworkManager.swift in Sources */,
 				946C3B5829A913BF00C24AF4 /* CoordinatorProtocol.swift in Sources */,
 				946C3B8D29AD2F9D00C24AF4 /* AddRacePresenter.swift in Sources */,
 				94C58D5829953985009FB37F /* EnterPresenter.swift in Sources */,
@@ -605,7 +707,12 @@
 				946C3B7A29A92C2500C24AF4 /* ProfilePresenter.swift in Sources */,
 				946C3B6329A92A8600C24AF4 /* EventsRouter.swift in Sources */,
 				94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */,
+				946625EB29CF37C2001A38E0 /* EndPointType.swift in Sources */,
 				94C58D5929953985009FB37F /* EnterRouter.swift in Sources */,
+				946625ED29CF37D4001A38E0 /* HTTPMethod.swift in Sources */,
+				946625F329CF3810001A38E0 /* Router.swift in Sources */,
+				946625F129CF37FF001A38E0 /* NetworkRouter.swift in Sources */,
+				946625D829CF3618001A38E0 /* UserModel.swift in Sources */,
 				94B113D329B3C55700856A5B /* ProfileView.swift in Sources */,
 				946C3B9729AD374100C24AF4 /* ReuseIdentifier.swift in Sources */,
 				94B113D629B3C75900856A5B /* ProfileCell.swift in Sources */,
@@ -613,6 +720,7 @@
 				946C3B7F29A92C2500C24AF4 /* ProfileContainer.swift in Sources */,
 				94C58D7129969D00009FB37F /* LoginContainer.swift in Sources */,
 				946C3B5429A9136900C24AF4 /* AuthCoordinator.swift in Sources */,
+				946625E329CF36E7001A38E0 /* JSONParameterEncoder.swift in Sources */,
 				946C3B9029AD2F9D00C24AF4 /* AddRaceProtocols.swift in Sources */,
 				94C58D5C29953985009FB37F /* EnterInteractor.swift in Sources */,
 				946C3B8529ABA20400C24AF4 /* CustomTabBar.swift in Sources */,
@@ -623,12 +731,16 @@
 				94B113DA29B3D5E800856A5B /* ProfileActionView.swift in Sources */,
 				946C3B4D29A2691500C24AF4 /* RegisterViewController.swift in Sources */,
 				94BA4BDA29C60AD6000BEB59 /* AddRaceContentView.swift in Sources */,
+				946625E529CF3705001A38E0 /* URLParameterEncoder.swift in Sources */,
 				946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */,
 				94C58D6D29969D00009FB37F /* LoginRouter.swift in Sources */,
 				94C8E4E029B4A3CF00CAC844 /* EventContainer.swift in Sources */,
 				946C3B8129A92C4D00C24AF4 /* MainFlowCoordinator.swift in Sources */,
+				946625F529CF382C001A38E0 /* NetworkEnvironment.swift in Sources */,
+				946625E729CF371C001A38E0 /* ParameterEncoding.swift in Sources */,
 				946C3B8F29AD2F9D00C24AF4 /* AddRaceViewController.swift in Sources */,
 				946C3B7D29A92C2500C24AF4 /* ProfileProtocols.swift in Sources */,
+				946625E129CF36A8001A38E0 /* NetworkManager.swift in Sources */,
 				94C58D6229953BE0009FB37F /* ColorExtension.swift in Sources */,
 				94C8E4DB29B4A3CF00CAC844 /* EventPresenter.swift in Sources */,
 			);
