@@ -170,4 +170,8 @@ final class UserNetworkManagerImpl: NetworkManager, UserNetworkManager {
             }
         }
     }
+    
+    func logout() {
+        defaults.removeObject(forKey: "cookie")
+    }
 }

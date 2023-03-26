@@ -51,4 +51,5 @@
 "ops" = "Oops";
 "chekFields" = "Please check this fields: ";
 "correct" = "I'll correct";
+"checkPasswords" = "Passwords don't match";
 

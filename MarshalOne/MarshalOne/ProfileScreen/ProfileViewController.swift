@@ -11,6 +11,13 @@ import UIKit
 final class ProfileViewController: UIViewController {
     private let output: ProfileViewOutput
     
+    private var user: CurrentUser?
+    
+    var name: String = ""
+    var surename: String = ""
+    var city: String = ""
+    var sex: String = ""
+    
     private let profileView: ProfileView = {
         let profile = ProfileView()
         profile.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +65,11 @@ final class ProfileViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output.loadInfo()
     }
     
     override func viewDidLoad() {
@@ -156,16 +168,33 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueCell(cellType: ProfileCell.self, for: indexPath)
         cell.selectionStyle = .none
         
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter1.locale = Locale(identifier: "en_US_POSIX")
+        var dateString = ""
+        if let userBirth = user?.birthday,
+           let date2 = formatter1.date(from: userBirth) {
+            let formatter2 = DateFormatter()
+            formatter2.dateFormat = "EEEE, MMM d, yyyy"
+            formatter2.locale = Locale(identifier: "en_US_POSIX")
+
+            dateString = formatter2.string(from: date2)
+        }
+        
+        guard let email = user?.email, let sex = user?.sex else {
+            return cell
+        }
+        
         switch indexPath.row {
         case 0:
             cell.configureCellWith(with: R.string.localizable.email(),
-                                   and: "ivan@ivanov.ru")
+                                   and: email)
         case 1:
             cell.configureCellWith(with: R.string.localizable.birthdate(),
-                                   and: "08.01.2002")
+                                   and: dateString)
         case 2:
             cell.configureCellWith(with: R.string.localizable.sex(),
-                                   and: "man")
+                                   and: sex)
         default:
             break
         }
@@ -180,5 +209,24 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ProfileViewController: ProfileViewInput {
-    
+    func getData(userData: CurrentUser) {
+        user = userData
+        profileTableView.reloadData()
+        guard let name = user?.firstname,
+              let surname = user?.lastname else {
+            return
+        }
+        
+        let personName = name + " " + surname
+        profileView.configureView(with: personName, and: user?.city ?? "")
+        guard let userSex = user?.sex else { return }
+        if userSex == "Unknown" {
+            sex = "Не указан"
+        } else {
+            sex = userSex
+        }
+        guard let date = user?.birthday else {
+            return
+        }
+    }
 }

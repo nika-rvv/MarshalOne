@@ -196,14 +196,18 @@ extension RegisterViewController: RegisterViewInput {
         for index in indexes {
             emptyFields.append("\(fields[index]), ")
         }
-        let alert = UIAlertController(title: "Ой", message: "Проверьте заполненность полей: \(emptyFields)", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Исправлю", style: .default))
+        let alert = UIAlertController(title: R.string.localizable.ops(),
+                                      message: "\(R.string.localizable.chekFields()) \(emptyFields)",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
         self.present(alert, animated: true)
     }
     
     func showCheckedPassword(){
-        let alert = UIAlertController(title: "Ой", message: "Пароли не совпаадают", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Исправлю", style: .default))
+        let alert = UIAlertController(title: R.string.localizable.ops(),
+                                      message: R.string.localizable.checkPasswords(),
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: R.string.localizable.chekFields(), style: .default))
         self.present(alert, animated: true)
     }
 }

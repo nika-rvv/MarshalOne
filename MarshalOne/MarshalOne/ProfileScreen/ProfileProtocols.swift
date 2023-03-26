@@ -16,17 +16,21 @@ protocol ProfileModuleOutput: AnyObject {
 }
 
 protocol ProfileViewInput: AnyObject {
+    func getData(userData: CurrentUser)
 }
 
 protocol ProfileViewOutput: AnyObject {
     func didLogoutViewTap()
     func didDeleteAcountViewTap()
+    func loadInfo()
 }
 
 protocol ProfileInteractorInput: AnyObject {
+    func loadUserInfo()
 }
 
 protocol ProfileInteractorOutput: AnyObject {
+    func setUserData(user: CurrentUser)
 }
 
 protocol ProfileRouterInput: AnyObject {

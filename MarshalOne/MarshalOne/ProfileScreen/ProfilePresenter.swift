@@ -9,11 +9,11 @@
 import Foundation
 
 final class ProfilePresenter {
-	weak var view: ProfileViewInput?
+    weak var view: ProfileViewInput?
     weak var moduleOutput: ProfileModuleOutput?
     
-	private let router: ProfileRouterInput
-	private let interactor: ProfileInteractorInput
+    private let router: ProfileRouterInput
+    private let interactor: ProfileInteractorInput
     
     init(router: ProfileRouterInput, interactor: ProfileInteractorInput) {
         self.router = router
@@ -25,6 +25,10 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
+    func loadInfo() {
+        interactor.loadUserInfo()
+    }
+    
     func didDeleteAcountViewTap() {
         router.didTapDeleteAcount()
     }
@@ -35,4 +39,7 @@ extension ProfilePresenter: ProfileViewOutput {
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {
+    func setUserData(user: CurrentUser) {
+        view?.getData(userData: user)
+    }
 }
