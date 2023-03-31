@@ -16,6 +16,18 @@ final class LoginInteractor {
         self.output = output
         self.userManager = userManager
     }
+    
+    private func setNotAuthorized(with reason: String) async {
+        await MainActor.run {
+            self.output?.notAuthorized(withReason: reason)
+        }
+    }
+    
+    private func setAutorized() async {
+        await MainActor.run {
+            self.output?.authorized()
+        }
+    }
 }
 
 extension LoginInteractor: LoginInteractorInput {
@@ -24,9 +36,9 @@ extension LoginInteractor: LoginInteractorInput {
             let authStatus = await userManager.login(email: email, password: password)
             switch authStatus {
             case .authorized:
-                self.output?.authorized()
+                await setAutorized()
             case .nonAuthorized(error: let error):
-                self.output?.notAuthorized(withReason: error)
+                await setNotAuthorized(with: error)
             }
         }
     }

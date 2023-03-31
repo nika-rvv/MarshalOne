@@ -8,8 +8,12 @@
 
 import UIKit
 
+var userLiked = UserDefaults.standard
+
 final class EventsViewController: UIViewController {
     private let output: EventsViewOutput
+    
+    var raceDataList: RaceList = []
     
     private let customNavBar: NavigationBarView = {
         let navBar = NavigationBarView()
@@ -36,11 +40,12 @@ final class EventsViewController: UIViewController {
         setupNavBar()
         setupConstraints()
         navigationController?.isNavigationBarHidden = true
+        output.didLoadRaces()
     }
 }
 
-extension EventsViewController: EventsViewInput {
-    private func setupConstraints() {
+private extension EventsViewController {
+    func setupConstraints() {
         customNavBar.top(isIncludeSafeArea: false)
         customNavBar.leading()
         customNavBar.trailing()
@@ -54,12 +59,12 @@ extension EventsViewController: EventsViewInput {
         eventsTable.bottom(isIncludeSafeArea: false)
     }
     
-    private func setupNavBar(){
+    func setupNavBar(){
         view.addSubview(customNavBar)
         customNavBar.setConfigForEventsScreen()
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         eventsTable.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(eventsTable)
         eventsTable.delegate = self
@@ -70,19 +75,31 @@ extension EventsViewController: EventsViewInput {
     }
 }
 
+extension EventsViewController: EventsViewInput {
+    func setData(raceData: RaceList) {
+        print(raceData)
+        raceDataList = raceData
+        eventsTable.reloadData()
+    }
+}
+
 extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return raceDataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(cellType: EventCell.self, for: indexPath)
-        cell.configureCellWith(title: "Title should be bigger than this one to check number of rows",
-                               date: "28/02/2023",
-                               place: "Moscow",
-                               likes: "20",
-                               views: "11114",
-                               participants: "12")
+        
+        cell.configureCellWith(indexPath: indexPath.row,
+                               mainText: raceDataList[indexPath.row].name,
+                               dateText: raceDataList[indexPath.row].date.from,
+                               placeText: "\(raceDataList[indexPath.row].location.latitude)",
+                               imageName: R.image.addRace.name,
+                               likeText: raceDataList[indexPath.row].likes,
+                               participantsText: raceDataList[indexPath.row].views,
+                               viewsText: raceDataList[indexPath.row].members.count,
+                               isLiked: userLiked.bool(forKey: "\(indexPath.row)"))
         cell.selectionStyle = .none
         return cell
     }

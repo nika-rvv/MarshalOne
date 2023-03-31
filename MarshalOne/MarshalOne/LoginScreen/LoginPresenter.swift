@@ -52,14 +52,10 @@ extension LoginPresenter: LoginViewOutput {
 
 extension LoginPresenter: LoginInteractorOutput {
     func authorized() {
-        DispatchQueue.main.async {
-            self.router.openMainFlow()
-        }
+        self.router.openMainFlow()
     }
     
     func notAuthorized(withReason reason: String) {
-        DispatchQueue.main.sync {
-            view?.showNonAuthorized(with: reason)
-        }
+        view?.showNonAuthorized(with: reason)
     }
 }

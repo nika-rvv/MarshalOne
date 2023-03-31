@@ -15,7 +15,9 @@ final class EventsContainer {
 
 	static func assemble(with context: EventsContext) -> EventsContainer {
         let router = EventsRouter()
-        let interactor = EventsInteractor()
+        let networkRouter = Router<RaceEndPoint>()
+        let racesManager = RacesNetworkManagerImpl(router: networkRouter)
+        let interactor = EventsInteractor(racesManager: racesManager)
         let presenter = EventsPresenter(router: router, interactor: interactor)
 		let viewController = EventsViewController(output: presenter)
 

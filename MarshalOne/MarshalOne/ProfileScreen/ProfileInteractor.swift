@@ -15,6 +15,12 @@ final class ProfileInteractor {
     init(userManager: UserNetworkManager) {
         self.userManager = userManager
     }
+    
+    private func setUserDataWithoutErrors(with data: CurrentUser) async {
+        await MainActor.run {
+            self.output?.setUserData(user: data)
+        }
+    }
 }
 
 extension ProfileInteractor: ProfileInteractorInput {
@@ -24,9 +30,8 @@ extension ProfileInteractor: ProfileInteractorInput {
             if let error = result.error {
                 print(error)
             }
-            
             if let user = result.user {
-                self.output?.setUserData(user: user)
+                await setUserDataWithoutErrors(with: user)
             }
         }
     }

@@ -15,6 +15,18 @@ final class RegisterInteractor {
     init(userManager: UserNetworkManager) {
         self.userManager = userManager
     }
+    
+    private func setAuthorized() async {
+        await MainActor.run {
+            self.output?.authorized()
+        }
+    }
+    
+    private func setNotAuthorized(with reason: String) async {
+        await MainActor.run {
+            self.output?.notAuthorized(withReason: reason)
+        }
+    }
 }
 
 extension RegisterInteractor: RegisterInteractorInput {
@@ -44,9 +56,9 @@ extension RegisterInteractor: RegisterInteractorInput {
                                                               sex: sex)
             switch registerStatus {
             case .authorized:
-                self.output?.authorized()
+                await setAuthorized()
             case .nonAuthorized(error: let error):
-                self.output?.notAuthorized(withReason: error)
+                await setNotAuthorized(with: error)
             }
         }
     }

@@ -72,8 +72,7 @@ extension EventViewController: EventViewInput {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(raceImageView)
-        raceImageView.backgroundColor = .red
-                view.addSubview(navigationBar)
+        view.addSubview(navigationBar)
         contentView.addSubview(eventContentView)
     }
     

@@ -9,6 +9,10 @@ import UIKit
 
 final class EventCell: UITableViewCell {
     
+    var id: Int = 0
+    
+    var isEventLiked = false
+    
     private let cellView: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
@@ -94,7 +98,6 @@ final class EventCell: UITableViewCell {
         info.translatesAutoresizingMaskIntoConstraints = false
         info.axis = .horizontal
         info.distribution = .fillProportionally
-//        info.spacing = 8
         return info
     }()
     
@@ -107,6 +110,16 @@ final class EventCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = ""
+        dateLabel.text = ""
+        placeLabel.text = ""
+        likeStackView.configureStackView(with: R.image.notLikedImage(), and: "")
+        viewsStackView.configureStackView(with: R.image.viewsImage(), and: "")
+        participantsStackView.configureStackView(with: R.image.participantsImage(), and: "")
     }
     
 }
@@ -165,17 +178,22 @@ extension EventCell {
         infoStackView.trailing(-18)
     }
     
-    func configureCellWith(title: String,
-                           date: String,
-                           place: String,
-                           likes: String,
-                           views: String,
-                           participants: String) {
-        titleLabel.text = title
-        dateLabel.text = date
-        placeLabel.text = place
-        likeStackView.configureStackView(with: R.image.notLikedImage(), and: likes)
-        viewsStackView.configureStackView(with: R.image.viewsImage(), and: views)
-        participantsStackView.configureStackView(with: R.image.participantsImage(), and: participants)
+    func configureCellWith(indexPath: Int,
+                           mainText: String,
+                           dateText: String,
+                           placeText: String,
+                           imageName: String,
+                           likeText: Int,
+                           participantsText: Int,
+                           viewsText: Int,
+                           isLiked: Bool) {
+        id = indexPath
+        titleLabel.text = mainText
+        dateLabel.text = dateText
+        placeLabel.text = placeText
+        likeStackView.configureStackView(with: R.image.notLikedImage(), and: String(likeText))
+        viewsStackView.configureStackView(with: R.image.viewsImage(), and: String(viewsText))
+        participantsStackView.configureStackView(with: R.image.participantsImage(), and: String(participantsText))
+        isEventLiked = isLiked
     }
 }
