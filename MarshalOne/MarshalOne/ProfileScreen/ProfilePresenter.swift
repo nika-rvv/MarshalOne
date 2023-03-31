@@ -40,6 +40,8 @@ extension ProfilePresenter: ProfileViewOutput {
 
 extension ProfilePresenter: ProfileInteractorOutput {
     func setUserData(user: CurrentUser) {
-        view?.getData(userData: user)
+        DispatchQueue.main.async {
+            self.view?.getData(userData: user)
+        }
     }
 }

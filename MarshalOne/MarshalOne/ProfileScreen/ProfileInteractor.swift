@@ -19,15 +19,19 @@ final class ProfileInteractor {
 
 extension ProfileInteractor: ProfileInteractorInput {
     func loadUserInfo() {
-        self.userManager.currentUserInfo { user, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    print(error)
-                }
-                if let user = user {
-                    self.output?.setUserData(user: user)
-                }
+        Task {
+            let result = await userManager.currentUserInfo()
+            if let error = result.error {
+                print(error)
+            }
+            
+            if let user = result.user {
+                self.output?.setUserData(user: user)
             }
         }
+    }
+    
+    func logoutUser() {
+        self.userManager.logout()
     }
 }

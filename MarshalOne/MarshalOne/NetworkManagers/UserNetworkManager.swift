@@ -20,16 +20,17 @@ enum RegisterStatus {
 }
 
 protocol UserNetworkManager {
-    func login(email: String, password: String, completion: @escaping (AuthStatus) -> ())
+    func login(email: String, password: String) async -> AuthStatus
     func register(surname: String,
                   name: String,
                   email: String,
                   password: String,
                   city: String,
                   birthday: String,
-                  sex: Int, completion: @escaping (RegisterStatus) -> ())
-    func currentUserInfo(completion: @escaping (_ user: CurrentUser?, _ error: String?) -> ())
-    func getUserInfo(id: String, completion: @escaping (_ user: UserInfo?, _ error: String?) -> ())
+                  sex: Int) async -> RegisterStatus
+    func currentUserInfo() async -> (user: CurrentUser?, error: String?)
+    func getUserInfo(id: String) async ->  (user: UserInfo?, String?)
+    func logout()
 }
 
 final class UserNetworkManagerImpl: NetworkManager, UserNetworkManager {
@@ -38,58 +39,18 @@ final class UserNetworkManagerImpl: NetworkManager, UserNetworkManager {
     init(router: Router<UserEndPoint>) {
         self.router = router
     }
-
-    func currentUserInfo(completion: @escaping (CurrentUser?, String?) -> ()) {
-        router.request(.currentUser) { data, response, error in
-            if error != nil {
-                completion(nil, "Check network connection")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(CurrentUser.self, from: responseData)
-                        completion(apiResponse.self, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                case .failure(let failure):
-                    completion(nil, failure)
-                }
-            }
-        }
-    }
     
-    func getUserInfo(id: String, completion: @escaping (UserInfo?, String?) -> ()) {
-        router.request(.userInfo(id: id)) { data, response, error in
-            if error != nil {
-                completion(nil, "Check network connection")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(UserInfo.self, from: responseData)
-                        completion(apiResponse.self, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                case .failure(let failure):
-                    completion(nil, failure)
-                }
-            }
+    func login(email: String, password: String) async -> AuthStatus {
+        let result = await router.request(.login(email: email, password: password))
+        switch getStatus(response: result.response) {
+        case .success:
+            let cookies = HTTPCookieStorage.shared.cookies?.first(where: { cookie in
+                return cookie.name == ".AspNetCore.Session"
+            })?.value ?? ""
+            defaults.set(cookies, forKey: "cookie")
+            return .authorized(accsessToken: cookies)
+        case let .failure(reason):
+            return .nonAuthorized(error: reason ?? "")
         }
     }
     
@@ -99,79 +60,77 @@ final class UserNetworkManagerImpl: NetworkManager, UserNetworkManager {
                   password: String,
                   city: String,
                   birthday: String,
-                  sex: Int,
-                  completion: @escaping (RegisterStatus) -> ()) {
-        router.request(.register(surname: surname,
-                                 name: name,
-                                 email: email,
-                                 password: password,
-                                 city: city,
-                                 birthday: birthday,
-                                 sex: sex)) { data, response, error in
-            if error != nil {
-                completion(.nonAuthorized(error: "Check your connection"))
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(.nonAuthorized(error: NetworkResponse.noData.rawValue))
-                        return
-                    }
-                    do {
-                        DispatchQueue.main.async {
-                            let cookies = HTTPCookieStorage.shared.cookies?.first(where: { cookie in
-                                return cookie.name == ".AspNetCore.Session"
-                            })?.value ?? ""
-                            completion(.authorized(accsessToken: cookies))
-                            defaults.set(cookies, forKey: "cookie")
-                        }
-                    } catch {
-                        completion(.nonAuthorized(error: NetworkResponse.unableToDecode.rawValue))
-                    }
-                    break
-                case .failure(let reason):
-                    completion(.nonAuthorized(error: reason))
-                }
-            }
+                  sex: Int) async -> RegisterStatus {
+        let result = await router.request(.register(surname: surname,
+                                                    name: name,
+                                                    email: email,
+                                                    password: password,
+                                                    city: city,
+                                                    birthday: birthday,
+                                                    sex: sex))
+        switch getStatus(response: result.response) {
+        case .success:
+            let cookies = HTTPCookieStorage.shared.cookies?.first(where: { cookie in
+                return cookie.name == ".AspNetCore.Session"
+            })?.value ?? ""
+            defaults.set(cookies, forKey: "cookie")
+            return .authorized(accsessToken: cookies)
+        case let .failure(reason):
+            return .nonAuthorized(error: reason ?? "")
         }
     }
     
-    func login(email: String, password: String, completion: @escaping (AuthStatus) -> ()) {
-        router.request(.login(email: email, password: password)) { data, response, error in
-            if error != nil {
-                completion(.nonAuthorized(error: "Check your connection"))
+    
+    func currentUserInfo() async -> (user: CurrentUser?, error: String?) {
+        let result = await router.request(.currentUser)
+        if result.error != nil {
+            return (nil, "Check connection")
+        }
+        
+        switch getStatus(response: result.response) {
+        case .success:
+            guard let responseData = result.data else {
+                return (nil, NetworkResponse.noData.rawValue)
+            }
+            do {
+                let apiResponse = try JSONDecoder().decode(CurrentUser.self, from: responseData)
+                return (apiResponse.self, nil)
+            } catch {
+                return (nil, NetworkResponse.unableToDecode.rawValue)
             }
             
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(.nonAuthorized(error: NetworkResponse.noData.rawValue))
-                        return
-                    }
-                    do {
-                        DispatchQueue.main.async {
-                            let cookies = HTTPCookieStorage.shared.cookies?.first(where: { cookie in
-                                return cookie.name == ".AspNetCore.Session"
-                            })?.value ?? ""
-                            completion(.authorized(accsessToken: cookies))
-                            defaults.set(cookies, forKey: "cookie")
-                        }
-                    } catch {
-                        completion(.nonAuthorized(error: NetworkResponse.unableToDecode.rawValue))
-                    }
-                case let .failure(reason):
-                    completion(.nonAuthorized(error: reason))
-                }
+        case let .failure(reason):
+            return (nil, reason)
+        }
+    }
+    
+    func getUserInfo(id: String) async -> (user: UserInfo?, String?) {
+        let result = await router.request(.userInfo(id: id))
+        if result.error != nil {
+            return (nil, "Check connection")
+        }
+        
+        switch getStatus(response: result.response) {
+        case .success:
+            guard let responseData = result.data else {
+                return (nil, NetworkResponse.noData.rawValue)
             }
+            do {
+                let apiResponse = try JSONDecoder().decode(UserInfo.self, from: responseData)
+                return (apiResponse.self, nil)
+            } catch {
+                return (nil, NetworkResponse.unableToDecode.rawValue)
+            }
+            
+        case let .failure(reason):
+            return (nil, reason)
         }
     }
     
     func logout() {
+        //        HTTPCookiePropertyKey(".AspNetCore.Session")
+        //        HTTPCookie(properties: [HTTPCookiePropertyKey(".AspNetCore.Session") : "sdfgsdrg"])
+        //        HTTPCookieStorage.shared.deleteCookie(HTTPCookie(properties: [HTTPCookiePropertyKey(".AspNetCore.Session") : "sdfgsdrg"]))
         defaults.removeObject(forKey: "cookie")
     }
 }

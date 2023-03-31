@@ -20,8 +20,9 @@ final class LoginInteractor {
 
 extension LoginInteractor: LoginInteractorInput {
     func enterButtonPressed(email: String, password: String){
-        self.userManager.login(email: email, password: password) { status in
-            switch status {
+        Task {
+            let authStatus = await userManager.login(email: email, password: password)
+            switch authStatus {
             case .authorized:
                 self.output?.authorized()
             case .nonAuthorized(error: let error):

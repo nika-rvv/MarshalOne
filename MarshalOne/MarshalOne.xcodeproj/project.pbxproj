@@ -25,6 +25,9 @@
 		946625F129CF37FF001A38E0 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F029CF37FF001A38E0 /* NetworkRouter.swift */; };
 		946625F329CF3810001A38E0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F229CF3810001A38E0 /* Router.swift */; };
 		946625F529CF382C001A38E0 /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F429CF382C001A38E0 /* NetworkEnvironment.swift */; };
+		946625F729D07462001A38E0 /* RaceEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F629D07462001A38E0 /* RaceEndPoint.swift */; };
+		946625F929D074E9001A38E0 /* RaceNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625F829D074E9001A38E0 /* RaceNetworkManager.swift */; };
+		946625FB29D07549001A38E0 /* RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625FA29D07549001A38E0 /* RaceModel.swift */; };
 		946C3B41299FD36300C24AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B40299FD36300C24AF4 /* ViewController.swift */; };
 		946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */; };
 		946C3B4B29A2691500C24AF4 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B4529A2691500C24AF4 /* RegisterPresenter.swift */; };
@@ -121,6 +124,9 @@
 		946625F029CF37FF001A38E0 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		946625F229CF3810001A38E0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		946625F429CF382C001A38E0 /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
+		946625F629D07462001A38E0 /* RaceEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceEndPoint.swift; sourceTree = "<group>"; };
+		946625F829D074E9001A38E0 /* RaceNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceNetworkManager.swift; sourceTree = "<group>"; };
+		946625FA29D07549001A38E0 /* RaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceModel.swift; sourceTree = "<group>"; };
 		946C3B40299FD36300C24AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		946C3B4329A25D3E00C24AF4 /* RegistrationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContentView.swift; sourceTree = "<group>"; };
 		946C3B4529A2691500C24AF4 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				946625D429CF35A3001A38E0 /* UserNetworkManager.swift */,
+				946625F829D074E9001A38E0 /* RaceNetworkManager.swift */,
 			);
 			path = NetworkManagers;
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 			children = (
 				946625D729CF3618001A38E0 /* UserModel.swift */,
 				946625D929CF3637001A38E0 /* ErrorModel.swift */,
+				946625FA29D07549001A38E0 /* RaceModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -286,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				946625E829CF376D001A38E0 /* UserEndPoint.swift */,
+				946625F629D07462001A38E0 /* RaceEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -659,10 +668,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				94C58D6E29969D00009FB37F /* LoginViewController.swift in Sources */,
+				946625F929D074E9001A38E0 /* RaceNetworkManager.swift in Sources */,
 				94C58D6C29969D00009FB37F /* LoginPresenter.swift in Sources */,
 				94C58D5D29953985009FB37F /* EnterContainer.swift in Sources */,
 				94C58D5B29953985009FB37F /* EnterProtocols.swift in Sources */,
 				946625DA29CF3637001A38E0 /* ErrorModel.swift in Sources */,
+				946625FB29D07549001A38E0 /* RaceModel.swift in Sources */,
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,
 				946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */,
 				946C3B6429A92A8600C24AF4 /* EventsViewController.swift in Sources */,
@@ -735,6 +746,7 @@
 				946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */,
 				94C58D6D29969D00009FB37F /* LoginRouter.swift in Sources */,
 				94C8E4E029B4A3CF00CAC844 /* EventContainer.swift in Sources */,
+				946625F729D07462001A38E0 /* RaceEndPoint.swift in Sources */,
 				946C3B8129A92C4D00C24AF4 /* MainFlowCoordinator.swift in Sources */,
 				946625F529CF382C001A38E0 /* NetworkEnvironment.swift in Sources */,
 				946625E729CF371C001A38E0 /* ParameterEncoding.swift in Sources */,

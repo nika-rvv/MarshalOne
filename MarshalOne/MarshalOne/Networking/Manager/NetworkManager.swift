@@ -18,15 +18,15 @@ class NetworkManager {
         case unableToDecode = "We could not decode the response"
     }
 
-    enum Result<String> {
+    enum Result {
         case success
-        case failure(String)
+        case failure(String?)
     }
     
     static let environment: NetworkEnvironment = .debug
     static let additionalHeader: HTTPHeaders = ["":""]
 
-    func handleNetworkResponse(_ response : HTTPURLResponse) -> Result<String> {
+    func handleNetworkResponse(_ response : HTTPURLResponse) -> Result {
         switch response.statusCode {
         case 200...299:
             return .success
@@ -40,6 +40,16 @@ class NetworkManager {
             return .failure(NetworkResponse.failed.rawValue)
         }
     }
-
+    
+    internal func getStatus(response: URLResponse?) -> Result {
+        guard let response = response else {
+            return .failure("Network request failed")
+        }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            return .failure("No response")
+        }
+        let status = handleNetworkResponse(httpResponse)
+        return status
+    }
 }
 

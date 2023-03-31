@@ -7,32 +7,35 @@
 
 import Foundation
 final class Router<EndPoint: EndPointType>: NetworkRouter {
-    private var task: URLSessionTask?
+
+    private var tasks: [Task<(Data?, URLResponse?, Error?), Error>] = []
     
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
+    func request(_ route: EndPoint) async -> (data: Data?, response: URLResponse?, error: Error?) {
         let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route)
-            task = session.dataTask(with: request, completionHandler: { data, response, error in
-                if let data = data {
-                    do {
-                        let info = try JSONSerialization.jsonObject(with: data)
-                        print(info)
-                    } catch {
-                        print(error)
-                    }
-                }
-                completion(data, response, error)
-            })
+            let task = Task { () -> (Data?, URLResponse?, Error?) in
+                let (data, response) = try await session.data(for: request)
+                return (data, response, nil)
+            }
+            
+            tasks.append(task)
+            return try await task.value
+        } catch NetworkError.encodingFailed {
+            return (nil, nil, NetworkError.encodingFailed)
         } catch {
-            completion(nil, nil, error)
+            return (nil, nil, NetworkError.noInternetConnection)
         }
-        self.task?.resume()
     }
     
-    func cancel() {
-        self.task?.cancel()
+    func cancelAll() {
+        self.tasks.forEach { $0.cancel() }
     }
+    
+    func cancel(index: Int) {
+        self.tasks[index].cancel()
+    }
+    
     
     fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
         var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path),
