@@ -91,6 +91,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(cellType: EventCell.self, for: indexPath)
         
+        
         cell.configureCellWith(indexPath: indexPath.row,
                                mainText: raceDataList[indexPath.row].name,
                                dateText: raceDataList[indexPath.row].date.from,

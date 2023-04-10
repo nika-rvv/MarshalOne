@@ -10,6 +10,7 @@
 		94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F5E299E300F005EDB9D /* CustomButton.swift */; };
 		94542F70299E5987005EDB9D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F6F299E5987005EDB9D /* R.generated.swift */; };
 		94542F74299E59A1005EDB9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94542F76299E59A1005EDB9D /* Localizable.strings */; };
+		9458BD9F29D7355D0064B58D /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458BD9E29D7355D0064B58D /* DateFormatter.swift */; };
 		9462BB7A29C21B11008FFB18 /* TabBarCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */; };
 		946625D529CF35A3001A38E0 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625D429CF35A3001A38E0 /* UserNetworkManager.swift */; };
 		946625D829CF3618001A38E0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946625D729CF3618001A38E0 /* UserModel.swift */; };
@@ -109,6 +110,7 @@
 		94542F6F299E5987005EDB9D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		94542F75299E59A1005EDB9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94542F77299E59BA005EDB9D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9458BD9E29D7355D0064B58D /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		9462BB7929C21B11008FFB18 /* TabBarCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCenterButton.swift; sourceTree = "<group>"; };
 		946625D429CF35A3001A38E0 /* UserNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
 		946625D729CF3618001A38E0 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			children = (
 				946C3B5629A9137200C24AF4 /* Coordinator */,
 				94A85FDF29CA0E0300C0544E /* ImagePicker.swift */,
+				9458BD9E29D7355D0064B58D /* DateFormatter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				94C8E4DC29B4A3CF00CAC844 /* EventRouter.swift in Sources */,
 				946C3B6229A92A8600C24AF4 /* EventsPresenter.swift in Sources */,
 				946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */,
+				9458BD9F29D7355D0064B58D /* DateFormatter.swift in Sources */,
 				94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
 				94A85FE029CA0E0300C0544E /* ImagePicker.swift in Sources */,

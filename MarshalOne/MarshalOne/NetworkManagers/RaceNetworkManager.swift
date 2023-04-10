@@ -12,6 +12,8 @@ protocol RacesNetworkManager {
     func getRace(with id: Int) async -> (race: OneRace?, error: String?)
     func postView(with id: Int) async -> String?
     func postLike(with id: Int) async -> String?
+    func postRace(with raceInfo: AddRace) async -> String?
+    func putRace(with id: Int) async -> String?
 }
 
 final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
@@ -85,6 +87,7 @@ final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
     
     func postLike(with id: Int) async -> String? {
         let result = await router.request(.postLike(raceId: id))
+        
         if result.error != nil {
             return "Check connection"
         }
@@ -100,7 +103,39 @@ final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
         }
     }
     
+    func postRace(with raceInfo: AddRace) async -> String? {
+        let result = await router.request(.postRace(raceInfo: raceInfo))
+        
+        if result.error != nil {
+            return "Check connection"
+        }
+        
+        switch getStatus(response: result.response) {
+        case .success:
+            if result.data == nil {
+                return NetworkResponse.noData.rawValue
+            }
+            return nil
+        case let .failure(reason):
+            return reason
+        }
+    }
     
-    
-    
+    func putRace(with id: Int) async -> String? {
+        let result = await router.request(.putRace(raceId: id))
+        
+        if result.error != nil {
+            return "Check connection"
+        }
+        
+        switch getStatus(response: result.response) {
+        case .success:
+            if result.data == nil {
+                return NetworkResponse.noData.rawValue
+            }
+            return nil
+        case let .failure(reason):
+            return reason
+        }
+    }
 }

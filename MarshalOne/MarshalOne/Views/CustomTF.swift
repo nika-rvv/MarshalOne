@@ -43,7 +43,6 @@ class CustomTF: UIView {
         textField.attributedPlaceholder = NSAttributedString(
             string: text,
             attributes: [NSAttributedString.Key.foregroundColor: R.color.tfText()])
-//        textField.placeholder = text
     }
     
     func setupSecureEntry(){
