@@ -39,4 +39,5 @@ final class EventContainer {
 struct EventContext {
 	weak var moduleOutput: EventModuleOutput?
     let window: UIWindow
+    let raceId: Int
 }

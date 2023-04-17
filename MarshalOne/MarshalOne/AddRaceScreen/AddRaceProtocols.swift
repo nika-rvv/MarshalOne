@@ -23,6 +23,7 @@ protocol AddRaceViewOutput: AnyObject {
 }
 
 protocol AddRaceInteractorInput: AnyObject {
+    func addRace(with raceInfo: [String?])
 }
 
 protocol AddRaceInteractorOutput: AnyObject {

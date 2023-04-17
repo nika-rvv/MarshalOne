@@ -27,6 +27,40 @@ final class EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
+    func setDislike(for raceId: Int) {
+        Task {
+            await racesManager.deleteLike(with: raceId)
+        }
+        
+        self.output?.setDislike(raceId: raceId)
+    }
+    
+    func setLike(for raceId: Int) {
+        Task {
+            await racesManager.postLike(with: raceId)
+        }
+        
+        self.output?.setLike(raceId: raceId)
+    }
+    
+    func updateRaceAtIndex(for raceId: Int) {
+        Task {
+            await racesManager.putRace(with: raceId)
+        }
+        
+        self.output?.updateRace(raceId: raceId)
+    }
+    
+    func setView(for raceId: Int) {
+        Task {
+            await racesManager.postView(with: raceId)
+        }
+        
+        self.output?.setViews(raceId: raceId)
+        
+        print(raceId)
+    }
+    
     func getRacesData() {
         Task {
             let racesInfo = await racesManager.getListOfRaces()

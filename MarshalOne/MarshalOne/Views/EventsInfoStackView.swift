@@ -56,4 +56,8 @@ extension EventsInfoStackView {
         infoImageView.image = image
         infoLabel.text = text
     }
+    
+    func changeStackView(with image: UIImage?) {
+        infoImageView.image = image
+    }
 }

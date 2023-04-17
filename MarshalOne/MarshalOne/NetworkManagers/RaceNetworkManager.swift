@@ -14,6 +14,7 @@ protocol RacesNetworkManager {
     func postLike(with id: Int) async -> String?
     func postRace(with raceInfo: AddRace) async -> String?
     func putRace(with id: Int) async -> String?
+    func deleteLike(with id: Int) async -> String?
 }
 
 final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
@@ -87,6 +88,24 @@ final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
     
     func postLike(with id: Int) async -> String? {
         let result = await router.request(.postLike(raceId: id))
+        
+        if result.error != nil {
+            return "Check connection"
+        }
+        
+        switch getStatus(response: result.response) {
+        case .success:
+            if result.data == nil {
+                return NetworkResponse.noData.rawValue
+            }
+            return nil
+        case let .failure(reason):
+            return reason
+        }
+    }
+    
+    func deleteLike(with id: Int) async -> String? {
+        let result = await router.request(.deleteLike(raceId: id))
         
         if result.error != nil {
             return "Check connection"

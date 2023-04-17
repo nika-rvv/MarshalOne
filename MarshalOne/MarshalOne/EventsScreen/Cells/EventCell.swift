@@ -9,6 +9,12 @@ import UIKit
 
 final class EventCell: UITableViewCell {
     
+    typealias LikeClosure = () -> Void
+    typealias DislikeClosure = () -> Void
+    
+    private var likeAction: LikeClosure?
+    private var dislikeAction: DislikeClosure?
+    
     var id: Int = 0
     
     var isEventLiked = false
@@ -106,6 +112,7 @@ final class EventCell: UITableViewCell {
         self.backgroundColor = R.color.cellBackgroundColor()
         setupSubviews()
         setupConstraints()
+        setupLikeStackView()
     }
     
     required init?(coder: NSCoder) {
@@ -178,6 +185,32 @@ extension EventCell {
         infoStackView.trailing(-18)
     }
     
+    func setupLikeStackView(){
+        likeStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                      action: #selector(setState)))
+//        likeInfoStackVeiw.infoLabel.isHidden = true
+    }
+    
+    @objc
+    func setState() {
+        if !isEventLiked {
+            likeStackView.changeStackView(with: R.image.likedImage())
+            isEventLiked = !isEventLiked
+            likeAction?()
+        } else {
+            likeStackView.changeStackView(with: R.image.notLikedImage())
+            isEventLiked = !isEventLiked
+        }
+    }
+    
+    func setLikeAction(_ action: @escaping LikeClosure) {
+        self.likeAction = action
+    }
+    
+    func setDislikeAction(_ action: @escaping DislikeClosure) {
+        self.dislikeAction = action
+    }
+    
     func configureCellWith(indexPath: Int,
                            mainText: String,
                            dateText: String,
@@ -191,7 +224,15 @@ extension EventCell {
         titleLabel.text = mainText
         dateLabel.text = dateText
         placeLabel.text = placeText
-        likeStackView.configureStackView(with: R.image.notLikedImage(), and: String(likeText))
+        
+        if isLiked {
+            likeStackView.configureStackView(with: R.image.likedImage(),
+                                                 and: "\(likeText)")
+        } else {
+            likeStackView.configureStackView(with: R.image.notLikedImage(),
+                                                 and: "\(likeText)")
+        }
+
         viewsStackView.configureStackView(with: R.image.viewsImage(), and: String(viewsText))
         participantsStackView.configureStackView(with: R.image.participantsImage(), and: String(participantsText))
         isEventLiked = isLiked

@@ -168,18 +168,23 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueCell(cellType: ProfileCell.self, for: indexPath)
         cell.selectionStyle = .none
         
+        var dateString = ""
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = DateFormatter.backendDateStringFormat
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        if  let userBirth = user?.birthday,
+            let date2 = inputFormatter.date(from: userBirth) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = DateFormatter.frontednDateDisplayFormat
+            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateString = outputFormatter.string(from: date2)
+        } else {
+            dateString = "Error"
+        }
+        
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         formatter1.locale = Locale(identifier: "en_US_POSIX")
-        var dateString = ""
-        if let userBirth = user?.birthday,
-           let date2 = formatter1.date(from: userBirth) {
-            let formatter2 = DateFormatter()
-            formatter2.dateFormat = "EEEE, MMM d, yyyy"
-            formatter2.locale = Locale(identifier: "en_US_POSIX")
-
-            dateString = formatter2.string(from: date2)
-        }
         
         guard let email = user?.email, let sex = user?.sex else {
             return cell

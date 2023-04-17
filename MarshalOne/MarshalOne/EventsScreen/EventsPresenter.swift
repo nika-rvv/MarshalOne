@@ -25,8 +25,24 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
-    func openEventScreen() {
-        router.didtapEvent()
+    func openEvent(with index: Int) {
+        router.selectedRowTapped(at: index)
+        interactor.setView(for: index)
+        interactor.updateRaceAtIndex(for: index)
+    }
+    
+    func updateEvent(with index: Int) {
+        interactor.updateRaceAtIndex(for: index)
+    }
+    
+    func didSetLike(for raceId: Int) {
+        interactor.setLike(for: raceId)
+        interactor.updateRaceAtIndex(for: raceId)
+    }
+    
+    func didUnsetLike(for raceId: Int) {
+        interactor.setDislike(for: raceId)
+        interactor.updateRaceAtIndex(for: raceId)
     }
     
     func didLoadRaces() {
@@ -35,6 +51,31 @@ extension EventsPresenter: EventsViewOutput {
 }
 
 extension EventsPresenter: EventsInteractorOutput {
+    func setDislike(raceId: Int) {
+        view?.setLikeData(index: raceId)
+        if userLiked.bool(forKey: "\(raceId)") {
+            userLiked.set(false, forKey: "\(raceId)")
+        }
+    }
+    
+    func setViews(raceId: Int) {
+        view?.setView(index: raceId)
+    }
+    
+    func setLike(raceId: Int) {
+        view?.setLikeData(index: raceId)
+        if !userLiked.bool(forKey: "\(raceId)") {
+            userLiked.set(true, forKey: "\(raceId)")
+        }
+        
+    }
+    
+
+    
+    func updateRace(raceId: Int) {
+        view?.updateRace(raceId: raceId)
+    }
+    
     func setRaces(races: RaceList) {
         view?.setData(raceData: races)
     }
