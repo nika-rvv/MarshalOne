@@ -91,7 +91,7 @@ extension RaceEndPoint: EndPointType {
             return .request
         case .postLike(_):
             return .request
-        case .putRace(raceId: _):
+        case .putRace:
             return .request
         case let .postRace(raceInfo: raceInfo):
             return .requestParameters(bodyParameters: [

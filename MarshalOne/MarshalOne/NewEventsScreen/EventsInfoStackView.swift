@@ -52,12 +52,18 @@ extension EventsInfoStackView {
         self.setCustomSpacing(4, after: infoImageView)
     }
     
-    func configureStackView(with image: UIImage?, and text: String) {
-        infoImageView.image = image
-        infoLabel.text = text
+    func configureForLikes(isLiked: Bool, numberOfLikes: Int) {
+        infoImageView.image = isLiked ? R.image.likedImage() : R.image.notLikedImage()
+        infoLabel.text = "\(numberOfLikes)"
     }
     
-    func changeStackView(with image: UIImage?) {
-        infoImageView.image = image
+    func configureForParticipants(numberOfParticipants: Int) {
+        infoImageView.image = R.image.participantsImage()
+        infoLabel.text = "\(numberOfParticipants)"
+    }
+    
+    func configureForWatchers(numberOfWatchers: Int) {
+        infoImageView.image = R.image.viewsImage()
+        infoLabel.text = "\(numberOfWatchers)"
     }
 }

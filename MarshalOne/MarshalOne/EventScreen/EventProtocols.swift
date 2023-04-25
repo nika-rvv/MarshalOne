@@ -16,16 +16,20 @@ protocol EventModuleOutput: AnyObject {
 }
 
 protocol EventViewInput: AnyObject {
+    func setData(raceData: OneRace)
 }
 
 protocol EventViewOutput: AnyObject {
     func didPressBackButton()
+    func loadRaceInfo()
 }
 
 protocol EventInteractorInput: AnyObject {
+    func loadInfo()
 }
 
 protocol EventInteractorOutput: AnyObject {
+    func setRace(races: OneRace)
 }
 
 protocol EventRouterInput: AnyObject {

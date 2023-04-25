@@ -52,7 +52,7 @@ extension EventsPresenter: EventsViewOutput {
 
 extension EventsPresenter: EventsInteractorOutput {
     func setDislike(raceId: Int) {
-        view?.setLikeData(index: raceId)
+        view?.setDislike(index: raceId)
         if userLiked.bool(forKey: "\(raceId)") {
             userLiked.set(false, forKey: "\(raceId)")
         }
@@ -67,10 +67,7 @@ extension EventsPresenter: EventsInteractorOutput {
         if !userLiked.bool(forKey: "\(raceId)") {
             userLiked.set(true, forKey: "\(raceId)")
         }
-        
     }
-    
-
     
     func updateRace(raceId: Int) {
         view?.updateRace(raceId: raceId)

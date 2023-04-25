@@ -9,13 +9,13 @@
 import Foundation
 
 final class EventsInteractor {
-	weak var output: EventsInteractorOutput?
+    weak var output: EventsInteractorOutput?
     private let racesManager: RacesNetworkManager
     
     init(racesManager: RacesNetworkManager) {
         self.racesManager = racesManager
     }
-    
+    // TODO: Remake
     func updateRaces(with raceInfo: [RaceListElement]?) async {
         if let raceInfo = raceInfo {
             await MainActor.run {
@@ -26,56 +26,76 @@ final class EventsInteractor {
     
 }
 
-extension EventsInteractor: EventsInteractorInput {
+extension EventsInteractor: EventsInteractorInput {    
+    
+    //TODO: LikeManager
     func setDislike(for raceId: Int) {
         Task {
-            await racesManager.deleteLike(with: raceId)
+            //            let error = await racesManager.deleteLike(with: raceId)
+            //
+            //            if error == nil {
+            //                await MainActor.run{
+            //                    self.output?.setDislike(raceId: raceId)
+            //                }
+            //            }
         }
-        
-        self.output?.setDislike(raceId: raceId)
     }
     
     func setLike(for raceId: Int) {
-        Task {
-            await racesManager.postLike(with: raceId)
-        }
-        
-        self.output?.setLike(raceId: raceId)
+        //        Task {
+        //            let error = await racesManager.postLike(with: raceId)
+        //
+        //            if error == nil {
+        //                await MainActor.run{
+        //                    self.output?.setLike(raceId: raceId)
+        //                }
+        //            }
     }
     
+    ////
+    
+    //TODO: Убрать
     func updateRaceAtIndex(for raceId: Int) {
-        Task {
-            await racesManager.putRace(with: raceId)
-        }
-        
-        self.output?.updateRace(raceId: raceId)
+        //        Task {
+        //            let error = await racesManager.putRace(with: raceId)
+        //
+        //            if error == nil {
+        //                await MainActor.run{
+        //                    self.output?.updateRace(raceId: raceId)
+        //                }
+        //            }
+        //        }
     }
-    
+    // TODO: Вынести в менеджер
     func setView(for raceId: Int) {
         Task {
-            await racesManager.postView(with: raceId)
+            //            let error = await racesManager.postView(with: raceId)
+            //
+            //            if error == nil {
+            //                await MainActor.run{
+            //                    self.output?.setViews(raceId: raceId)
+            //                    print(raceId)
+            //                }
+            //            }
         }
-        
-        self.output?.setViews(raceId: raceId)
-        
-        print(raceId)
     }
     
     func getRacesData() {
         Task {
-            let racesInfo = await racesManager.getListOfRaces()
-            if racesInfo.error != nil {
-                print(racesInfo.error)
-            } else {
-                guard let info  = racesInfo.races else {
-                    return
-                }
-                if (info.isEmpty) {
-                    print("racesInfo is nil")
-                } else {
-                    await updateRaces(with: racesInfo.races)
-                }
-            }
+            //            let racesInfo = await racesManager.getListOfRaces()
+            //            if racesInfo.error != nil {
+            //                print(racesInfo.error)
+            //            } else {
+            //                guard let info  = racesInfo.races else {
+            //                    return
+            //                }
+            //                if (info.isEmpty) {
+            //                    print("racesInfo is nil")
+            //                } else {
+            //                    await updateRaces(with: racesInfo.races)
+            //                }
+            //            }
         }
     }
 }
+    

@@ -170,21 +170,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         var dateString = ""
         let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = DateFormatter.backendDateStringFormat
+        inputFormatter.dateFormat = DateFormatter.profileDateApiStringFormat
         inputFormatter.locale = Locale(identifier: "en_US_POSIX")
         if  let userBirth = user?.birthday,
             let date2 = inputFormatter.date(from: userBirth) {
             let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = DateFormatter.frontednDateDisplayFormat
+            outputFormatter.dateFormat = DateFormatter.profileDateDisplayFormat
             outputFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateString = outputFormatter.string(from: date2)
         } else {
             dateString = "Error"
         }
-        
-        let formatter1 = DateFormatter()
-        formatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        formatter1.locale = Locale(identifier: "en_US_POSIX")
         
         guard let email = user?.email, let sex = user?.sex else {
             return cell

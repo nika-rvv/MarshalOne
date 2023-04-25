@@ -8,6 +8,9 @@
 import Foundation
 
 extension DateFormatter {
-    static let backendDateStringFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-    static let frontednDateDisplayFormat = "EEEE, MMM d, yyyy"
+    static let profileDateApiStringFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    static let profileDateDisplayFormat = "dd, MMMM, yyyy"
+    
+    static let eventCellApiDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+    static let eventCellDateFormat = "EEEE, MMM d, yyyy"
 }

@@ -53,3 +53,5 @@
 "correct" = "I'll correct";
 "checkPasswords" = "Passwords don't match";
 
+// events
+"mapEventPlace" = "Location";

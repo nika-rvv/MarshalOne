@@ -8,17 +8,12 @@
 import UIKit
 
 final class EventCell: UITableViewCell {
+    typealias LikeAction = () -> Void
+    typealias DislikeAction = () -> Void
     
-    typealias LikeClosure = () -> Void
-    typealias DislikeClosure = () -> Void
-    
-    private var likeAction: LikeClosure?
-    private var dislikeAction: DislikeClosure?
-    
-    var id: Int = 0
-    
-    var isEventLiked = false
-    
+    private var likeAction: LikeAction?
+    private var dislikeAction: DislikeAction?
+            
     private let cellView: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +111,7 @@ final class EventCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func prepareForReuse() {
@@ -124,15 +119,15 @@ final class EventCell: UITableViewCell {
         titleLabel.text = ""
         dateLabel.text = ""
         placeLabel.text = ""
-        likeStackView.configureStackView(with: R.image.notLikedImage(), and: "")
-        viewsStackView.configureStackView(with: R.image.viewsImage(), and: "")
-        participantsStackView.configureStackView(with: R.image.participantsImage(), and: "")
+        likeStackView.configureForLikes(isLiked: false, numberOfLikes: 0)
+        viewsStackView.configureForWatchers(numberOfWatchers: 0)
+        viewsStackView.configureForParticipants(numberOfParticipants: 0)
     }
     
 }
 
-extension EventCell {
-    private func setupSubviews() {
+private extension EventCell {
+    func setupSubviews() {
         self.contentView.addSubview(cellView)
         
         self.addSubview(titleLabel)
@@ -150,7 +145,7 @@ extension EventCell {
         infoStackView.addArrangedSubview(participantsStackView)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         cellView.top(isIncludeSafeArea: false)
         cellView.leading()
         cellView.trailing()
@@ -185,56 +180,52 @@ extension EventCell {
         infoStackView.trailing(-18)
     }
     
+}
+
+// actions
+private extension EventCell {
     func setupLikeStackView(){
         likeStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                      action: #selector(setState)))
-//        likeInfoStackVeiw.infoLabel.isHidden = true
+                                                                  action: #selector(setLikeState)))
     }
     
     @objc
-    func setState() {
-        if !isEventLiked {
-            likeStackView.changeStackView(with: R.image.likedImage())
-            isEventLiked = !isEventLiked
-            likeAction?()
-        } else {
-            likeStackView.changeStackView(with: R.image.notLikedImage())
-            isEventLiked = !isEventLiked
-        }
+    func setLikeState() {
+//        if !isEventLiked {
+//            likeStackView.changeStackView(with: R.image.likedImage())
+//            isEventLiked = !isEventLiked
+//            likeAction?()
+//        } else {
+//            likeStackView.changeStackView(with: R.image.notLikedImage())
+//            isEventLiked = !isEventLiked
+//            dislikeAction?()
+//        }
     }
     
-    func setLikeAction(_ action: @escaping LikeClosure) {
+}
+
+extension EventCell {
+    func setLikeAction(_ action: @escaping LikeAction) {
         self.likeAction = action
     }
     
-    func setDislikeAction(_ action: @escaping DislikeClosure) {
+    func setDislikeAction(_ action: @escaping DislikeAction) {
         self.dislikeAction = action
     }
     
-    func configureCellWith(indexPath: Int,
-                           mainText: String,
-                           dateText: String,
-                           placeText: String,
-                           imageName: String,
-                           likeText: Int,
-                           participantsText: Int,
-                           viewsText: Int,
-                           isLiked: Bool) {
-        id = indexPath
-        titleLabel.text = mainText
-        dateLabel.text = dateText
-        placeLabel.text = placeText
-        
-        if isLiked {
-            likeStackView.configureStackView(with: R.image.likedImage(),
-                                                 and: "\(likeText)")
-        } else {
-            likeStackView.configureStackView(with: R.image.notLikedImage(),
-                                                 and: "\(likeText)")
-        }
-
-        viewsStackView.configureStackView(with: R.image.viewsImage(), and: String(viewsText))
-        participantsStackView.configureStackView(with: R.image.participantsImage(), and: String(participantsText))
-        isEventLiked = isLiked
+    func configure(title: String,
+                   dateSubtitle: String,
+                   placeName: String,
+                   imageId: String,
+                   numberOfLikes: Int,
+                   numberOfParticipants: Int,
+                   numberOfWatchers: Int,
+                   isLiked: Bool) {
+        titleLabel.text = title
+        dateLabel.text = dateSubtitle
+        placeLabel.text = placeName
+        likeStackView.configureForLikes(isLiked: isLiked, numberOfLikes: numberOfLikes)
+        viewsStackView.configureForWatchers(numberOfWatchers: numberOfWatchers)
+        participantsStackView.configureForParticipants(numberOfParticipants: numberOfParticipants)
     }
 }

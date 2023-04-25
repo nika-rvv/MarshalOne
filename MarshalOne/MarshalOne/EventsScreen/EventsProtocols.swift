@@ -18,6 +18,7 @@ protocol EventsModuleOutput: AnyObject {
 protocol EventsViewInput: AnyObject {
     func setData(raceData: RaceList)
     func setLikeData(index: Int)
+    func setDislike(index: Int)
     func updateRace(raceId: Int)
     func setView(index: Int)
 }

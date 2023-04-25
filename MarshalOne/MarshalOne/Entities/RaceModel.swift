@@ -31,7 +31,8 @@ struct RaceListElement: Codable {
     let raceListDescription: String
     let images, tags: [String]
     let members: [Int]
-    let likes, views: Int
+    let likes: Int
+    let views: Int
 
     enum CodingKeys: String, CodingKey {
         case creatorUserID = "creatorUserId"

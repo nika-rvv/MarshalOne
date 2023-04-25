@@ -51,12 +51,11 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         setupViews()
         setupConstraints()
         configureView()
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        setupNavBar()
+        output.loadRaceInfo()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,7 +66,18 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension EventViewController: EventViewInput {
-    private func setupViews() {
+    func setData(raceData: OneRace) {
+        
+        eventContentView.configureViewWith(mainText: raceData.name,
+                                           placeText: "\(raceData.location.longitude)",
+                                           dateText: raceData.date.from,
+                                           additionalText: raceData.oneRaceDescription)
+    }
+}
+
+private extension EventViewController {
+    func setupViews() {
+        self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         view.backgroundColor = R.color.launchScreenColor()
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -76,7 +86,12 @@ extension EventViewController: EventViewInput {
         contentView.addSubview(eventContentView)
     }
     
-    private func setupConstraints(){
+    func setupNavBar(){
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func setupConstraints(){
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 16)
         ])
@@ -115,12 +130,8 @@ extension EventViewController: EventViewInput {
         //        scrollView.alwaysBounceVertical = true
     }
     
-    private func configureView() {
+    func configureView() {
         navigationBar.delegate = self
-        eventContentView.configureViewWith(mainText: "Чемпионат России. Гонки на льду - класс 500. Полуфинал - 1 этап",
-                                           placeText: "респ. Башкортостан, Уфа",
-                                           dateText: "7 янв. — 10 янв.",
-                                           additionalText: "Пролог в темное время: часовой (эндуро-стадион + небольшой трек для хуй классов Pro и B3. Наличие фары, фонариков - спереди, заднего габарита либо отражающих элементов красного цвета - ОБЯЗАТЕЛЬНО. Первый внедорожный гоночный день классов Profi (Pro) (сложность трека - heavy) и Base 3 (B3) (сложность трека - medium).")
     }
 }
 

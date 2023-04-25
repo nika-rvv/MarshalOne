@@ -20,10 +20,21 @@ class LocationDecoder {
         
         guard let latitude = placemark.location?.coordinate.latitude,
               let longitude = placemark.location?.coordinate.longitude else {
-                  throw NSError(domain: "getLocation", code: 2, userInfo: nil)
-              }
+            throw NSError(domain: "getLocation", code: 2, userInfo: nil)
+        }
         
         let location = Location(latitude: latitude, longitude: longitude)
         return location
+    }
+}
+
+
+extension CLLocation {
+    func fetchCityAndCountry() async -> String? {
+        guard let locationMark = try? await CLGeocoder().reverseGeocodeLocation(self, preferredLocale: nil) else {
+            return nil
+        }
+        
+        return locationMark.first?.locality
     }
 }

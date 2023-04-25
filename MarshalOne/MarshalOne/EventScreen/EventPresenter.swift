@@ -25,10 +25,17 @@ extension EventPresenter: EventModuleInput {
 }
 
 extension EventPresenter: EventViewOutput {
+    func loadRaceInfo() {
+        interactor.loadInfo()
+    }
+    
     func didPressBackButton() {
         router.backButtonTapped()
     }
 }
 
 extension EventPresenter: EventInteractorOutput {
+    func setRace(races: OneRace) {
+        view?.setData(raceData: races)
+    }
 }
