@@ -29,8 +29,8 @@ extension ProfilePresenter: ProfileViewOutput {
         interactor.loadUserInfo()
     }
     
-    func didDeleteAcountViewTap() {
-        router.didTapDeleteAcount()
+    func didChangeThemeViewTap() {
+        router.didTapChangeTheme()
     }
     
     func didLogoutViewTap(){

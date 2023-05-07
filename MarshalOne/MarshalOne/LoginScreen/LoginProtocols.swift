@@ -23,10 +23,12 @@ protocol LoginViewInput: AnyObject {
 protocol LoginViewOutput: AnyObject {
     func didTapRegButton()
     func didTapSignInButton(with email: String, and password: String)
+    func isUserRemembered(isRemembered: Bool, forKey: String)
 }
 
 protocol LoginInteractorInput: AnyObject {
     func enterButtonPressed(email: String, password: String)
+    func rememberUser(isRemembered: Bool, key: String)
 }
 
 protocol LoginInteractorOutput: AnyObject {

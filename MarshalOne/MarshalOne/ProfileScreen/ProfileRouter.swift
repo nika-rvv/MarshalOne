@@ -14,14 +14,12 @@ final class ProfileRouter {
 }
 
 extension ProfileRouter: ProfileRouterInput {
-    func didTapDeleteAcount() {
-        guard let window = window else {
-            return
+    func didTapChangeTheme() {
+        if window?.overrideUserInterfaceStyle == .dark {
+            window?.overrideUserInterfaceStyle = .light
+        } else {
+            window?.overrideUserInterfaceStyle = .dark
         }
-        
-        let coordinator = AppCoordinator(window: window, instructor: .authorization)
-        coordinator.start()
-        print("delete")
     }
     
     func didTapLogout(){
@@ -31,6 +29,6 @@ extension ProfileRouter: ProfileRouterInput {
         
         let coordinator = AppCoordinator(window: window, instructor: .authorization)
         coordinator.start()
-        print("logout")
+        print("delete")
     }
 }

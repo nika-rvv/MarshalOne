@@ -50,7 +50,7 @@ extension ProfileActionView {
     private func setupConstraints() {
         actionLabel.top(12, isIncludeSafeArea: false)
         actionLabel.leading(12)
-        actionLabel.trailing(-84)
+        actionLabel.trailing(-70)
         
         NSLayoutConstraint.activate([
             actionImageView.topAnchor.constraint(equalTo: actionLabel.topAnchor),
@@ -78,5 +78,11 @@ extension ProfileActionView {
         actionLabel.text = text
         actionLabel.textColor = textColor
         actionImageView.image = image
+    }
+    
+    func changeActionImage(image: UIImage?) {
+        UIView.animate(withDuration: 0.2) {
+            self.actionImageView.image = image
+        }
     }
 }

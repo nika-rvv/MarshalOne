@@ -18,6 +18,8 @@ final class ProfileViewController: UIViewController {
     var city: String = ""
     var sex: String = ""
     
+    var isLightTheme: Bool = true
+    
     private let profileView: ProfileView = {
         let profile = ProfileView()
         profile.translatesAutoresizingMaskIntoConstraints = false
@@ -30,8 +32,7 @@ final class ProfileViewController: UIViewController {
         let actions = UIStackView()
         actions.translatesAutoresizingMaskIntoConstraints = false
         actions.axis = .horizontal
-        actions.spacing = 24
-        actions.distribution = .fillProportionally
+        actions.distribution = .equalCentering
         return actions
     }()
     
@@ -41,20 +42,20 @@ final class ProfileViewController: UIViewController {
         logout.layer.cornerRadius = 10
         logout.clipsToBounds = true
         logout.configureViewWith(text: "Выйти из аккаунта",
-                                 textColor: R.color.mainTextColor(),
+                                 textColor: R.color.deleteActionColor(),
                                  image: R.image.logoutImage())
         return logout
     }()
     
-    private let deleteActionVeiw: ProfileActionView = {
-        let delete = ProfileActionView()
-        delete.translatesAutoresizingMaskIntoConstraints = false
-        delete.layer.cornerRadius = 10
-        delete.clipsToBounds = true
-        delete.configureViewWith(text: "Удалить аккаунт",
-                                 textColor: R.color.deleteActionColor(),
-                                 image: R.image.deleteAccountImage())
-        return delete
+    private let changeThemeActionVeiw: ProfileActionView = {
+        let change = ProfileActionView()
+        change.translatesAutoresizingMaskIntoConstraints = false
+        change.layer.cornerRadius = 10
+        change.clipsToBounds = true
+        change.configureViewWith(text: "Поменять тему",
+                                 textColor: R.color.mainTextColor(),
+                                 image: R.image.lightTheme())
+        return change
     }()
     
     init(output: ProfileViewOutput) {
@@ -90,8 +91,8 @@ extension ProfileViewController {
         view.addSubview(profileTableView)
         
         view.addSubview(actionsStackView)
+        actionsStackView.addArrangedSubview(changeThemeActionVeiw)
         actionsStackView.addArrangedSubview(logoutActionView)
-        actionsStackView.addArrangedSubview(deleteActionVeiw)
     }
     
     private func setupConstraints() {
@@ -115,17 +116,17 @@ extension ProfileViewController {
         actionsStackView.trailing(-20)
         actionsStackView.height(72)
         
-        logoutActionView.top(isIncludeSafeArea: false)
-        logoutActionView.leading()
+        changeThemeActionVeiw.top(isIncludeSafeArea: false)
         NSLayoutConstraint.activate([
-            logoutActionView.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
+            changeThemeActionVeiw.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
         ])
+        changeThemeActionVeiw.width(156)
         
-        deleteActionVeiw.top(isIncludeSafeArea: false)
+        logoutActionView.top(isIncludeSafeArea: false)
         NSLayoutConstraint.activate([
-            deleteActionVeiw.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
+            logoutActionView.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor),
         ])
-        deleteActionVeiw.trailing()
+        logoutActionView.width(156)
     }
     
     private func setupTableView() {
@@ -151,9 +152,17 @@ extension ProfileViewController {
             }
         }
         
-        deleteActionVeiw.setprofileAction {
+        changeThemeActionVeiw.setprofileAction {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.output.didDeleteAcountViewTap()
+                self?.output.didChangeThemeViewTap()
+                if self?.isLightTheme == true {
+                    self?.changeThemeActionVeiw.changeActionImage(image: R.image.darkTheme())
+                }
+                if self?.isLightTheme == false {
+                    self?.changeThemeActionVeiw.changeActionImage(image: R.image.lightTheme())
+                }
+                
+                self?.isLightTheme = !(self?.isLightTheme ?? true)
             }
         }
     }

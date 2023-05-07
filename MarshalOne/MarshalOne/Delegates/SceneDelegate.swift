@@ -14,15 +14,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        let window: UIWindow = UIWindow(windowScene: windowScene)
-        self.window = window
         
-        let enterContainer = EnterContainer.assemble(with: EnterContext(window: window))
-        let navigationController = UINavigationController(rootViewController: enterContainer.viewController)
+        window = UIWindow(windowScene: windowScene)
+        guard let window = window else {
+            return
+        }
+        
+        window.overrideUserInterfaceStyle = .light
+                
+        if let isRemembered = defaults.value(forKey: "isRemembered") as? Bool, isRemembered != false {
+            coordinator = AppCoordinator(window: window, instructor: .main)
+        } else {
+            coordinator = AppCoordinator(window: window, instructor: .authorization)
+        }
+        coordinator?.start()
 
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+//        let window: UIWindow = UIWindow(windowScene: windowScene)
+//        self.window = window
+//
+//        let enterContainer = EnterContainer.assemble(with: EnterContext(window: window))
+//        let navigationController = UINavigationController(rootViewController: enterContainer.viewController)
+//
+//        window.rootViewController = navigationController
+//        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

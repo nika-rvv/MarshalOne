@@ -42,4 +42,8 @@ extension LoginInteractor: LoginInteractorInput {
             }
         }
     }
+    
+    func rememberUser(isRemembered: Bool, key: String) {
+        defaults.set(isRemembered, forKey: key)
+    }
 }

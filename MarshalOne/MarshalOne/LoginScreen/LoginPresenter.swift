@@ -48,6 +48,10 @@ extension LoginPresenter: LoginViewOutput {
     func didTapRegButton() {
         router.openRegScreen()
     }
+    
+    func isUserRemembered(isRemembered: Bool, forKey: String){
+        interactor.rememberUser(isRemembered: isRemembered, key: forKey)
+    }
 }
 
 extension LoginPresenter: LoginInteractorOutput {

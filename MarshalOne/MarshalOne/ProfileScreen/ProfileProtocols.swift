@@ -21,7 +21,7 @@ protocol ProfileViewInput: AnyObject {
 
 protocol ProfileViewOutput: AnyObject {
     func didLogoutViewTap()
-    func didDeleteAcountViewTap()
+    func didChangeThemeViewTap()
     func loadInfo()
 }
 
@@ -35,5 +35,5 @@ protocol ProfileInteractorOutput: AnyObject {
 
 protocol ProfileRouterInput: AnyObject {
     func didTapLogout()
-    func didTapDeleteAcount()
+    func didTapChangeTheme()
 }

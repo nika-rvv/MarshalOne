@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 final class LoginViewController: UIViewController {
     private let output: LoginViewOutput
     
@@ -50,6 +51,8 @@ final class LoginViewController: UIViewController {
     
     private var heightConstraint: NSLayoutConstraint!
     private var widthConstraint: NSLayoutConstraint!
+    
+    private let isRemembered: Bool = true
     
     private var contentViewConstraint: CGFloat = 0
     
@@ -226,6 +229,12 @@ extension LoginViewController {
     func dismissKeyboard() {
         view.endEditing(true)
         loginContentView.startEditingField()
+    }
+    
+    func rememberUser() {
+        if isRemembered {
+            self.output.isUserRemembered(isRemembered: isRemembered, forKey: "isRemembered")
+        }
     }
 }
 

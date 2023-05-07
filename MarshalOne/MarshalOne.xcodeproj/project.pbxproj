@@ -56,12 +56,6 @@
 		946C3B5229A27B4300C24AF4 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5129A27B4300C24AF4 /* LoginContentView.swift */; };
 		946C3B5429A9136900C24AF4 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5329A9136900C24AF4 /* AuthCoordinator.swift */; };
 		946C3B5829A913BF00C24AF4 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5729A913BF00C24AF4 /* CoordinatorProtocol.swift */; };
-		946C3B6229A92A8600C24AF4 /* EventsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5C29A92A8600C24AF4 /* EventsPresenter.swift */; };
-		946C3B6329A92A8600C24AF4 /* EventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5D29A92A8600C24AF4 /* EventsRouter.swift */; };
-		946C3B6429A92A8600C24AF4 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5E29A92A8600C24AF4 /* EventsViewController.swift */; };
-		946C3B6529A92A8600C24AF4 /* EventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B5F29A92A8600C24AF4 /* EventsProtocols.swift */; };
-		946C3B6629A92A8600C24AF4 /* EventsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6029A92A8600C24AF4 /* EventsInteractor.swift */; };
-		946C3B6729A92A8600C24AF4 /* EventsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B6129A92A8600C24AF4 /* EventsContainer.swift */; };
 		946C3B7A29A92C2500C24AF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B7429A92C2500C24AF4 /* ProfilePresenter.swift */; };
 		946C3B7B29A92C2500C24AF4 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B7529A92C2500C24AF4 /* ProfileRouter.swift */; };
 		946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C3B7629A92C2500C24AF4 /* ProfileViewController.swift */; };
@@ -177,12 +171,6 @@
 		946C3B5129A27B4300C24AF4 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		946C3B5329A9136900C24AF4 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		946C3B5729A913BF00C24AF4 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
-		946C3B5C29A92A8600C24AF4 /* EventsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsPresenter.swift; sourceTree = "<group>"; };
-		946C3B5D29A92A8600C24AF4 /* EventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRouter.swift; sourceTree = "<group>"; };
-		946C3B5E29A92A8600C24AF4 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		946C3B5F29A92A8600C24AF4 /* EventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProtocols.swift; sourceTree = "<group>"; };
-		946C3B6029A92A8600C24AF4 /* EventsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInteractor.swift; sourceTree = "<group>"; };
-		946C3B6129A92A8600C24AF4 /* EventsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsContainer.swift; sourceTree = "<group>"; };
 		946C3B7429A92C2500C24AF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		946C3B7529A92C2500C24AF4 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		946C3B7629A92C2500C24AF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -455,19 +443,6 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		946C3B5929A92A5300C24AF4 /* EventsScreen */ = {
-			isa = PBXGroup;
-			children = (
-				946C3B5C29A92A8600C24AF4 /* EventsPresenter.swift */,
-				946C3B5D29A92A8600C24AF4 /* EventsRouter.swift */,
-				946C3B5E29A92A8600C24AF4 /* EventsViewController.swift */,
-				946C3B5F29A92A8600C24AF4 /* EventsProtocols.swift */,
-				946C3B6029A92A8600C24AF4 /* EventsInteractor.swift */,
-				946C3B6129A92A8600C24AF4 /* EventsContainer.swift */,
-			);
-			path = EventsScreen;
-			sourceTree = "<group>";
-		};
 		946C3B5B29A92A7000C24AF4 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,7 +517,6 @@
 				946C3B8629AD2F6C00C24AF4 /* AddRaceScreen */,
 				946C3B5B29A92A7000C24AF4 /* ProfileScreen */,
 				94665E2829F53D9300CC9908 /* NewEventsScreen */,
-				946C3B5929A92A5300C24AF4 /* EventsScreen */,
 				946C3B5529A9136C00C24AF4 /* Helpers */,
 				946C3B4229A13C5800C24AF4 /* RegisterScreen */,
 				94C58D722996A17C009FB37F /* Views */,
@@ -800,7 +774,6 @@
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,
 				946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */,
 				94E24FF82A079CB400E42F27 /* WatcherManager.swift in Sources */,
-				946C3B6429A92A8600C24AF4 /* EventsViewController.swift in Sources */,
 				94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */,
 				94C58D7029969D00009FB37F /* LoginInteractor.swift in Sources */,
 				94665E3329F53DC800CC9908 /* NewEventsInteractor.swift in Sources */,
@@ -829,17 +802,14 @@
 				94C8E4DD29B4A3CF00CAC844 /* EventViewController.swift in Sources */,
 				9490599429E5A27800362DF3 /* DateExtension.swift in Sources */,
 				94C8E4DC29B4A3CF00CAC844 /* EventRouter.swift in Sources */,
-				946C3B6229A92A8600C24AF4 /* EventsPresenter.swift in Sources */,
 				946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */,
 				9458BD9F29D7355D0064B58D /* DateFormatter.swift in Sources */,
 				94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */,
 				94665E3229F53DC800CC9908 /* NewEventsProtocols.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
 				94A85FE029CA0E0300C0544E /* ImagePicker.swift in Sources */,
-				946C3B6729A92A8600C24AF4 /* EventsContainer.swift in Sources */,
 				94665E3D29F54D6A00CC9908 /* RacesNetworkManagerImpl.swift in Sources */,
 				94665E3B29F54D4D00CC9908 /* LikeManagerImpl.swift in Sources */,
-				946C3B6629A92A8600C24AF4 /* EventsInteractor.swift in Sources */,
 				94C8E4E229B4A4C100CAC844 /* EventContentView.swift in Sources */,
 				94665E4429F55E6500CC9908 /* CollectionExtension.swift in Sources */,
 				94C58D742996A196009FB37F /* CustomTF.swift in Sources */,
@@ -854,7 +824,6 @@
 				94C58D6029953A08009FB37F /* UIView+Layout.swift in Sources */,
 				946C3B5029A2691500C24AF4 /* RegisterContainer.swift in Sources */,
 				946C3B7A29A92C2500C24AF4 /* ProfilePresenter.swift in Sources */,
-				946C3B6329A92A8600C24AF4 /* EventsRouter.swift in Sources */,
 				94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */,
 				946625EB29CF37C2001A38E0 /* EndPointType.swift in Sources */,
 				94C58D5929953985009FB37F /* EnterRouter.swift in Sources */,
@@ -876,7 +845,6 @@
 				946C3B9029AD2F9D00C24AF4 /* AddRaceProtocols.swift in Sources */,
 				94C58D5C29953985009FB37F /* EnterInteractor.swift in Sources */,
 				946C3B8529ABA20400C24AF4 /* CustomTabBar.swift in Sources */,
-				946C3B6529A92A8600C24AF4 /* EventsProtocols.swift in Sources */,
 				946C3B4C29A2691500C24AF4 /* RegisterRouter.swift in Sources */,
 				94C58D6429953BF8009FB37F /* ImageExtension.swift in Sources */,
 				94665E4229F54DBE00CC9908 /* UserNetworkManagerImpl.swift in Sources */,
