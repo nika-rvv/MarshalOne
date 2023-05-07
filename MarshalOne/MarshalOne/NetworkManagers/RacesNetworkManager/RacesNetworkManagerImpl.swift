@@ -58,23 +58,6 @@ final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
             return (nil, reason)
         }
     }
-        
-    func postView(with id: Int) async -> String? {
-        let result = await router.request(.postView(raceId: id))
-        if result.error != nil {
-            return "Check connection"
-        }
-        
-        switch getStatus(response: result.response) {
-        case .success:
-            if result.data == nil {
-                return NetworkResponse.noData.rawValue
-            }
-            return nil
-        case let .failure(reason):
-            return reason
-        }
-    }
     
     func postRace(with raceInfo: AddRace) async -> String? {
         let result = await router.request(.postRace(raceInfo: raceInfo))

@@ -106,4 +106,8 @@ extension NewEventsViewController: NewEventsViewInput {
     func setDislike(raceId: Int) {
         eventsTableAdapter.updateWithDislike(withIndex: raceId)
     }
+    
+    func addWatcher(raceId: Int) {
+        eventsTableAdapter.updateWatchers(withIndex: raceId)
+    }
 }

@@ -19,6 +19,7 @@ protocol NewEventsViewInput: AnyObject {
     func update(withRaces races: [RaceInfo])
     func setLike(raceId: Int) 
     func setDislike(raceId: Int)
+    func addWatcher(raceId: Int)
 }
 
 protocol NewEventsViewOutput: AnyObject {
@@ -33,12 +34,14 @@ protocol NewEventsInteractorInput: AnyObject {
     func getEvent(by index: Int) -> RaceInfo
     func setLike(for index: Int)
     func setDislike(for index: Int)
+    func setWatcher(for index: Int)
 }
 
 protocol NewEventsInteractorOutput: AnyObject {
     func setRaces(races: [RaceInfo])
     func setDislike(index: Int)
     func setLike(index: Int)
+    func setWatcher(index: Int)
 }
 
 protocol NewEventsRouterInput: AnyObject {

@@ -99,7 +99,7 @@ extension EventsTableAdapter: UITableViewDelegate {
 extension EventsTableAdapter {
     func update(with racesInfo: [RaceInfo]) {
         self.racesInfo = racesInfo
-        applySnapshot(animated: true)
+        applySnapshot(animated: false)
     }
     
     func updateWithLike(withIndex index: Int) {

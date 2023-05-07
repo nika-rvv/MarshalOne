@@ -14,11 +14,16 @@ final class NewEventsInteractor {
     private let racesManager: RacesNetworkManager
     private let contentProvider: EventContentProvider
     private let likeManager: LikeManager
+    private let watcherManager: WatcherManager
     
-    init(racesManager: RacesNetworkManager, contentProvider: EventContentProvider, likeManager: LikeManager) {
+    init(racesManager: RacesNetworkManager,
+         contentProvider: EventContentProvider,
+         likeManager: LikeManager,
+         watcherManager: WatcherManager) {
         self.racesManager = racesManager
         self.contentProvider = contentProvider
         self.likeManager = likeManager
+        self.watcherManager = watcherManager
     }
     
     func updateRaces(with raceInfo: [RaceInfo]?) async {
@@ -85,6 +90,19 @@ final class NewEventsInteractor {
 }
 
 extension NewEventsInteractor: NewEventsInteractorInput {
+    func setWatcher(for index: Int) {
+        Task {
+            let race = contentProvider.getEvent(by: index)
+            let error = await watcherManager.postView(with: race.id)
+            
+            if error == nil {
+                await MainActor.run{
+                    self.output?.setWatcher(index: index)
+                }
+            }
+        }
+    }
+    
     func getEvent(by index: Int) -> RaceInfo {
         return contentProvider.getEvent(by: index)
     }

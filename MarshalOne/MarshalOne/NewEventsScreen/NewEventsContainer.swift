@@ -19,7 +19,11 @@ final class NewEventsContainer {
         let racesManager = RacesNetworkManagerImpl(router: networkRouter)
         let contentProvider = EventContentProviderImpl()
         let likeManager = LikeManagerImpl(router: networkRouter)
-        let interactor = NewEventsInteractor(racesManager: racesManager, contentProvider: contentProvider, likeManager: likeManager)
+        let watcherManager = WatcherManagerImpl(router: networkRouter)
+        let interactor = NewEventsInteractor(racesManager: racesManager,
+                                             contentProvider: contentProvider,
+                                             likeManager: likeManager,
+                                             watcherManager: watcherManager)
         let presenter = NewEventsPresenter(router: router, interactor: interactor)
 		let viewController = NewEventsViewController(output: presenter)
 

@@ -120,6 +120,8 @@
 		94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4D929B4A3CF00CAC844 /* EventInteractor.swift */; };
 		94C8E4E029B4A3CF00CAC844 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4DA29B4A3CF00CAC844 /* EventContainer.swift */; };
 		94C8E4E229B4A4C100CAC844 /* EventContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4E129B4A4C100CAC844 /* EventContentView.swift */; };
+		94E24FF82A079CB400E42F27 /* WatcherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E24FF72A079CB400E42F27 /* WatcherManager.swift */; };
+		94E24FFB2A079CDF00E42F27 /* WatcherManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */; };
 		F110385A63270B25A95DC4E1 /* Pods_MarshalOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -241,6 +243,8 @@
 		94C8E4D929B4A3CF00CAC844 /* EventInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInteractor.swift; sourceTree = "<group>"; };
 		94C8E4DA29B4A3CF00CAC844 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
 		94C8E4E129B4A4C100CAC844 /* EventContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentView.swift; sourceTree = "<group>"; };
+		94E24FF72A079CB400E42F27 /* WatcherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherManager.swift; sourceTree = "<group>"; };
+		94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherManagerImpl.swift; sourceTree = "<group>"; };
 		B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarshalOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F0E39A978B961C4652411 /* Pods-MarshalOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarshalOne.release.xcconfig"; path = "Target Support Files/Pods-MarshalOne/Pods-MarshalOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,6 +298,7 @@
 		946625D329CF357D001A38E0 /* NetworkManagers */ = {
 			isa = PBXGroup;
 			children = (
+				94E24FF92A079CB900E42F27 /* WatcherNetworkManager */,
 				94665E4029F54DA400CC9908 /* UserNetworkManager */,
 				94665E3F29F54D9100CC9908 /* RacesNetworkManager */,
 				94665E3E29F54D8100CC9908 /* LikeManager */,
@@ -637,6 +642,15 @@
 			path = EventScreen;
 			sourceTree = "<group>";
 		};
+		94E24FF92A079CB900E42F27 /* WatcherNetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				94E24FF72A079CB400E42F27 /* WatcherManager.swift */,
+				94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */,
+			);
+			path = WatcherNetworkManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -785,6 +799,7 @@
 				946625FB29D07549001A38E0 /* RaceModel.swift in Sources */,
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,
 				946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */,
+				94E24FF82A079CB400E42F27 /* WatcherManager.swift in Sources */,
 				946C3B6429A92A8600C24AF4 /* EventsViewController.swift in Sources */,
 				94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */,
 				94C58D7029969D00009FB37F /* LoginInteractor.swift in Sources */,
@@ -834,6 +849,7 @@
 				946C3B8329A92EC400C24AF4 /* AppCoordinator.swift in Sources */,
 				946C3B7B29A92C2500C24AF4 /* ProfileRouter.swift in Sources */,
 				94C58D762996A313009FB37F /* LoginStackView.swift in Sources */,
+				94E24FFB2A079CDF00E42F27 /* WatcherManagerImpl.swift in Sources */,
 				94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */,
 				94C58D6029953A08009FB37F /* UIView+Layout.swift in Sources */,
 				946C3B5029A2691500C24AF4 /* RegisterContainer.swift in Sources */,

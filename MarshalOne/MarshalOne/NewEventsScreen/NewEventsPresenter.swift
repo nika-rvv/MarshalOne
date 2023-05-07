@@ -33,6 +33,7 @@ extension NewEventsPresenter: NewEventsViewOutput {
     func didOpenEvent(with index: Int) {
         let race = interactor.getEvent(by: index)
         router.selectedRowTapped(with: race.id)
+        interactor.setWatcher(for: index)
     }
     
     func didSetLike(for raceId: Int) {
@@ -46,9 +47,7 @@ extension NewEventsPresenter: NewEventsViewOutput {
 
 extension NewEventsPresenter: NewEventsInteractorOutput {
     func setRaces(races: [RaceInfo]) {
-        
         view?.update(withRaces: races)
-        
     }
     
     func setDislike(index: Int) {
@@ -57,6 +56,10 @@ extension NewEventsPresenter: NewEventsInteractorOutput {
     
     func setLike(index: Int) {
         view?.setLike(raceId: index)
+    }
+    
+    func setWatcher(index: Int) {
+        view?.addWatcher(raceId: index)
     }
 }
 
