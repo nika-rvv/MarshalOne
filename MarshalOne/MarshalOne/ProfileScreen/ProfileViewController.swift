@@ -41,7 +41,7 @@ final class ProfileViewController: UIViewController {
         logout.translatesAutoresizingMaskIntoConstraints = false
         logout.layer.cornerRadius = 10
         logout.clipsToBounds = true
-        logout.configureViewWith(text: "Выйти из аккаунта",
+        logout.configureViewWith(text: R.string.localizable.logout(),
                                  textColor: R.color.deleteActionColor(),
                                  image: R.image.logoutImage())
         return logout
@@ -52,7 +52,7 @@ final class ProfileViewController: UIViewController {
         change.translatesAutoresizingMaskIntoConstraints = false
         change.layer.cornerRadius = 10
         change.clipsToBounds = true
-        change.configureViewWith(text: "Поменять тему",
+        change.configureViewWith(text: R.string.localizable.changeTheme(),
                                  textColor: R.color.mainTextColor(),
                                  image: R.image.lightTheme())
         return change

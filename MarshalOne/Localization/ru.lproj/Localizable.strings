@@ -56,3 +56,7 @@
 
 // events
 "mapEventPlace" = "Место проведения";
+
+//profile
+"logout" = "Выйти из аккаунта";
+"changeTheme" = "Поменять тему";

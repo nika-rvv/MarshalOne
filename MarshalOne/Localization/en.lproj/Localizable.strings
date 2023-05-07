@@ -55,3 +55,7 @@
 
 // events
 "mapEventPlace" = "Location";
+
+//profile
+"logout" = "Logout";
+"changeTheme" = "Toggle appearance";
