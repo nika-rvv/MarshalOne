@@ -51,6 +51,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         setupViews()
         setupConstraints()
         configureView()
@@ -58,20 +59,21 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
         output.loadRaceInfo()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let height = raceImageView.frame.height + eventContentView.frame.height
-        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        let height = raceImageView.frame.height + eventContentView.frame.height
+//        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
+//    }
 }
 
 extension EventViewController: EventViewInput {
-    func setData(raceData: OneRace) {
-        
-        eventContentView.configureViewWith(mainText: raceData.name,
-                                           placeText: "\(raceData.location.longitude)",
-                                           dateText: raceData.date.from,
-                                           additionalText: raceData.oneRaceDescription)
+    func setData(raceData: OneEventInfo) {
+        eventContentView.configureViewWith(mainText: raceData.title,
+                                           placeName: raceData.placeName,
+                                           dateText: raceData.dateSubtitle,
+                                           additionalText: raceData.description,
+                                           longitude: raceData.longitude,
+                                           latitude: raceData.latitude)
     }
 }
 
@@ -79,11 +81,11 @@ private extension EventViewController {
     func setupViews() {
         self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         view.backgroundColor = R.color.launchScreenColor()
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(raceImageView)
+//        view.addSubview(scrollView)
+//        scrollView.addSubview(contentView)
+        view.addSubview(raceImageView)
         view.addSubview(navigationBar)
-        contentView.addSubview(eventContentView)
+        view.addSubview(eventContentView)
     }
     
     func setupNavBar(){
@@ -99,35 +101,26 @@ private extension EventViewController {
         navigationBar.leading()
         navigationBar.trailing()
         navigationBar.height(80)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+//        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         NSLayoutConstraint.activate([
-            raceImageView.topAnchor.constraint(equalTo: contentView.topAnchor)
+            raceImageView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor)
         ])
         raceImageView.leading()
         raceImageView.trailing()
-        raceImageView.height(view.frame.height / 2.2)
-        
+        raceImageView.height(view.frame.height / 3)
         
         NSLayoutConstraint.activate([
             eventContentView.topAnchor.constraint(equalTo: raceImageView.bottomAnchor)
         ])
         eventContentView.leading()
         eventContentView.trailing()
-        eventContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-        //        scrollView.isDirectionalLockEnabled = true
-        //        scrollView.alwaysBounceVertical = true
+        eventContentView.bottom(isIncludeSafeArea: false)
     }
     
     func configureView() {

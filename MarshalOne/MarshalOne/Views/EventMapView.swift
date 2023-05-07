@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 
 final class EventMapView: UIView {
-    
     private let eventPlaceLabel: UILabel = {
         let eventPlace = UILabel()
         eventPlace.translatesAutoresizingMaskIntoConstraints = false
@@ -55,30 +54,30 @@ final class EventMapView: UIView {
     }
     
     func setupLayout(){
-        eventPlaceLabel.top(isIncludeSafeArea: false)
-        eventPlaceLabel.leading(20)
-        eventPlaceLabel.trailing(-20)
-
-//        eventPlaceInfoLabel.pin
-//            .top(to: eventPlaceLabel.edge.bottom)
-//            .marginTop(Constants.EventPlaceInfoLabel.topMargin)
-//            .left(Constants.EventPlaceInfoLabel.leftMargin)
-//            .right()
-//            .height(Constants.EventPlaceInfoLabel.height)
-//
-//        mapView.pin
-//            .top(to: eventPlaceInfoLabel.edge.bottom)
-//            .marginTop(Constants.MapView.marginTop)
-//            .left()
-//            .right()
-//            .bottom(to: self.edge.bottom)
+        NSLayoutConstraint.activate([
+            eventPlaceLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8)
+        ])
+        eventPlaceLabel.leading(8)
+        eventPlaceLabel.trailing(-8)
         
-        setupMap()
+        NSLayoutConstraint.activate([
+            eventPlaceInfoLabel.topAnchor.constraint(equalTo: eventPlaceLabel.bottomAnchor, constant: 4)
+        ])
+        eventPlaceInfoLabel.leading(8)
+        eventPlaceInfoLabel.trailing(-8)
+        
+        NSLayoutConstraint.activate([
+            mapView.topAnchor.constraint(equalTo: eventPlaceInfoLabel.bottomAnchor, constant: 16)
+        ])
+        mapView.leading()
+        mapView.trailing()
+        mapView.bottom(isIncludeSafeArea: false)
+
     }
     
     func setupMap(){
         let point = MKPointAnnotation()
-//        point.title = R.string.localizable.eventPlace()
+        point.title = R.string.localizable.mapEventPlace()
         point.coordinate = CLLocationCoordinate2D(latitude: 54.7430, longitude: 55.96779)
         let center = point.coordinate
         let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
@@ -102,21 +101,5 @@ final class EventMapView: UIView {
         
         eventPlaceInfoLabel.text = name
 
-    }
-    
-    struct Constants {
-        struct EventPlaceLabel {
-            static let topMargin: CGFloat = 16
-            static let leftMargin: CGFloat = 20
-            static let height: CGFloat = 20
-        }
-        struct EventPlaceInfoLabel {
-            static let topMargin: CGFloat = 4
-            static let leftMargin: CGFloat = 20
-            static let height: CGFloat = 20
-        }
-        struct MapView {
-            static let marginTop: CGFloat = 16
-        }
     }
 }

@@ -17,13 +17,6 @@ final class EventContentView: UIView {
         return label
     }()
     
-    private let placeDateStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        return stackView
-    }()
-    
     private let infoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +50,13 @@ final class EventContentView: UIView {
         return label
     }()
     
-    private let spacerView = UIView()
+    private let eventMapView: EventMapView = {
+        let map = EventMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        map.layer.cornerRadius = 8
+        map.clipsToBounds = true
+        return map
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,22 +70,24 @@ final class EventContentView: UIView {
     }
 }
 
-extension EventContentView {
-    private func setupView(){
+private extension EventContentView {
+     func setupView(){
         self.addSubview(infoStackView)
         
         infoStackView.addArrangedSubview(mainLabel)
-        infoStackView.addArrangedSubview(placeDateStackView)
         
-        placeDateStackView.addArrangedSubview(placeLabel)
-        placeDateStackView.addArrangedSubview(dateLabel)
+        infoStackView.addArrangedSubview(placeLabel)
+        infoStackView.addArrangedSubview(dateLabel)
         
         infoStackView.addArrangedSubview(additionalInfoLabel)
-        infoStackView.addArrangedSubview(spacerView)
+        
+        infoStackView.addArrangedSubview(eventMapView)
     }
     
-    private func setupConstraits(){
-        infoStackView.top(isIncludeSafeArea: false)
+    func setupConstraits(){
+        NSLayoutConstraint.activate([
+            infoStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12)
+        ])
         infoStackView.leading(20)
         infoStackView.trailing(-20)
         infoStackView.bottom(isIncludeSafeArea: false)
@@ -94,20 +95,34 @@ extension EventContentView {
         mainLabel.leading()
         mainLabel.trailing()
         
-        placeDateStackView.leading()
-        placeDateStackView.trailing()
+        placeLabel.leading()
+        placeLabel.trailing()
+        
+        dateLabel.leading()
+        dateLabel.trailing()
         
         additionalInfoLabel.leading()
         additionalInfoLabel.trailing()
         
-        infoStackView.setCustomSpacing(12, after: placeDateStackView)
+        eventMapView.leading()
+        eventMapView.trailing()
+        eventMapView.height(180)
+        
     }
-    
-    func configureViewWith(mainText: String, placeText: String, dateText: String, additionalText: String) {
+}
+
+extension EventContentView {
+    func configureViewWith(mainText: String,
+                           placeName: String,
+                           dateText: String,
+                           additionalText: String,
+                           longitude: Double,
+                           latitude: Double) {
         mainLabel.text = mainText
-        placeLabel.text = placeText
+        placeLabel.text = placeName
         dateLabel.text = dateText
         additionalInfoLabel.text = additionalText
+        eventMapView.cofigureMap(latitude: latitude, longitude: longitude, name: placeName)
     }
 }
 

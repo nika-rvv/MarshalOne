@@ -35,7 +35,10 @@ extension EventPresenter: EventViewOutput {
 }
 
 extension EventPresenter: EventInteractorOutput {
-    func setRace(races: OneRace) {
-        view?.setData(raceData: races)
+    func setRace(races: OneEventInfo) async {
+        await MainActor.run {
+            view?.setData(raceData: races)
+        }
+
     }
 }

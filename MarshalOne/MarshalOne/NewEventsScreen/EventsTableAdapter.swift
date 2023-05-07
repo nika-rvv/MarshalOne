@@ -14,7 +14,7 @@ final class EventsTableAdapter: NSObject {
     
     private var openAction: EventAction?
     private var likeAction: EventAction?
-    private var dislikeAcrion: EventAction?
+    private var dislikeAction: EventAction?
     
     enum Section {
         case main
@@ -46,8 +46,19 @@ private extension EventsTableAdapter {
                            numberOfWatchers: item.numberOfWatchers,
                            isLiked: item.isLiked)
             
+            if item.isLiked {
+                cell.setDislikeAction {
+                    self.dislikeAction?(indexPath.row)
+                }
+            } else {
+                cell.setLikeAction {
+                    self.likeAction?(indexPath.row)
+                }
+            }
+            
             return cell
         }
+        
         return dataSource
     }
     
@@ -57,6 +68,21 @@ private extension EventsTableAdapter {
         snapshot.appendItems(racesInfo, toSection: .main)
         
         dataSource.apply(snapshot, animatingDifferences: animated)
+    }
+}
+
+//actions
+extension EventsTableAdapter {
+    func setOpenAction(_ action: @escaping EventAction) {
+        self.openAction = action
+    }
+    
+    func setLikeAction(_ action: @escaping EventAction) {
+        self.likeAction = action
+    }
+    
+    func setDisLikeAction(_ action: @escaping EventAction) {
+        self.dislikeAction = action
     }
 }
 

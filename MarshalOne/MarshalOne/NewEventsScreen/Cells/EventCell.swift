@@ -13,6 +13,8 @@ final class EventCell: UITableViewCell {
     
     private var likeAction: LikeAction?
     private var dislikeAction: DislikeAction?
+    
+    var isEventLiked: Bool = false
             
     private let cellView: UIView = {
         let cell = UIView()
@@ -191,17 +193,12 @@ private extension EventCell {
     
     @objc
     func setLikeState() {
-//        if !isEventLiked {
-//            likeStackView.changeStackView(with: R.image.likedImage())
-//            isEventLiked = !isEventLiked
-//            likeAction?()
-//        } else {
-//            likeStackView.changeStackView(with: R.image.notLikedImage())
-//            isEventLiked = !isEventLiked
-//            dislikeAction?()
-//        }
+        if isEventLiked {
+            dislikeAction?()
+        } else {
+            likeAction?()
+        }
     }
-    
 }
 
 extension EventCell {
@@ -221,11 +218,13 @@ extension EventCell {
                    numberOfParticipants: Int,
                    numberOfWatchers: Int,
                    isLiked: Bool) {
+        
         titleLabel.text = title
         dateLabel.text = dateSubtitle
         placeLabel.text = placeName
         likeStackView.configureForLikes(isLiked: isLiked, numberOfLikes: numberOfLikes)
         viewsStackView.configureForWatchers(numberOfWatchers: numberOfWatchers)
         participantsStackView.configureForParticipants(numberOfParticipants: numberOfParticipants)
+        isEventLiked = isLiked
     }
 }

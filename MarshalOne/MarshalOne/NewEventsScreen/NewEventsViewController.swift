@@ -47,6 +47,7 @@ private extension NewEventsViewController {
         setupNavBar()
         setupTableView()
         setupConstraints()
+        setupActions()
     }
     
     func setupNavBar(){
@@ -77,10 +78,32 @@ private extension NewEventsViewController {
         eventsTableView.register(EventCell.self)
         eventsTableView.backgroundColor = R.color.cellBackgroundColor()
     }
+    
+    func setupActions() {
+        eventsTableAdapter.setOpenAction { [weak self] index in
+            self?.output.didOpenEvent(with: index)
+        }
+        
+        eventsTableAdapter.setLikeAction { [weak self] index in
+            self?.output.didSetLike(for: index)
+        }
+        
+        eventsTableAdapter.setDisLikeAction { [weak self] index in
+            self?.output.didUnsetLike(for: index)
+        }
+    }
 }
 
 extension NewEventsViewController: NewEventsViewInput {
     func update(withRaces races: [RaceInfo]) {
         eventsTableAdapter.update(with: races)
+    }
+    
+    func setLike(raceId: Int) {
+        eventsTableAdapter.updateWithLike(withIndex: raceId)
+    }
+    
+    func setDislike(raceId: Int) {
+        eventsTableAdapter.updateWithDislike(withIndex: raceId)
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 struct RaceInfo: Hashable {
+    let id: Int
     let title: String
     let dateSubtitle: String
     let placeName: String

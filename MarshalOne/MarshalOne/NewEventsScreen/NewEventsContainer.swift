@@ -17,10 +17,14 @@ final class NewEventsContainer {
         let router = NewEventsRouter()
         let networkRouter = Router<RaceEndPoint>()
         let racesManager = RacesNetworkManagerImpl(router: networkRouter)
-        let interactor = NewEventsInteractor(racesManager: racesManager)
+        let contentProvider = EventContentProviderImpl()
+        let likeManager = LikeManagerImpl(router: networkRouter)
+        let interactor = NewEventsInteractor(racesManager: racesManager, contentProvider: contentProvider, likeManager: likeManager)
         let presenter = NewEventsPresenter(router: router, interactor: interactor)
 		let viewController = NewEventsViewController(output: presenter)
 
+        router.window = context.window
+        router.viewController = viewController
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 
@@ -38,4 +42,5 @@ final class NewEventsContainer {
 
 struct NewEventsContext {
 	weak var moduleOutput: NewEventsModuleOutput?
+    let window: UIWindow
 }

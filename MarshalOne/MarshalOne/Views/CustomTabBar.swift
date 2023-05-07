@@ -41,7 +41,7 @@ extension CustomTabBar {
     }
     
     private func setupEvents() -> UIViewController {
-        let eventsContext = NewEventsContext()
+        let eventsContext = NewEventsContext(window: window)
         let eventsContainer = NewEventsContainer.assemble(with: eventsContext)
         return eventsContainer.viewController
     }

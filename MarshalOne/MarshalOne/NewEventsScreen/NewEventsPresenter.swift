@@ -20,59 +20,6 @@ final class NewEventsPresenter {
         self.router = router
         self.interactor = interactor
     }
-    
-    private func makeRaceInfo(raceList: RaceList) async -> [RaceInfo] {
-        var raceInfo: [RaceInfo] = []
-        
-        for elem in raceList {
-            let race = RaceInfo(title: elem.name,
-                                dateSubtitle: formatDate(dateFrom: elem.date.from,
-                                                         dateTo: elem.date.to),
-                                placeName: await formatLocation(from: elem.location.longitude,
-                                                          and: elem.location.latitude),
-                                imageId: elem.images[safe: 0] ?? "",
-                                numberOfLikes: elem.likes,
-                                numberOfParticipants: elem.members.count,
-                                numberOfWatchers: elem.views,
-                                isLiked: true)
-            raceInfo.append(race)
-        }
-        
-        return raceInfo
-    }
-    
-    private func formatLocation(from longitude: Double, and latitude: Double) async -> String {
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        
-        let cityLoc: String = await location.fetchCityAndCountry() ?? ""
-        
-        return cityLoc
-    }
-    
-    private func formatDate(dateFrom: String, dateTo: String) -> String {
-        var fromDateString = ""
-        var toDateString = ""
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = DateFormatter.eventCellApiDateFormat
-        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
-        if let dateFrom = inputFormatter.date(from: dateFrom) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = DateFormatter.eventCellDateFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
-            fromDateString = outputFormatter.string(from: dateFrom)
-        } else {
-            fromDateString = "Error"
-        }
-        
-        if let dateTo = inputFormatter.date(from: dateTo) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = DateFormatter.eventCellDateFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
-            toDateString = outputFormatter.string(from: dateTo)
-        }
-        
-        return "\(fromDateString) - \(toDateString)"
-    }
 }
 
 extension NewEventsPresenter: NewEventsModuleInput {
@@ -83,15 +30,33 @@ extension NewEventsPresenter: NewEventsViewOutput {
         interactor.getRacesData()
     }
     
+    func didOpenEvent(with index: Int) {
+        let race = interactor.getEvent(by: index)
+        router.selectedRowTapped(with: race.id)
+    }
+    
+    func didSetLike(for raceId: Int) {
+        interactor.setLike(for: raceId)
+    }
+    
+    func didUnsetLike(for raceId: Int) {
+        interactor.setDislike(for: raceId)
+    }
 }
 
 extension NewEventsPresenter: NewEventsInteractorOutput {
-    func setRaces(races: RaceList) {
-        Task {
-            let info = await makeRaceInfo(raceList: races)
-            await MainActor.run {
-                view?.update(withRaces: info)
-            }
-        }
+    func setRaces(races: [RaceInfo]) {
+        
+        view?.update(withRaces: races)
+        
+    }
+    
+    func setDislike(index: Int) {
+        view?.setDislike(raceId: index)
+    }
+    
+    func setLike(index: Int) {
+        view?.setLike(raceId: index)
     }
 }
+
