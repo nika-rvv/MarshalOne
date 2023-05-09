@@ -24,7 +24,8 @@ class NetworkManager {
     }
     
     static let environment: NetworkEnvironment = .debug
-    static let additionalHeader: HTTPHeaders = ["":""]
+    static let additionalHeader: HTTPHeaders = [".AspNetCore.Session" : defaults.string(forKey: "cookie") ?? ""]
+    
 
     func handleNetworkResponse(_ response : HTTPURLResponse) -> Result {
         switch response.statusCode {

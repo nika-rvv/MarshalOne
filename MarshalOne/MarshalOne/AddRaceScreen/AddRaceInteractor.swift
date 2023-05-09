@@ -17,6 +17,31 @@ final class AddRaceInteractor {
         self.raceManager = raceManager
         self.locationDecoder = locationDecoder
     }
+    
+    private func formatDate(dateFrom: String, dateTo: String) -> (String, String) {
+        var fromDateString = ""
+        var toDateString = ""
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = DateFormatter.eventCellDateFormat
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        if let dateFrom = inputFormatter.date(from: dateFrom) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = DateFormatter.eventCellApiDateFormat
+            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            fromDateString = outputFormatter.string(from: dateFrom)
+        } else {
+            fromDateString = "Error"
+        }
+        
+        if let dateTo = inputFormatter.date(from: dateTo) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = DateFormatter.eventCellApiDateFormat
+            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            toDateString = outputFormatter.string(from: dateTo)
+        }
+        
+        return (fromDateString, toDateString)
+    }
 }
 
 extension AddRaceInteractor: AddRaceInteractorInput {
@@ -24,7 +49,9 @@ extension AddRaceInteractor: AddRaceInteractorInput {
         Task {
             let raceInfoStrings = raceInfo.compactMap{ $0 }
             
-            let raceDate = DateClass(from: "2023-04-10T08:18:45.754Z", to: "2023-04-10T08:18:45.754Z")
+            let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
+            
+            let raceDate = DateClass(from: date.0, to: date.1)
             
             var location: Location = Location(latitude: 0.0, longitude: 0.0)
             
@@ -42,6 +69,10 @@ extension AddRaceInteractor: AddRaceInteractorInput {
                                       tags: [])
             
             let addRaceResult = await raceManager.postRace(with: addRaceInfo)
+            
+            await MainActor.run {
+                output?.raceAdded()
+            }
         }
     }
 }

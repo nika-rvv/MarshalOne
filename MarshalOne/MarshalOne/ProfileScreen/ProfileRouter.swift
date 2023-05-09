@@ -27,6 +27,8 @@ extension ProfileRouter: ProfileRouterInput {
             return
         }
         
+        defaults.removeObject(forKey: "isRemembered")
+        
         let coordinator = AppCoordinator(window: window, instructor: .authorization)
         coordinator.start()
         print("delete")

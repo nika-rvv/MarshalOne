@@ -10,7 +10,7 @@ import UIKit
 final class AddRaceContentView: UIView {
 
     typealias CloseClosure = () -> Void
-    typealias AddClosure = () -> Void
+    typealias AddClosure = ([String?]) -> Void
     
     private var closeAction: CloseClosure?
     
@@ -253,7 +253,18 @@ extension AddRaceContentView {
     
     @objc
     func addButtonTapped() {
-        addAction?()
+        var addRaceInfo: [String?] = ["name","datefrom", "dateto", "place", "description"]
+        addRaceInfo[0] = eventNameTextField.returnTextFromTF()
+        addRaceInfo[1] = dateFromTextField.returnTextFromTF()
+        addRaceInfo[2] = dateToTextField.returnTextFromTF()
+        addRaceInfo[3] = placeTextField.returnTextFromTF()
+        if descriptonTextView.text == "" || descriptonTextView.text == R.string.localizable.eventDescription() {
+            addRaceInfo[4] = "Описание не было добавлено, обратитесь к организаторам"
+        } else {
+            addRaceInfo[4] = descriptonTextView.text
+            
+        }
+        addAction?(addRaceInfo)
     }
 }
 

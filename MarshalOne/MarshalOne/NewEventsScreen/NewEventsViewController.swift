@@ -19,6 +19,17 @@ final class NewEventsViewController: UIViewController {
         navBar.translatesAutoresizingMaskIntoConstraints = false
         return navBar
     }()
+    
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 32, weight: .medium)
+        label.textColor = R.color.mainTextColor()
+        label.numberOfLines = 0
+        label.isHidden = true
+        label.textAlignment = .center
+        return label
+    }()
 
     init(output: NewEventsViewOutput) {
         self.output = output
@@ -67,6 +78,14 @@ private extension NewEventsViewController {
         eventsTableView.leading(12)
         eventsTableView.trailing(-12)
         eventsTableView.bottom(isIncludeSafeArea: false)
+        
+        view.addSubview(errorLabel)
+        NSLayoutConstraint.activate([
+            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
+        ])
     }
 
     func setupTableView() {
@@ -77,6 +96,11 @@ private extension NewEventsViewController {
         eventsTableView.delegate = eventsTableAdapter
         eventsTableView.register(EventCell.self)
         eventsTableView.backgroundColor = R.color.cellBackgroundColor()
+    }
+    
+    func configureErrorLabel(with error: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = error
     }
     
     func setupActions() {
@@ -95,6 +119,12 @@ private extension NewEventsViewController {
 }
 
 extension NewEventsViewController: NewEventsViewInput {
+    func showError(error: String?) {
+        if let error = error {
+            configureErrorLabel(with: error)
+        }
+    }
+    
     func update(withRaces races: [RaceInfo]) {
         eventsTableAdapter.update(with: races)
     }

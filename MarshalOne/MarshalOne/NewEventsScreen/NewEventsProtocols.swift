@@ -20,6 +20,7 @@ protocol NewEventsViewInput: AnyObject {
     func setLike(raceId: Int) 
     func setDislike(raceId: Int)
     func addWatcher(raceId: Int)
+    func showError(error: String?)
 }
 
 protocol NewEventsViewOutput: AnyObject {
@@ -42,6 +43,7 @@ protocol NewEventsInteractorOutput: AnyObject {
     func setDislike(index: Int)
     func setLike(index: Int)
     func setWatcher(index: Int)
+    func showError(error: String?)
 }
 
 protocol NewEventsRouterInput: AnyObject {

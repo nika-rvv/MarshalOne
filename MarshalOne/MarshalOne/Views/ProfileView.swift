@@ -63,6 +63,7 @@ extension ProfileView {
     private func setupConstraints() {
         profileStackView.top(isIncludeSafeArea: true)
         profileStackView.centerX()
+        profileStackView.width(100)
         
         profileImageView.height(100)
         profileImageView.width(100)

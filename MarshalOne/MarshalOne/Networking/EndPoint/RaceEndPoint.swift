@@ -82,7 +82,7 @@ extension RaceEndPoint: EndPointType {
         switch self {
         case .getAllRaces:
             return .requestParameters(bodyParameters: ["":""],
-                                      urlParameters: nil)
+                                                urlParameters: nil)
         case .getRace(_):
             return .request
         case .getListOfRaces:

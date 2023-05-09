@@ -48,10 +48,13 @@ extension AddRacePresenter: AddRaceViewOutput {
         if emptyFieldsIndexes.isEmpty {
             interactor.addRace(with: raceInfo)
         } else if !emptyFieldsIndexes.isEmpty{
-//            view?.showEmptyFields(withIndexes: emptyFieldsIndexes)
+            view?.showEmptyFields(withIndexes: emptyFieldsIndexes)
         }
     }
 }
 
 extension AddRacePresenter: AddRaceInteractorOutput {
+    func raceAdded() {
+        router.closeViewController()
+    }
 }

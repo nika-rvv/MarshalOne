@@ -120,13 +120,13 @@ extension ProfileViewController {
         NSLayoutConstraint.activate([
             changeThemeActionVeiw.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor)
         ])
-        changeThemeActionVeiw.width(156)
+        changeThemeActionVeiw.width(160)
         
         logoutActionView.top(isIncludeSafeArea: false)
         NSLayoutConstraint.activate([
             logoutActionView.bottomAnchor.constraint(equalTo: actionsStackView.bottomAnchor),
         ])
-        logoutActionView.width(156)
+        logoutActionView.width(160)
     }
     
     private func setupTableView() {

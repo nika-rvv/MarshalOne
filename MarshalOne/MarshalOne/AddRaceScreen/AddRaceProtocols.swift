@@ -16,10 +16,12 @@ protocol AddRaceModuleOutput: AnyObject {
 }
 
 protocol AddRaceViewInput: AnyObject {
+    func showEmptyFields(withIndexes: [Int])
 }
 
 protocol AddRaceViewOutput: AnyObject {
     func didTapCloseViewControllerButton()
+    func didTapAddRace(with raceInfo: [String?])
 }
 
 protocol AddRaceInteractorInput: AnyObject {
@@ -27,6 +29,7 @@ protocol AddRaceInteractorInput: AnyObject {
 }
 
 protocol AddRaceInteractorOutput: AnyObject {
+    func raceAdded()
 }
 
 protocol AddRaceRouterInput: AnyObject {

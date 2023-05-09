@@ -112,6 +112,9 @@ extension NewEventsInteractor: NewEventsInteractorInput {
             let racesInfo = await racesManager.getListOfRaces()
             if racesInfo.error != nil {
                 print(racesInfo.error)
+                await MainActor.run{
+                    self.output?.showError(error: racesInfo.error)
+                }
             } else {
                 if let races = racesInfo.races  {
                     let recievedAndConvertedRaceInfo = await makeRaceInfo(raceList: races)

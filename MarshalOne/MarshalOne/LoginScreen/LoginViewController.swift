@@ -74,6 +74,7 @@ final class LoginViewController: UIViewController {
         setupViews()
         setupActions()
         setupObserversForKeyboard()
+        rememberUser()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

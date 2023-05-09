@@ -46,6 +46,10 @@ extension NewEventsPresenter: NewEventsViewOutput {
 }
 
 extension NewEventsPresenter: NewEventsInteractorOutput {
+    func showError(error: String?) {
+        view?.showError(error: error)
+    }
+    
     func setRaces(races: [RaceInfo]) {
         view?.update(withRaces: races)
     }
