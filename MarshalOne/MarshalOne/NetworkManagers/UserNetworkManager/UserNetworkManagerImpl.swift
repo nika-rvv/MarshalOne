@@ -55,6 +55,7 @@ final class UserNetworkManagerImpl: NetworkManager, UserNetworkManager {
     }
     
     
+    
     func currentUserInfo() async -> (user: CurrentUser?, error: String?) {
         let result = await router.request(.currentUser)
         if result.error != nil {

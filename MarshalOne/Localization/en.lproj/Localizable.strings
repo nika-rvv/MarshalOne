@@ -55,6 +55,7 @@
 
 // events
 "mapEventPlace" = "Location";
+"participate" = "Participate!";
 
 //profile
 "logout" = "Logout";

@@ -8,6 +8,10 @@
 import UIKit
 
 final class EventContentView: UIView {
+    typealias ParticipateAction = () -> ()
+    
+    private var participateAction: ParticipateAction?
+    
     private let mainLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -15,14 +19,6 @@ final class EventContentView: UIView {
         label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         label.numberOfLines = 0
         return label
-    }()
-    
-    private let infoStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        return stackView
     }()
     
     private let placeLabel: UILabel = {
@@ -58,58 +54,98 @@ final class EventContentView: UIView {
         return map
     }()
     
+    private let participateButton: CustomButton = {
+        let button = CustomButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setupTitle(with: R.string.localizable.participate())
+        return button
+    }()
+    
+    private var realHeight: CGFloat = 0
+    
+    var height: CGFloat {
+        return realHeight
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = R.color.cellBackgroundColor()
+        self.backgroundColor = R.color.cellColor()
         setupView()
         setupConstraits()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
         return nil
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        realHeight = mainLabel.frame.size.height + placeLabel.frame.size.height + dateLabel.frame.size.height + additionalInfoLabel.frame.size.height + eventMapView.frame.size.height + participateButton.frame.size.height + 24 + 48
+    }
 }
 
 private extension EventContentView {
-     func setupView(){
-        self.addSubview(infoStackView)
-        
-        infoStackView.addArrangedSubview(mainLabel)
-        
-        infoStackView.addArrangedSubview(placeLabel)
-        infoStackView.addArrangedSubview(dateLabel)
-        
-        infoStackView.addArrangedSubview(additionalInfoLabel)
-        
-        infoStackView.addArrangedSubview(eventMapView)
+    func setupView(){
+        self.addSubview(mainLabel)
+        self.addSubview(placeLabel)
+        self.addSubview(dateLabel)
+        self.addSubview(additionalInfoLabel)
+        self.addSubview(eventMapView)
+        self.addSubview(participateButton)
     }
     
     func setupConstraits(){
         NSLayoutConstraint.activate([
-            infoStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12)
+            mainLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12)
         ])
-        infoStackView.leading(20)
-        infoStackView.trailing(-20)
-        infoStackView.bottom(isIncludeSafeArea: false)
+        mainLabel.leading(20)
+        mainLabel.trailing(-20)
         
-        mainLabel.leading()
-        mainLabel.trailing()
+        NSLayoutConstraint.activate([
+            placeLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8)
+        ])
+        placeLabel.leading(20)
+        placeLabel.trailing(-20)
         
-        placeLabel.leading()
-        placeLabel.trailing()
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: placeLabel.bottomAnchor, constant: 8)
+        ])
+        dateLabel.leading(20)
+        dateLabel.trailing(-20)
         
-        dateLabel.leading()
-        dateLabel.trailing()
+        NSLayoutConstraint.activate([
+            additionalInfoLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 12)
+        ])
+        additionalInfoLabel.leading(20)
+        additionalInfoLabel.trailing(-20)
         
-        additionalInfoLabel.leading()
-        additionalInfoLabel.trailing()
-        
-        eventMapView.leading()
-        eventMapView.trailing()
+        NSLayoutConstraint.activate([
+            eventMapView.topAnchor.constraint(equalTo: additionalInfoLabel.bottomAnchor, constant: 12)
+        ])
+        eventMapView.leading(20)
+        eventMapView.trailing(-20)
         eventMapView.height(180)
         
+        NSLayoutConstraint.activate([
+            participateButton.topAnchor.constraint(equalTo: eventMapView.bottomAnchor, constant: 12)
+        ])
+        participateButton.leading(20)
+        participateButton.trailing(-20)
+        participateButton.height(42)
+    }
+    
+    func setupActions() {
+        participateButton.addTarget(self, action: #selector(participateButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func participateButtonTapped() {
+        participateAction?()
     }
 }
+
+
 
 extension EventContentView {
     func configureViewWith(mainText: String,
@@ -123,6 +159,10 @@ extension EventContentView {
         dateLabel.text = dateText
         additionalInfoLabel.text = additionalText
         eventMapView.cofigureMap(latitude: latitude, longitude: longitude, name: placeName)
+    }
+    
+    func setParticipateAction(_ action: @escaping ParticipateAction) {
+        self.participateAction = action
     }
 }
 

@@ -37,7 +37,7 @@ final class EventMapView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .tertiarySystemBackground
+        self.backgroundColor = R.color.cellBackgroundColor()
         addViews()
         setupLayout()
         setupMap()
@@ -57,13 +57,13 @@ final class EventMapView: UIView {
         NSLayoutConstraint.activate([
             eventPlaceLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8)
         ])
-        eventPlaceLabel.leading(8)
+        eventPlaceLabel.leading(20)
         eventPlaceLabel.trailing(-8)
         
         NSLayoutConstraint.activate([
             eventPlaceInfoLabel.topAnchor.constraint(equalTo: eventPlaceLabel.bottomAnchor, constant: 4)
         ])
-        eventPlaceInfoLabel.leading(8)
+        eventPlaceInfoLabel.leading(20)
         eventPlaceInfoLabel.trailing(-8)
         
         NSLayoutConstraint.activate([

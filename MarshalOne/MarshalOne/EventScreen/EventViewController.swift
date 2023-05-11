@@ -37,7 +37,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     private lazy var backgroundOfContentListView = UIView()
     
     private let scrollView = UIScrollView()
-    private let contentView = UIView()
+//    private let contentView = UIView()
     
     init(output: EventViewOutput) {
         self.output = output
@@ -51,7 +51,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         setupViews()
         setupConstraints()
         configureView()
@@ -59,11 +59,11 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
         output.loadRaceInfo()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        let height = raceImageView.frame.height + eventContentView.frame.height
-//        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSize(width: view.frame.width, height: eventContentView.height + raceImageView.frame.height)
+        scrollView.contentInset.top = navigationBar.frame.height
+    }
 }
 
 extension EventViewController: EventViewInput {
@@ -74,6 +74,7 @@ extension EventViewController: EventViewInput {
                                            additionalText: raceData.description,
                                            longitude: raceData.longitude,
                                            latitude: raceData.latitude)
+        scrollView.layoutIfNeeded()
     }
 }
 
@@ -81,11 +82,12 @@ private extension EventViewController {
     func setupViews() {
         self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         view.backgroundColor = R.color.launchScreenColor()
-//        view.addSubview(scrollView)
-//        scrollView.addSubview(contentView)
-        view.addSubview(raceImageView)
+        
+        view.addSubview(scrollView)
         view.addSubview(navigationBar)
-        view.addSubview(eventContentView)
+                
+        scrollView.addSubview(raceImageView)
+        scrollView.addSubview(eventContentView)
     }
     
     func setupNavBar(){
@@ -102,32 +104,38 @@ private extension EventViewController {
         navigationBar.trailing()
         navigationBar.height(80)
 //        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+    
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
-//        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-//        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         NSLayoutConstraint.activate([
-            raceImageView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor)
+            raceImageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
         ])
         raceImageView.leading()
         raceImageView.trailing()
-        raceImageView.height(view.frame.height / 3)
+        raceImageView.height(view.frame.height / 4)
         
         NSLayoutConstraint.activate([
             eventContentView.topAnchor.constraint(equalTo: raceImageView.bottomAnchor)
         ])
         eventContentView.leading()
         eventContentView.trailing()
-        eventContentView.bottom(isIncludeSafeArea: false)
+        eventContentView.width(view.frame.width)
     }
     
     func configureView() {
         navigationBar.delegate = self
     }
+    
+    func setupActions() {
+        eventContentView.setParticipateAction {
+            print("participate")
+        }
+    }
 }
-
 
 extension EventViewController: NavigationBarDelegate {
     func backButtonAction() {

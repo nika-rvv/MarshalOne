@@ -20,7 +20,7 @@ extension EnterRouter: EnterRouterInput {
             return
         }
         if let isRemembered = defaults.value(forKey: "isRemembered") as? Bool, isRemembered != false {
-            appCoordinator = AppCoordinator(window: window, instructor: .main)
+            appCoordinator = AppCoordinator(window: window, instructor: .authorization)
         } else {
             appCoordinator = AppCoordinator(window: window, instructor: .authorization)
         }
