@@ -76,6 +76,8 @@
 		9490599429E5A27800362DF3 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9490599329E5A27800362DF3 /* DateExtension.swift */; };
 		9490599629E5A64E00362DF3 /* LocationDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9490599529E5A64E00362DF3 /* LocationDecoder.swift */; };
 		94A0101F29EDB99F0095CC63 /* EventMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A0101E29EDB99F0095CC63 /* EventMapView.swift */; };
+		94A0C7582A0EB85B001AB4B3 /* RaceToPostnfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A0C7572A0EB85B001AB4B3 /* RaceToPostnfoModel.swift */; };
+		94A0C75B2A0EC745001AB4B3 /* ImageEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A0C75A2A0EC745001AB4B3 /* ImageEndPoint.swift */; };
 		94A85FDC29C723CD00C0544E /* HelmetAnimation2.json in Resources */ = {isa = PBXBuildFile; fileRef = 94A85FDB29C723CD00C0544E /* HelmetAnimation2.json */; };
 		94A85FDE29C724A800C0544E /* JSONEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A85FDD29C724A800C0544E /* JSONEnum.swift */; };
 		94A85FE029CA0E0300C0544E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A85FDF29CA0E0300C0544E /* ImagePicker.swift */; };
@@ -191,6 +193,8 @@
 		9490599329E5A27800362DF3 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		9490599529E5A64E00362DF3 /* LocationDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDecoder.swift; sourceTree = "<group>"; };
 		94A0101E29EDB99F0095CC63 /* EventMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMapView.swift; sourceTree = "<group>"; };
+		94A0C7572A0EB85B001AB4B3 /* RaceToPostnfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceToPostnfoModel.swift; sourceTree = "<group>"; };
+		94A0C75A2A0EC745001AB4B3 /* ImageEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEndPoint.swift; sourceTree = "<group>"; };
 		94A85FDB29C723CD00C0544E /* HelmetAnimation2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HelmetAnimation2.json; sourceTree = "<group>"; };
 		94A85FDD29C724A800C0544E /* JSONEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEnum.swift; sourceTree = "<group>"; };
 		94A85FDF29CA0E0300C0544E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 		946625D329CF357D001A38E0 /* NetworkManagers */ = {
 			isa = PBXGroup;
 			children = (
+				94A0C7592A0EC72D001AB4B3 /* ImageNetwotkManager */,
 				94E24FF92A079CB900E42F27 /* WatcherNetworkManager */,
 				94665E4029F54DA400CC9908 /* UserNetworkManager */,
 				94665E3F29F54D9100CC9908 /* RacesNetworkManager */,
@@ -338,6 +343,7 @@
 			children = (
 				946625E829CF376D001A38E0 /* UserEndPoint.swift */,
 				946625F629D07462001A38E0 /* RaceEndPoint.swift */,
+				94A0C75A2A0EC745001AB4B3 /* ImageEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				946C3B8A29AD2F9D00C24AF4 /* AddRaceProtocols.swift */,
 				946C3B8B29AD2F9D00C24AF4 /* AddRaceInteractor.swift */,
 				946C3B8C29AD2F9D00C24AF4 /* AddRaceContainer.swift */,
+				94A0C7572A0EB85B001AB4B3 /* RaceToPostnfoModel.swift */,
 			);
 			path = AddRaceScreen;
 			sourceTree = "<group>";
@@ -476,6 +483,13 @@
 				946C3B9429AD312900C24AF4 /* EventCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		94A0C7592A0EC72D001AB4B3 /* ImageNetwotkManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImageNetwotkManager;
 			sourceTree = "<group>";
 		};
 		94B113D429B3C74300856A5B /* ProfileCell */ = {
@@ -797,6 +811,7 @@
 				9462BB7A29C21B11008FFB18 /* TabBarCenterButton.swift in Sources */,
 				9490599629E5A64E00362DF3 /* LocationDecoder.swift in Sources */,
 				946C3B4429A25D3E00C24AF4 /* RegistrationContentView.swift in Sources */,
+				94A0C75B2A0EC745001AB4B3 /* ImageEndPoint.swift in Sources */,
 				94B113CF29B0E0A200856A5B /* CustomNavigationBar.swift in Sources */,
 				946C3B7E29A92C2500C24AF4 /* ProfileInteractor.swift in Sources */,
 				94C8E4DD29B4A3CF00CAC844 /* EventViewController.swift in Sources */,
@@ -805,6 +820,7 @@
 				946C3B4E29A2691500C24AF4 /* RegisterProtocols.swift in Sources */,
 				9458BD9F29D7355D0064B58D /* DateFormatter.swift in Sources */,
 				94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */,
+				94A0C7582A0EB85B001AB4B3 /* RaceToPostnfoModel.swift in Sources */,
 				94665E3229F53DC800CC9908 /* NewEventsProtocols.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
 				94A85FE029CA0E0300C0544E /* ImagePicker.swift in Sources */,

@@ -26,7 +26,7 @@ final class EnterViewController: UIViewController {
     let lauchImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = .launchImage
+        image.image = R.image.launchImage()
         return image
     }()
     

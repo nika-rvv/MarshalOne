@@ -59,21 +59,27 @@ final class RacesNetworkManagerImpl: NetworkManager, RacesNetworkManager {
         }
     }
     
-    func postRace(with raceInfo: AddRace) async -> String? {
+    func postRace(with raceInfo: AddRace) async -> (raceId: Int?, error: String?) {
         let result = await router.request(.postRace(raceInfo: raceInfo))
         
         if result.error != nil {
-            return "Check connection"
+            return (nil, "Check your connection")
         }
         
         switch getStatus(response: result.response) {
         case .success:
-            if result.data == nil {
-                return NetworkResponse.noData.rawValue
+            guard let responseData = result.data else {
+                return (nil, NetworkResponse.noData.rawValue)
             }
-            return nil
+            do {
+                let apiResponse = try? JSONDecoder().decode(Int.self, from: responseData)
+                return (apiResponse, nil)
+            }
+            catch {
+                return (nil, NetworkResponse.unableToDecode.rawValue)
+            }
         case let .failure(reason):
-            return reason
+            return (nil, reason)
         }
     }
     

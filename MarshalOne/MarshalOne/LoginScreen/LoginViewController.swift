@@ -17,7 +17,7 @@ final class LoginViewController: UIViewController {
     private let loginImage: UIImageView = {
         let loginIm = UIImageView()
         loginIm.translatesAutoresizingMaskIntoConstraints = false
-        loginIm.image = .loginImage
+        loginIm.image = R.image.loginImage()
         return loginIm
     }()
     

@@ -8,5 +8,6 @@ target 'MarshalOne' do
   # Pods for MarshalOne
   pod 'lottie-ios'
   pod 'R.swift'
+  pod 'Kingfisher'
 
 end

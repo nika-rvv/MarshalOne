@@ -42,6 +42,21 @@ final class AddRaceInteractor {
         
         return (fromDateString, toDateString)
     }
+    
+//    private func makeRaceInfo(raceInfo: RaceToPostInfoModel) async -> AddRace {
+//        let raceInfo = OneEventInfo(title: raceInfo.name,
+//                                    dateSubtitle: formatDate(dateFrom: raceInfo.date.from,
+//                                                             dateTo: raceInfo.date.to),
+//                                    latitude: raceInfo.location.latitude,
+//                                    longitude: raceInfo.location.longitude,
+//                                    placeName: await formatLocation(from: raceInfo.location.longitude,
+//                                                                    and: raceInfo.location.latitude),
+//                                    imageId: raceInfo.images[safe: 0] ?? "",
+//                                    description: raceInfo.oneRaceDescription)
+        
+//        let raceInfo =
+//        return raceInfo
+//    }
 }
 
 extension AddRaceInteractor: AddRaceInteractorInput {

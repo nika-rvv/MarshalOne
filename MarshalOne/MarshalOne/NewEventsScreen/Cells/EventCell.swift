@@ -67,10 +67,9 @@ final class EventCell: UITableViewCell {
         return placeSV
     }()
     
-    private let raceImage: UIImageView = {
-        let image = UIImageView()
+    private let raceImage: KingfisherImage = {
+        let image = KingfisherImage(placeHolderType: .event)
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = .loginImage
         image.layer.cornerRadius = 8
         image.clipsToBounds = true
         image.layer.borderWidth = 2
@@ -226,5 +225,10 @@ extension EventCell {
         viewsStackView.configureForWatchers(numberOfWatchers: numberOfWatchers)
         participantsStackView.configureForParticipants(numberOfParticipants: numberOfParticipants)
         isEventLiked = isLiked
+        raceImage.setImage(url: URL(string: "https://onwheels.enula.ru/\(imageId)"))
     }
 }
+// Screen -> Name, desc, image(Data) -> Model(RaceModelInfo) -> Preseter -> Interactor -> postRace -> post race(without image) -> postImage(raceid)
+
+// let race = await postRace()
+// wait postImage(race.Id)

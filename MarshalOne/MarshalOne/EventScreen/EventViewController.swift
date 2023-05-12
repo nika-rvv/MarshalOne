@@ -18,11 +18,10 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
         return navBar
     }()
     
-    private let raceImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let raceImageView: KingfisherImage = {
+        let imageView = KingfisherImage(placeHolderType: .event)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = R.image.loginImage()
         return imageView
     }()
     
@@ -74,6 +73,7 @@ extension EventViewController: EventViewInput {
                                            additionalText: raceData.description,
                                            longitude: raceData.longitude,
                                            latitude: raceData.latitude)
+        raceImageView.setImage(url: URL(string: "https://onwheels.enula.ru\(raceData.imageId)"))
         scrollView.layoutIfNeeded()
     }
 }
