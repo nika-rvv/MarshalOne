@@ -16,6 +16,9 @@ enum RaceEndPoint {
     case putRace(raceId: Int)
     case postRace(raceInfo: AddRace)
     case deleteLike(raceId: Int)
+    case postMember(raceId: Int)
+    case getMember(raceId: Int)
+    case deleteMember(raceId: Int)
 }
 
 extension RaceEndPoint: EndPointType {
@@ -54,6 +57,12 @@ extension RaceEndPoint: EndPointType {
             return ""
         case .deleteLike(raceId: let raceId):
             return "/\(raceId)/like"
+        case .postMember(raceId: let raceId):
+            return "/\(raceId)/member"
+        case .getMember(raceId: let raceId):
+            return "/\(raceId)/member"
+        case .deleteMember(raceId: let raceId):
+            return "/\(raceId)/member"
         }
     }
     
@@ -75,6 +84,12 @@ extension RaceEndPoint: EndPointType {
             return .post
         case .deleteLike(raceId: _):
             return .delete
+        case .postMember(raceId: let raceId):
+            return .post
+        case .getMember(raceId: let raceId):
+            return .get
+        case .deleteMember(raceId: let raceId):
+            return .delete
         }
     }
     
@@ -82,7 +97,7 @@ extension RaceEndPoint: EndPointType {
         switch self {
         case .getAllRaces:
             return .requestParameters(bodyParameters: ["":""],
-                                                urlParameters: nil)
+                                      urlParameters: nil)
         case .getRace(_):
             return .request
         case .getListOfRaces:
@@ -105,6 +120,12 @@ extension RaceEndPoint: EndPointType {
                 "tags": raceInfo.tags
             ], urlParameters: nil)
         case .deleteLike(raceId: _):
+            return .request
+        case .postMember(raceId: let raceId):
+            return .request
+        case .getMember(raceId: let raceId):
+            return .request
+        case .deleteMember(raceId: let raceId):
             return .request
         }
     }

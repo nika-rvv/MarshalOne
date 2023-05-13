@@ -76,8 +76,22 @@ extension EventViewController: EventViewInput {
                                            additionalText: raceData.description,
                                            longitude: raceData.longitude,
                                            latitude: raceData.latitude)
+        
+        eventContentView.configureButton(isMember: raceData.isMember)
         raceImageView.setImage(url: URL(string: "https://onwheels.enula.ru\(raceData.imageId)"))
         scrollView.layoutIfNeeded()
+    }
+    
+    func addMember() {
+        UIView.animate(withDuration: 0.3) {
+            self.eventContentView.configureButton(isMember: true)
+        }
+    }
+    
+    func deleteMember() {
+        UIView.animate(withDuration: 0.3) {
+            self.eventContentView.configureButton(isMember: false)
+        }
     }
 }
 
@@ -151,7 +165,11 @@ private extension EventViewController {
     
     func setupActions() {
         eventContentView.setParticipateAction {
-            print("participate")
+            self.output.postParticipant()
+        }
+        
+        eventContentView.unsetParticipateAction {
+            self.output.deleteParticipant()
         }
     }
 }

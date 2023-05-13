@@ -120,6 +120,7 @@
 		94E24FFB2A079CDF00E42F27 /* WatcherManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */; };
 		94FCAA402A0F921D002A874C /* MemberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA3F2A0F921D002A874C /* MemberManager.swift */; };
 		94FCAA422A0F9229002A874C /* MemberManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */; };
+		94FCAA442A0F996E002A874C /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA432A0F996E002A874C /* MemberModel.swift */; };
 		F110385A63270B25A95DC4E1 /* Pods_MarshalOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -241,6 +242,7 @@
 		94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherManagerImpl.swift; sourceTree = "<group>"; };
 		94FCAA3F2A0F921D002A874C /* MemberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManager.swift; sourceTree = "<group>"; };
 		94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManagerImpl.swift; sourceTree = "<group>"; };
+		94FCAA432A0F996E002A874C /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarshalOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F0E39A978B961C4652411 /* Pods-MarshalOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarshalOne.release.xcconfig"; path = "Target Support Files/Pods-MarshalOne/Pods-MarshalOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -310,6 +312,7 @@
 				946625D729CF3618001A38E0 /* UserModel.swift */,
 				946625D929CF3637001A38E0 /* ErrorModel.swift */,
 				946625FA29D07549001A38E0 /* RaceModel.swift */,
+				94FCAA432A0F996E002A874C /* MemberModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				94C58D3D2995358F009FB37F /* AppDelegate.swift in Sources */,
 				94C58D6029953A08009FB37F /* UIView+Layout.swift in Sources */,
 				946C3B5029A2691500C24AF4 /* RegisterContainer.swift in Sources */,
+				94FCAA442A0F996E002A874C /* MemberModel.swift in Sources */,
 				946C3B7A29A92C2500C24AF4 /* ProfilePresenter.swift in Sources */,
 				94C58D3F2995358F009FB37F /* SceneDelegate.swift in Sources */,
 				946625EB29CF37C2001A38E0 /* EndPointType.swift in Sources */,

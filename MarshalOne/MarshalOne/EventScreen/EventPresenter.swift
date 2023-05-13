@@ -32,6 +32,14 @@ extension EventPresenter: EventViewOutput {
     func didPressBackButton() {
         router.backButtonTapped()
     }
+    
+    func postParticipant() {
+        interactor.didPostParticipant()
+    }
+    
+    func deleteParticipant() {
+        interactor.didDeleteParticipant()
+    }
 }
 
 extension EventPresenter: EventInteractorOutput {
@@ -39,6 +47,13 @@ extension EventPresenter: EventInteractorOutput {
         await MainActor.run {
             view?.setData(raceData: races)
         }
-
+    }
+    
+    func setMember() {
+        view?.addMember()
+    }
+    
+    func removeMember() {
+        view?.deleteMember()
     }
 }

@@ -17,8 +17,9 @@ final class EventContainer {
         let router = EventRouter()
         let networkRouter = Router<RaceEndPoint>()
         let raceManager = RacesNetworkManagerImpl(router: networkRouter)
+        let memberManager = MemberManagerImpl(router: networkRouter)
         let raceId = context.raceId
-        let interactor = EventInteractor(raceManager: raceManager, raceId: raceId)
+        let interactor = EventInteractor(raceManager: raceManager, memberManager: memberManager, raceId: raceId)
         let presenter = EventPresenter(router: router, interactor: interactor)
 		let viewController = EventViewController(output: presenter)
 

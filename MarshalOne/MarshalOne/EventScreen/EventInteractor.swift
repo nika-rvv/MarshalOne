@@ -13,14 +13,16 @@ final class EventInteractor {
 	weak var output: EventInteractorOutput?
     
     private let raceManager: RacesNetworkManager
+    private let memberManager: MemberManager
     private let raceId: Int
     
-    init(raceManager: RacesNetworkManager, raceId: Int) {
+    init(raceManager: RacesNetworkManager, memberManager: MemberManager, raceId: Int) {
         self.raceManager = raceManager
+        self.memberManager = memberManager
         self.raceId = raceId
     }
     
-    private func makeOneRaceInfo(raceInfo: OneRace) async -> OneEventInfo {
+    private func makeOneRaceInfo(raceInfo: OneRace, isMember: Bool) async -> OneEventInfo {
         let raceInfo = OneEventInfo(title: raceInfo.name,
                                     dateSubtitle: formatDate(dateFrom: raceInfo.date.from,
                                                              dateTo: raceInfo.date.to),
@@ -29,7 +31,8 @@ final class EventInteractor {
                                     placeName: await formatLocation(from: raceInfo.location.longitude,
                                                                     and: raceInfo.location.latitude),
                                     imageId: raceInfo.images[safe: 0] ?? "",
-                                    description: raceInfo.oneRaceDescription)
+                                    description: raceInfo.oneRaceDescription,
+                                    isMember: isMember)
         
         return raceInfo
     }
@@ -73,13 +76,39 @@ extension EventInteractor: EventInteractorInput {
         Task {
             let result = await raceManager.getRace(with: raceId)
             
+            let isMember = await memberManager.getMember(with: raceId)
+            
             if let error = result.error {
                 print(error)
             }
             
-            if let race = result.race {
-                let convertedRaceInfo = await makeOneRaceInfo(raceInfo: race)
+            if let race = result.race, let member = isMember.isMember {
+                let convertedRaceInfo = await makeOneRaceInfo(raceInfo: race, isMember: member)
                 await self.output?.setRace(races: convertedRaceInfo)
+            }
+        }
+    }
+    
+    func didPostParticipant() {
+        Task {
+            let result = await memberManager.postMember(with: raceId)
+            
+            if result == nil {
+                await MainActor.run {
+                    self.output?.setMember()
+                }
+            }
+        }
+    }
+    
+    func didDeleteParticipant() {
+        Task {
+            let result = await memberManager.deleteMember(with: raceId)
+            
+            if result == nil {
+                await MainActor.run {
+                    self.output?.removeMember()
+                }
             }
         }
     }

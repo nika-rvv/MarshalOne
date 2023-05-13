@@ -10,7 +10,10 @@ import UIKit
 final class EventContentView: UIView {
     typealias ParticipateAction = () -> ()
     
-    private var participateAction: ParticipateAction?
+    private var setParticipationAction: ParticipateAction?
+    private var unsetParticipationAction: ParticipateAction?
+    
+    private var isUserMember: Bool = false
     
     private let mainLabel: UILabel = {
         let label = UILabel()
@@ -57,7 +60,6 @@ final class EventContentView: UIView {
     private let participateButton: CustomButton = {
         let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setupTitle(with: R.string.localizable.participate())
         return button
     }()
     
@@ -141,7 +143,13 @@ private extension EventContentView {
     
     @objc
     func participateButtonTapped() {
-        participateAction?()
+        if !isUserMember {
+            setParticipationAction?()
+            isUserMember = !isUserMember
+        } else {
+            unsetParticipationAction?()
+            isUserMember = !isUserMember
+        }
     }
 }
 
@@ -161,8 +169,24 @@ extension EventContentView {
         eventMapView.cofigureMap(latitude: latitude, longitude: longitude, name: placeName)
     }
     
+    func configureButton(isMember: Bool) {
+        if isMember {
+            participateButton.tintColor = R.color.mainOrange()
+            participateButton.setupTitle(with: "Вы записаны")
+            isUserMember = isMember
+        } else {
+            participateButton.setupTitle(with: R.string.localizable.participate())
+            participateButton.tintColor = R.color.mainBlue()
+            isUserMember = isMember
+        }
+    }
+    
     func setParticipateAction(_ action: @escaping ParticipateAction) {
-        self.participateAction = action
+        self.setParticipationAction = action
+    }
+    
+    func unsetParticipateAction(_ action: @escaping ParticipateAction) {
+        self.unsetParticipationAction = action
     }
 }
 

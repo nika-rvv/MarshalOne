@@ -15,4 +15,5 @@ struct OneEventInfo: Hashable {
     let placeName: String
     let imageId: String
     let description: String
+    var isMember: Bool
 }

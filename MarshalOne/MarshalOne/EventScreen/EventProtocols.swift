@@ -17,19 +17,27 @@ protocol EventModuleOutput: AnyObject {
 
 protocol EventViewInput: AnyObject {
     func setData(raceData: OneEventInfo)
+    func addMember()
+    func deleteMember()
 }
 
 protocol EventViewOutput: AnyObject {
     func didPressBackButton()
     func loadRaceInfo()
+    func postParticipant()
+    func deleteParticipant()
 }
 
 protocol EventInteractorInput: AnyObject {
     func loadInfo()
+    func didPostParticipant()
+    func didDeleteParticipant()
 }
 
 protocol EventInteractorOutput: AnyObject {
     func setRace(races: OneEventInfo) async
+    func setMember()
+    func removeMember()
 }
 
 protocol EventRouterInput: AnyObject {

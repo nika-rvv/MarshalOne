@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol MemberManager {
+    func postMember(with id: Int) async -> String?
+    func deleteMember(with id: Int) async -> String?
+    func getMember(with id: Int) async -> (isMember: Bool?, error: String?)
+}
