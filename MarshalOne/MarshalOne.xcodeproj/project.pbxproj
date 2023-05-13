@@ -118,6 +118,8 @@
 		94C8E4E229B4A4C100CAC844 /* EventContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C8E4E129B4A4C100CAC844 /* EventContentView.swift */; };
 		94E24FF82A079CB400E42F27 /* WatcherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E24FF72A079CB400E42F27 /* WatcherManager.swift */; };
 		94E24FFB2A079CDF00E42F27 /* WatcherManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */; };
+		94FCAA402A0F921D002A874C /* MemberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA3F2A0F921D002A874C /* MemberManager.swift */; };
+		94FCAA422A0F9229002A874C /* MemberManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */; };
 		F110385A63270B25A95DC4E1 /* Pods_MarshalOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -237,6 +239,8 @@
 		94C8E4E129B4A4C100CAC844 /* EventContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentView.swift; sourceTree = "<group>"; };
 		94E24FF72A079CB400E42F27 /* WatcherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherManager.swift; sourceTree = "<group>"; };
 		94E24FFA2A079CDF00E42F27 /* WatcherManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherManagerImpl.swift; sourceTree = "<group>"; };
+		94FCAA3F2A0F921D002A874C /* MemberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManager.swift; sourceTree = "<group>"; };
+		94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManagerImpl.swift; sourceTree = "<group>"; };
 		B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarshalOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F0E39A978B961C4652411 /* Pods-MarshalOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarshalOne.release.xcconfig"; path = "Target Support Files/Pods-MarshalOne/Pods-MarshalOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,6 +294,7 @@
 		946625D329CF357D001A38E0 /* NetworkManagers */ = {
 			isa = PBXGroup;
 			children = (
+				94FCAA3E2A0F9208002A874C /* MemberNetworkManager */,
 				94A0C7592A0EC72D001AB4B3 /* ImageNetwotkManager */,
 				94E24FF92A079CB900E42F27 /* WatcherNetworkManager */,
 				94665E4029F54DA400CC9908 /* UserNetworkManager */,
@@ -639,6 +644,15 @@
 			path = WatcherNetworkManager;
 			sourceTree = "<group>";
 		};
+		94FCAA3E2A0F9208002A874C /* MemberNetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				94FCAA3F2A0F921D002A874C /* MemberManager.swift */,
+				94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */,
+			);
+			path = MemberNetworkManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -872,10 +886,12 @@
 				946625E529CF3705001A38E0 /* URLParameterEncoder.swift in Sources */,
 				94665E3429F53DC800CC9908 /* NewEventsContainer.swift in Sources */,
 				946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */,
+				94FCAA422A0F9229002A874C /* MemberManagerImpl.swift in Sources */,
 				94C58D6D29969D00009FB37F /* LoginRouter.swift in Sources */,
 				94C8E4E029B4A3CF00CAC844 /* EventContainer.swift in Sources */,
 				946625F729D07462001A38E0 /* RaceEndPoint.swift in Sources */,
 				946C3B8129A92C4D00C24AF4 /* MainFlowCoordinator.swift in Sources */,
+				94FCAA402A0F921D002A874C /* MemberManager.swift in Sources */,
 				946625F529CF382C001A38E0 /* NetworkEnvironment.swift in Sources */,
 				946625E729CF371C001A38E0 /* ParameterEncoding.swift in Sources */,
 				946C3B8F29AD2F9D00C24AF4 /* AddRaceViewController.swift in Sources */,
@@ -1039,11 +1055,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8658YBX4V7;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8NT3JG578D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarshalOne/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите использовать камеру и данные Вашей фотопленки";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1055,8 +1074,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nika-rvv.MarshalOne";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.diploma.nika-rvv.marshal-one";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = nika_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1069,11 +1090,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8658YBX4V7;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8NT3JG578D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarshalOne/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите использовать камеру и данные Вашей фотопленки";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1085,8 +1109,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nika-rvv.MarshalOne";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.diploma.nika-rvv.marshal-one";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = nika_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

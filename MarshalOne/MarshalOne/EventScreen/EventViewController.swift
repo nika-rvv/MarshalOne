@@ -21,7 +21,9 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     private let raceImageView: KingfisherImage = {
         let imageView = KingfisherImage(placeHolderType: .event)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+//        imageView.contentMode = .scaleAspectFit
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.red.cgColor
         return imageView
     }()
     
@@ -36,7 +38,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     private lazy var backgroundOfContentListView = UIView()
     
     private let scrollView = UIScrollView()
-//    private let contentView = UIView()
+    private let contentView = UIView()
     
     init(output: EventViewOutput) {
         self.output = output
@@ -55,13 +57,14 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
         setupConstraints()
         configureView()
         setupNavBar()
+        setupActions()
         output.loadRaceInfo()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.contentSize = CGSize(width: view.frame.width, height: eventContentView.height + raceImageView.frame.height)
-        scrollView.contentInset.top = navigationBar.frame.height
+        let contentViewHeight = eventContentView.height + raceImageView.frame.height + 20
+        scrollView.contentSize = CGSize(width: view.frame.width, height: contentViewHeight)
     }
 }
 
@@ -85,9 +88,11 @@ private extension EventViewController {
         
         view.addSubview(scrollView)
         view.addSubview(navigationBar)
-                
-        scrollView.addSubview(raceImageView)
-        scrollView.addSubview(eventContentView)
+        
+        scrollView.addSubview(contentView)
+        
+        contentView.addSubview(raceImageView)
+        contentView.addSubview(eventContentView)
     }
     
     func setupNavBar(){
@@ -103,27 +108,41 @@ private extension EventViewController {
         navigationBar.leading()
         navigationBar.trailing()
         navigationBar.height(80)
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-    
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         NSLayoutConstraint.activate([
-            raceImageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.top(isIncludeSafeArea: false)
+        contentView.leading()
+        contentView.trailing()
+        contentView.width(view.frame.width)
+        NSLayoutConstraint.activate([
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            raceImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            raceImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
         ])
         raceImageView.leading()
         raceImageView.trailing()
-        raceImageView.height(view.frame.height / 4)
+        raceImageView.width(contentView.frame.width)
         
         NSLayoutConstraint.activate([
-            eventContentView.topAnchor.constraint(equalTo: raceImageView.bottomAnchor)
+            eventContentView.topAnchor.constraint(equalTo: raceImageView.bottomAnchor),
+            eventContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         eventContentView.leading()
         eventContentView.trailing()
-        eventContentView.width(view.frame.width)
+        eventContentView.width(contentView.frame.width)
     }
     
     func configureView() {
