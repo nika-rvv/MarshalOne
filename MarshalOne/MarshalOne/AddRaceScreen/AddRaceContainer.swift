@@ -16,9 +16,11 @@ final class AddRaceContainer {
 	static func assemble(with context: AddRaceContext) -> AddRaceContainer {
         let router = AddRaceRouter()
         let networkRouter = Router<RaceEndPoint>()
+        let imageRouter = Router<ImageEndPoint>()
         let raceManager = RacesNetworkManagerImpl(router: networkRouter)
+        let imageManager = ImageManagerImpl(router: imageRouter)
         let locationDecoder = LocationDecoder()
-        let interactor = AddRaceInteractor(raceManager: raceManager, locationDecoder: locationDecoder)
+        let interactor = AddRaceInteractor(raceManager: raceManager, locationDecoder: locationDecoder, imageManager: imageManager)
         let presenter = AddRacePresenter(router: router, interactor: interactor)
 		let viewController = AddRaceViewController(output: presenter)
 

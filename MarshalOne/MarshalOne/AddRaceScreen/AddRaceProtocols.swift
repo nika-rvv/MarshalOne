@@ -21,11 +21,11 @@ protocol AddRaceViewInput: AnyObject {
 
 protocol AddRaceViewOutput: AnyObject {
     func didTapCloseViewControllerButton()
-    func didTapAddRace(with raceInfo: [String?])
+    func didTapAddRace(with raceInfo: [String?], and imageData: Data?)
 }
 
 protocol AddRaceInteractorInput: AnyObject {
-    func addRace(with raceInfo: [String?])
+    func addRace(with raceInfo: [String?], and imageData: Data?)
 }
 
 protocol AddRaceInteractorOutput: AnyObject {

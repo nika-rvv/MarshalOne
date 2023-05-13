@@ -68,7 +68,8 @@ extension AddRaceViewController {
     
     func setupAction(){
         addRaceContenView.setAddAction { [weak self] info in
-            self?.output.didTapAddRace(with: info)
+            let imageData = self?.addRaceContenView.raceImageView.image?.jpegData(compressionQuality: 0.8)
+            self?.output.didTapAddRace(with: info, and: imageData)
         }
         addRaceContenView.setCloseAction {
             self.output.didTapCloseViewControllerButton()
@@ -79,6 +80,7 @@ extension AddRaceViewController {
 extension AddRaceViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         self.addRaceContenView.raceImageView.image = image
+        
     }
 }
 

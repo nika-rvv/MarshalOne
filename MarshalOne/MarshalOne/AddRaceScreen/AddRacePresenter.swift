@@ -39,17 +39,17 @@ extension AddRacePresenter: AddRaceModuleInput {
 }
 
 extension AddRacePresenter: AddRaceViewOutput {
-    func didTapCloseViewControllerButton() {
-        router.closeViewController()
-    }
-    
-    func didTapAddRace(with raceInfo: [String?]) {
+    func didTapAddRace(with raceInfo: [String?], and imageData: Data?) {
         let emptyFieldsIndexes = getIndexesOfEmptyFields(addRaceInfo: raceInfo)
         if emptyFieldsIndexes.isEmpty {
-            interactor.addRace(with: raceInfo)
+            interactor.addRace(with: raceInfo, and: imageData)
         } else if !emptyFieldsIndexes.isEmpty{
             view?.showEmptyFields(withIndexes: emptyFieldsIndexes)
         }
+    }
+    
+    func didTapCloseViewControllerButton() {
+        router.closeViewController()
     }
 }
 

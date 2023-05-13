@@ -121,6 +121,11 @@
 		94FCAA402A0F921D002A874C /* MemberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA3F2A0F921D002A874C /* MemberManager.swift */; };
 		94FCAA422A0F9229002A874C /* MemberManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */; };
 		94FCAA442A0F996E002A874C /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA432A0F996E002A874C /* MemberModel.swift */; };
+		94FCAA462A0FA9C5002A874C /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA452A0FA9C5002A874C /* Media.swift */; };
+		94FCAA482A0FAE53002A874C /* MediaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA472A0FAE53002A874C /* MediaEncoder.swift */; };
+		94FCAA4A2A0FB038002A874C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA492A0FB038002A874C /* ImageManager.swift */; };
+		94FCAA4C2A0FB043002A874C /* ImageManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA4B2A0FB043002A874C /* ImageManagerImpl.swift */; };
+		94FCAA4E2A0FB081002A874C /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FCAA4D2A0FB081002A874C /* ImageData.swift */; };
 		F110385A63270B25A95DC4E1 /* Pods_MarshalOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -243,6 +248,11 @@
 		94FCAA3F2A0F921D002A874C /* MemberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManager.swift; sourceTree = "<group>"; };
 		94FCAA412A0F9229002A874C /* MemberManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManagerImpl.swift; sourceTree = "<group>"; };
 		94FCAA432A0F996E002A874C /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		94FCAA452A0FA9C5002A874C /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		94FCAA472A0FAE53002A874C /* MediaEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaEncoder.swift; sourceTree = "<group>"; };
+		94FCAA492A0FB038002A874C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		94FCAA4B2A0FB043002A874C /* ImageManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerImpl.swift; sourceTree = "<group>"; };
+		94FCAA4D2A0FB081002A874C /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		B5DA36353E2BAC45D42E7603 /* Pods_MarshalOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarshalOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94F0E39A978B961C4652411 /* Pods-MarshalOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarshalOne.release.xcconfig"; path = "Target Support Files/Pods-MarshalOne/Pods-MarshalOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +323,7 @@
 				946625D929CF3637001A38E0 /* ErrorModel.swift */,
 				946625FA29D07549001A38E0 /* RaceModel.swift */,
 				94FCAA432A0F996E002A874C /* MemberModel.swift */,
+				94FCAA4D2A0FB081002A874C /* ImageData.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -334,6 +345,8 @@
 				946625E229CF36E7001A38E0 /* JSONParameterEncoder.swift */,
 				946625E429CF3705001A38E0 /* URLParameterEncoder.swift */,
 				946625E629CF371C001A38E0 /* ParameterEncoding.swift */,
+				94FCAA452A0FA9C5002A874C /* Media.swift */,
+				94FCAA472A0FAE53002A874C /* MediaEncoder.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -496,6 +509,8 @@
 		94A0C7592A0EC72D001AB4B3 /* ImageNetwotkManager */ = {
 			isa = PBXGroup;
 			children = (
+				94FCAA492A0FB038002A874C /* ImageManager.swift */,
+				94FCAA4B2A0FB043002A874C /* ImageManagerImpl.swift */,
 			);
 			path = ImageNetwotkManager;
 			sourceTree = "<group>";
@@ -801,6 +816,7 @@
 				94C58D5D29953985009FB37F /* EnterContainer.swift in Sources */,
 				94C58D5B29953985009FB37F /* EnterProtocols.swift in Sources */,
 				946625DA29CF3637001A38E0 /* ErrorModel.swift in Sources */,
+				94FCAA4C2A0FB043002A874C /* ImageManagerImpl.swift in Sources */,
 				946625FB29D07549001A38E0 /* RaceModel.swift in Sources */,
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,
 				946C3B9129AD2F9D00C24AF4 /* AddRaceInteractor.swift in Sources */,
@@ -838,6 +854,7 @@
 				9458BD9F29D7355D0064B58D /* DateFormatter.swift in Sources */,
 				94C8E4DF29B4A3CF00CAC844 /* EventInteractor.swift in Sources */,
 				94A0C7582A0EB85B001AB4B3 /* RaceToPostnfoModel.swift in Sources */,
+				94FCAA462A0FA9C5002A874C /* Media.swift in Sources */,
 				94665E3229F53DC800CC9908 /* NewEventsProtocols.swift in Sources */,
 				94C58D6F29969D00009FB37F /* LoginProtocols.swift in Sources */,
 				94A85FE029CA0E0300C0544E /* ImagePicker.swift in Sources */,
@@ -887,6 +904,7 @@
 				946C3B4D29A2691500C24AF4 /* RegisterViewController.swift in Sources */,
 				94BA4BDA29C60AD6000BEB59 /* AddRaceContentView.swift in Sources */,
 				941E219029FECF7A001B1663 /* OneEventInfo.swift in Sources */,
+				94FCAA4E2A0FB081002A874C /* ImageData.swift in Sources */,
 				946625E529CF3705001A38E0 /* URLParameterEncoder.swift in Sources */,
 				94665E3429F53DC800CC9908 /* NewEventsContainer.swift in Sources */,
 				946C3B9229AD2F9D00C24AF4 /* AddRaceContainer.swift in Sources */,
@@ -900,7 +918,9 @@
 				946625E729CF371C001A38E0 /* ParameterEncoding.swift in Sources */,
 				946C3B8F29AD2F9D00C24AF4 /* AddRaceViewController.swift in Sources */,
 				946C3B7D29A92C2500C24AF4 /* ProfileProtocols.swift in Sources */,
+				94FCAA4A2A0FB038002A874C /* ImageManager.swift in Sources */,
 				946625E129CF36A8001A38E0 /* NetworkManager.swift in Sources */,
+				94FCAA482A0FAE53002A874C /* MediaEncoder.swift in Sources */,
 				94C58D6229953BE0009FB37F /* ColorExtension.swift in Sources */,
 				94C8E4DB29B4A3CF00CAC844 /* EventPresenter.swift in Sources */,
 			);

@@ -11,11 +11,13 @@ import Foundation
 final class AddRaceInteractor {
     weak var output: AddRaceInteractorOutput?
     private let raceManager: RacesNetworkManager
+    private let imageManager: ImageManager
     private let locationDecoder: LocationDecoder
     
-    init(raceManager: RacesNetworkManager, locationDecoder: LocationDecoder) {
+    init(raceManager: RacesNetworkManager, locationDecoder: LocationDecoder, imageManager: ImageManager) {
         self.raceManager = raceManager
         self.locationDecoder = locationDecoder
+        self.imageManager = imageManager
     }
     
     private func formatDate(dateFrom: String, dateTo: String) -> (String, String) {
@@ -43,52 +45,86 @@ final class AddRaceInteractor {
         return (fromDateString, toDateString)
     }
     
-//    private func makeRaceInfo(raceInfo: RaceToPostInfoModel) async -> AddRace {
-//        let raceInfo = OneEventInfo(title: raceInfo.name,
-//                                    dateSubtitle: formatDate(dateFrom: raceInfo.date.from,
-//                                                             dateTo: raceInfo.date.to),
-//                                    latitude: raceInfo.location.latitude,
-//                                    longitude: raceInfo.location.longitude,
-//                                    placeName: await formatLocation(from: raceInfo.location.longitude,
-//                                                                    and: raceInfo.location.latitude),
-//                                    imageId: raceInfo.images[safe: 0] ?? "",
-//                                    description: raceInfo.oneRaceDescription)
+    private func makeRaceInfo(raceInfo: [String?], imageId: Int?) async -> AddRace {
+        let raceInfoStrings = raceInfo.compactMap{ $0 }
         
-//        let raceInfo =
-//        return raceInfo
-//    }
+        let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
+        
+        let raceDate = DateClass(from: date.0, to: date.1)
+        
+        var location: Location = Location(latitude: 0.0, longitude: 0.0)
+        
+        do {
+            location = try await locationDecoder.getLocation(from: raceInfoStrings[3])
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
+        
+        let addRaceInfo = AddRace(name: raceInfoStrings[0],
+                                  location: location,
+                                  date: raceDate,
+                                  oneRaceDescription: raceInfoStrings[4],
+                                  images: ["https://onwheels.enula.ru/api/Image\(imageId)"],
+                                  tags: [])
+        
+        return addRaceInfo
+    }
 }
 
 extension AddRaceInteractor: AddRaceInteractorInput {
-    func addRace(with raceInfo: [String?]) {
+    func addRace(with raceInfo: [String?], and imageData: Data?) {
         Task {
-            let raceInfoStrings = raceInfo.compactMap{ $0 }
-            
-            let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
-            
-            let raceDate = DateClass(from: date.0, to: date.1)
-            
-            var location: Location = Location(latitude: 0.0, longitude: 0.0)
-            
-            do {
-                location = try await locationDecoder.getLocation(from: raceInfoStrings[3])
-            } catch {
-                print("Error: \(error.localizedDescription)")
+            var imageResult: (imageData: ImageData?, error: String?)? = nil
+            if let image = imageData {
+                imageResult = await imageManager.postImage(with: image)
             }
             
-            let addRaceInfo = AddRace(name: raceInfoStrings[0],
-                                      location: location,
-                                      date: raceDate,
-                                      oneRaceDescription: raceInfoStrings[4],
-                                      images: [],
-                                      tags: [])
-            
-            let addRaceResult = await raceManager.postRace(with: addRaceInfo)
-            
-            await MainActor.run {
-                output?.raceAdded()
+            if imageResult?.error != nil {
+                print(imageResult?.error)
+            } else {
+                let postInfo = await makeRaceInfo(raceInfo: raceInfo, imageId: imageResult?.imageData?.imageId)
+                let postRaceResult = await raceManager.postRace(with: postInfo)
+                if postRaceResult.error != nil {
+                    print(postRaceResult.error)
+                } else {
+                    await MainActor.run {
+                        output?.raceAdded()
+                    }
+                }
             }
+            
         }
     }
+    
+    //    func addRace(with raceInfo: [String?]) {
+    //        Task {
+    //            let raceInfoStrings = raceInfo.compactMap{ $0 }
+    //
+    //            let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
+    //
+    //            let raceDate = DateClass(from: date.0, to: date.1)
+    //
+    //            var location: Location = Location(latitude: 0.0, longitude: 0.0)
+    //
+    //            do {
+    //                location = try await locationDecoder.getLocation(from: raceInfoStrings[3])
+    //            } catch {
+    //                print("Error: \(error.localizedDescription)")
+    //            }
+    //
+    //            let addRaceInfo = AddRace(name: raceInfoStrings[0],
+    //                                      location: location,
+    //                                      date: raceDate,
+    //                                      oneRaceDescription: raceInfoStrings[4],
+    //                                      images: [],
+    //                                      tags: [])
+    //
+    //            let addRaceResult = await raceManager.postRace(with: addRaceInfo)
+    //
+    //            await MainActor.run {
+    //                output?.raceAdded()
+    //            }
+    //        }
+    //    }
 }
 

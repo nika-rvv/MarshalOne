@@ -59,7 +59,7 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
             case let .requestParameters(bodyParameters: bodyParameters,
                                         urlParameters: urlParameters):
                 try self.configureParameters(bodyParameters: bodyParameters,
-                                             urlParameters: urlParameters,
+                                             urlParameters: urlParameters, media: nil,
                                              request: &request)
             case let .requestParametersAndHeaders(bodyParameters: bodyParameters,
                                                   urlParameters: urlParameters,
@@ -67,6 +67,12 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
                 self.addAdditionalHeaders(additionHeaders, request: &request)
                 try self.configureParameters(bodyParameters: bodyParameters,
                                              urlParameters: urlParameters,
+                                             media: nil,
+                                             request: &request)
+            case let .uploadImage(image: image):
+                try self.configureParameters(bodyParameters: nil,
+                                             urlParameters: nil,
+                                             media: image,
                                              request: &request)
             }
             return request
@@ -77,6 +83,7 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
     
     fileprivate func configureParameters(bodyParameters: Parameters?,
                                          urlParameters: Parameters?,
+                                         media: Data?,
                                          request: inout URLRequest) throws {
         do {
             if let bodyParameters = bodyParameters {
@@ -84,6 +91,9 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
             }
             if let urlParameters = urlParameters {
                 try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
+            }
+            if let media = media {
+                try MediaEncoder.encode(urlRequest: &request, with: media)
             }
         } catch {
             throw error

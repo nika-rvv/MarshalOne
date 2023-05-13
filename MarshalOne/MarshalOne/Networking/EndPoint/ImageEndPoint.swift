@@ -46,8 +46,7 @@ extension ImageEndPoint: EndPointType {
     var task: HTTPTask {
         switch self {
         case .postImage(let data):
-            return .requestParameters(bodyParameters: ["":""],
-                                      urlParameters: nil)
+            return .uploadImage(image: data)
         }
     }
     
