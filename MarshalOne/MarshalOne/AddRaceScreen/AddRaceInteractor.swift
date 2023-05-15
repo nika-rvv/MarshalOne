@@ -21,31 +21,30 @@ final class AddRaceInteractor {
     }
     
     private func formatDate(dateFrom: String, dateTo: String) -> (String, String) {
-        var fromDateString = ""
-        var toDateString = ""
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = DateFormatter.eventCellDateFormat
-        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
-        if let dateFrom = inputFormatter.date(from: dateFrom) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = DateFormatter.eventCellApiDateFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
-            fromDateString = outputFormatter.string(from: dateFrom)
-        } else {
-            fromDateString = "Error"
+//        var fromDateString = ""
+//        var toDateString = ""
+//
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.insert([.withFractionalSeconds,
+                                        .withInternetDateTime])
+        let dateStrFrom: [String] = dateFrom.components(separatedBy: ".")
+        guard let convertedDateFrom = formatter.date(from: "\(dateStrFrom[2])-\(dateStrFrom[1])-\(dateStrFrom[0])T03:30:00.000Z") else {
+            return ("", "")
         }
         
-        if let dateTo = inputFormatter.date(from: dateTo) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = DateFormatter.eventCellApiDateFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
-            toDateString = outputFormatter.string(from: dateTo)
+        let convertedDateFromStr = formatter.string(from: convertedDateFrom)
+        
+        let dateStrTo: [String] = dateTo.components(separatedBy: ".")
+        guard let convertedDateTo = formatter.date(from: "\(dateStrTo[2])-\(dateStrTo[1])-\(dateStrTo[0])T03:30:00.000Z") else {
+            return ("", "")
         }
         
-        return (fromDateString, toDateString)
+        let convertedDateToStr = formatter.string(from: convertedDateTo)
+
+        return (convertedDateFromStr, convertedDateToStr)
     }
     
-    private func makeRaceInfo(raceInfo: [String?], imageId: Int?) async -> AddRace {
+    private func makeRaceInfo(raceInfo: [String?], imageId: Int) async -> AddRace {
         let raceInfoStrings = raceInfo.compactMap{ $0 }
         
         let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
@@ -64,7 +63,7 @@ final class AddRaceInteractor {
                                   location: location,
                                   date: raceDate,
                                   oneRaceDescription: raceInfoStrings[4],
-                                  images: ["https://onwheels.enula.ru/api/Image\(imageId)"],
+                                  images: ["/api/Image/\(imageId)"],
                                   tags: [])
         
         return addRaceInfo
@@ -82,7 +81,10 @@ extension AddRaceInteractor: AddRaceInteractorInput {
             if imageResult?.error != nil {
                 print(imageResult?.error)
             } else {
-                let postInfo = await makeRaceInfo(raceInfo: raceInfo, imageId: imageResult?.imageData?.imageId)
+                guard let imageId = imageResult?.imageData?.imageId else {
+                    return
+                }
+                let postInfo = await makeRaceInfo(raceInfo: raceInfo, imageId: imageId)
                 let postRaceResult = await raceManager.postRace(with: postInfo)
                 if postRaceResult.error != nil {
                     print(postRaceResult.error)

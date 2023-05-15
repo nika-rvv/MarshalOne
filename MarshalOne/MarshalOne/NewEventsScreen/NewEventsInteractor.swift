@@ -49,7 +49,7 @@ final class NewEventsInteractor {
                                 numberOfParticipants: elem.members.count,
                                 numberOfWatchers: elem.views,
                                 isLiked: elem.isLiked)
-            raceInfo.append(race)
+            raceInfo.insert(race, at: 0)
         }
         
         return raceInfo

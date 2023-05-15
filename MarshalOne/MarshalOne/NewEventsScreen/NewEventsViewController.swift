@@ -45,6 +45,7 @@ final class NewEventsViewController: UIViewController {
 		super.viewDidLoad()
         view.backgroundColor = R.color.cellBackgroundColor()
         setupUI()
+        output.didLoadRaces()
 	}
     
     override func viewDidAppear(_ animated: Bool) {

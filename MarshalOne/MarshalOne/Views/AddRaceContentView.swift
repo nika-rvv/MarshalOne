@@ -207,7 +207,7 @@ extension AddRaceContentView {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
-        datePicker.maximumDate = Date()
+        datePicker.minimumDate = Date()
         datePicker.center = self.center
         return datePicker
     }

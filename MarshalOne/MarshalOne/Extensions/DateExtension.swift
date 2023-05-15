@@ -13,4 +13,6 @@ extension DateFormatter {
     
     static let eventCellApiDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
     static let eventCellDateFormat = "EEEE, MMM d, yyyy"
+    
+    static let addEventFormat = "dd.MM.yyyy"
 }

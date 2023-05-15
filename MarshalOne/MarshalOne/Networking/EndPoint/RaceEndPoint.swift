@@ -53,7 +53,7 @@ extension RaceEndPoint: EndPointType {
             return "/\(raceId)/view"
         case .putRace(raceId: let raceId):
             return "/\(raceId)"
-        case .postRace(raceInfo: let raceInfo):
+        case let .postRace(raceInfo):
             return ""
         case .deleteLike(raceId: let raceId):
             return "/\(raceId)/like"
@@ -84,11 +84,11 @@ extension RaceEndPoint: EndPointType {
             return .post
         case .deleteLike(raceId: _):
             return .delete
-        case .postMember(raceId: let raceId):
+        case .postMember(raceId: _):
             return .post
-        case .getMember(raceId: let raceId):
+        case .getMember(raceId: _):
             return .get
-        case .deleteMember(raceId: let raceId):
+        case .deleteMember(raceId: _):
             return .delete
         }
     }
@@ -121,11 +121,11 @@ extension RaceEndPoint: EndPointType {
             ], urlParameters: nil)
         case .deleteLike(raceId: _):
             return .request
-        case .postMember(raceId: let raceId):
+        case .postMember(_):
             return .request
-        case .getMember(raceId: let raceId):
+        case .getMember(_):
             return .request
-        case .deleteMember(raceId: let raceId):
+        case .deleteMember(_):
             return .request
         }
     }

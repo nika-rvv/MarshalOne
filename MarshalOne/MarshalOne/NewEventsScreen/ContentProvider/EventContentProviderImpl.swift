@@ -15,6 +15,7 @@ final class EventContentProviderImpl: EventContentProvider {
     }
     
     func appendEvents(_ events: [RaceInfo]) {
-        self.events.append(contentsOf: events)
+        self.events.insert(contentsOf: events, at: 0)
+//        self.events.append(contentsOf: events)
     }
 }
