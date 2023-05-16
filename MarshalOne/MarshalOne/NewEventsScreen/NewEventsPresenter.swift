@@ -27,8 +27,11 @@ extension NewEventsPresenter: NewEventsModuleInput {
 
 extension NewEventsPresenter: NewEventsViewOutput {
     func didLoadRaces() {
-        view?.showLoaderView()
         interactor.getRacesData()
+    }
+    
+    func showLoader() {
+        view?.showLoaderView()
     }
     
     func didOpenEvent(with index: Int) {

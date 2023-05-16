@@ -30,6 +30,7 @@ protocol NewEventsViewOutput: AnyObject {
     func didOpenEvent(with index: Int)
     func didSetLike(for index: Int)
     func didUnsetLike(for index: Int)
+    func showLoader()
 }
 
 protocol NewEventsInteractorInput: AnyObject {

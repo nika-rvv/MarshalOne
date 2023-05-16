@@ -30,6 +30,8 @@ final class NewEventsViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+    
+    private let refreshControl = UIRefreshControl()
 
     init(output: NewEventsViewOutput) {
         self.output = output
@@ -50,6 +52,7 @@ final class NewEventsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        output.showLoader()
         output.didLoadRaces()
     }
 }
@@ -60,6 +63,7 @@ private extension NewEventsViewController {
         setupTableView()
         setupConstraints()
         setupActions()
+        setupRefreshControl()
     }
     
     func setupNavBar(){
@@ -112,6 +116,17 @@ private extension NewEventsViewController {
             self?.output.didUnsetLike(for: index)
         }
     }
+    
+    func setupRefreshControl() {
+        refreshControl.tintColor = R.color.mainBlue()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        eventsTableView.addSubview(refreshControl)
+    }
+    
+    @objc
+    func refresh() {
+        output.didLoadRaces()
+    }
 }
 
 extension NewEventsViewController: NewEventsViewInput {
@@ -126,6 +141,7 @@ extension NewEventsViewController: NewEventsViewInput {
     }
     
     func update(withRaces races: [RaceInfo]) {
+        refreshControl.endRefreshing()
         eventsTableAdapter.update(with: races)
     }
     
