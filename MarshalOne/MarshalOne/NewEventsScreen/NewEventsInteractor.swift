@@ -68,12 +68,13 @@ final class NewEventsInteractor {
         var toDateString = ""
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = DateFormatter.eventCellApiDateFormat
-        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        inputFormatter.locale = Locale(identifier: "ru_RU_POSIX")
         if let dateFrom = inputFormatter.date(from: dateFrom) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = DateFormatter.eventCellDateFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            outputFormatter.locale = Locale(identifier: "ru_RU_POSIX")
             fromDateString = outputFormatter.string(from: dateFrom)
+            fromDateString = fromDateString.capitalized
         } else {
             fromDateString = "Error"
         }
@@ -81,8 +82,9 @@ final class NewEventsInteractor {
         if let dateTo = inputFormatter.date(from: dateTo) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = DateFormatter.eventCellDateFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            outputFormatter.locale = Locale(identifier: "ru_RU_POSIX")
             toDateString = outputFormatter.string(from: dateTo)
+            toDateString = toDateString.capitalized
         }
         
         return "\(fromDateString) - \(toDateString)"

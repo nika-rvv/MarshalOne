@@ -183,19 +183,27 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         var dateString = ""
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = DateFormatter.profileDateApiStringFormat
-        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        inputFormatter.locale = Locale(identifier: "ru_RU_POSIX")
         if  let userBirth = user?.birthday,
             let date2 = inputFormatter.date(from: userBirth) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = DateFormatter.profileDateDisplayFormat
-            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            outputFormatter.locale = Locale(identifier: "ru_RU_POSIX")
             dateString = outputFormatter.string(from: date2)
         } else {
             dateString = "Error"
         }
         
+        var sexRus = ""
+        
         guard let email = user?.email, let sex = user?.sex else {
             return cell
+        }
+        
+        if sex == "Female" || sex == "жен" {
+            sexRus = "Женский"
+        } else {
+            sexRus = "Мужской"
         }
         
         switch indexPath.row {
@@ -207,7 +215,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                                    and: dateString)
         case 2:
             cell.configureCellWith(with: R.string.localizable.sex(),
-                                   and: sex)
+                                   and: sexRus)
         default:
             break
         }
@@ -233,10 +241,10 @@ extension ProfileViewController: ProfileViewInput {
         let personName = name + " " + surname
         profileView.configureView(with: personName, and: user?.city ?? "")
         guard let userSex = user?.sex else { return }
-        if userSex == "Unknown" {
-            sex = "Не указан"
+        if userSex == "Female" || userSex == "жен" {
+            sex = "Женский"
         } else {
-            sex = userSex
+            sex = "Мужской"
         }
         guard let date = user?.birthday else {
             return
