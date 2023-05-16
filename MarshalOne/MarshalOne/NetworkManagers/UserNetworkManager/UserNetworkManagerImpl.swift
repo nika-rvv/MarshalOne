@@ -50,7 +50,16 @@ final class UserNetworkManagerImpl: NetworkManager, UserNetworkManager {
             defaults.set(cookies, forKey: "cookie")
             return .authorized(accsessToken: cookies)
         case let .failure(reason):
-            return .nonAuthorized(error: reason ?? "")
+            guard let responseData = result.data else {
+                return (.nonAuthorized(error: reason ?? ""))
+            }
+            do {
+                let apiResponse = try? JSONDecoder().decode(ServerMessage.self, from: responseData)
+                return (.nonAuthorized(error: apiResponse?.Message ?? ""))
+            }
+            catch {
+                return (.nonAuthorized(error: reason ?? ""))
+            }
         }
     }
     

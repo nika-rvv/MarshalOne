@@ -65,7 +65,7 @@ extension RegisterPresenter: RegisterViewOutput {
 
 extension RegisterPresenter: RegisterInteractorOutput {
     func notAuthorized(withReason reason: String) {
-        print(reason)
+        view?.showUnauthorizedError(with: reason)
     }
     
     func authorized() {

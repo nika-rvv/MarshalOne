@@ -46,13 +46,6 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
                                  timeoutInterval: 10.0)
         
         request.httpMethod = route.httpMethod.rawValue
-        
-//        guard let cookies = HTTPCookieStorage.shared.cookies(for: url) else {
-//            return request
-//        }
-        
-        
-//        request.allHTTPHeaderFields = HTTPCookie.requestHeaderFields(with: cookies)
 
         do {
             switch route.task {

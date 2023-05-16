@@ -61,3 +61,9 @@
 //profile
 "logout" = "Выйти из аккаунта";
 "changeTheme" = "Поменять тему";
+
+//network
+"parametersNil" = "Параметры нулевые";
+"encodingFailed" = "Сбой кодирования параметров";
+"missingURL" = "URL равен нулю";
+"noInternetConnection" = "Нет соединения";

@@ -17,6 +17,8 @@ protocol ProfileModuleOutput: AnyObject {
 
 protocol ProfileViewInput: AnyObject {
     func getData(userData: CurrentUser)
+    func showLoaderView()
+    func hideLoaderView()
 }
 
 protocol ProfileViewOutput: AnyObject {

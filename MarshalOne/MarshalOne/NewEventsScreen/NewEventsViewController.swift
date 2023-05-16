@@ -44,8 +44,8 @@ final class NewEventsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         view.backgroundColor = R.color.cellBackgroundColor()
+        self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         setupUI()
-        output.didLoadRaces()
 	}
     
     override func viewDidAppear(_ animated: Bool) {
@@ -99,11 +99,6 @@ private extension NewEventsViewController {
         eventsTableView.backgroundColor = R.color.cellBackgroundColor()
     }
     
-    func configureErrorLabel(with error: String) {
-        errorLabel.isHidden = false
-        errorLabel.text = error
-    }
-    
     func setupActions() {
         eventsTableAdapter.setOpenAction { [weak self] index in
             self?.output.didOpenEvent(with: index)
@@ -122,7 +117,11 @@ private extension NewEventsViewController {
 extension NewEventsViewController: NewEventsViewInput {
     func showError(error: String?) {
         if let error = error {
-            configureErrorLabel(with: error)
+            let alert = UIAlertController(title: R.string.localizable.ops(),
+                                          message: "\(error)",
+                                          preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
+            self.present(alert, animated: true)
         }
     }
     
@@ -140,5 +139,15 @@ extension NewEventsViewController: NewEventsViewInput {
     
     func addWatcher(raceId: Int) {
         eventsTableAdapter.updateWatchers(withIndex: raceId)
+    }
+    
+    func showLoaderView() {
+        eventsTableView.isHidden = true
+        self.showLoader()
+    }
+    
+    func hideLoaderView() {
+        self.hideLoader()
+        eventsTableView.isHidden = false
     }
 }

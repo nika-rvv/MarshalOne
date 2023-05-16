@@ -122,3 +122,8 @@ extension CurrentUser {
         sex = try currentContainer.decode(String.self, forKey: .sex)
     }
 }
+
+
+struct ServerMessage: Codable {
+    let Message: String
+}

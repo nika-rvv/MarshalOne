@@ -24,13 +24,13 @@ final class EventCell: UITableViewCell {
         cell.layer.masksToBounds = true
         return cell
     }()
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = R.color.mainBlue()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.textAlignment = .left
         return label
     }()
@@ -74,6 +74,7 @@ final class EventCell: UITableViewCell {
         image.clipsToBounds = true
         image.layer.borderWidth = 2
         image.layer.borderColor = R.color.mainBlue()?.cgColor
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -124,23 +125,22 @@ final class EventCell: UITableViewCell {
         viewsStackView.configureForWatchers(numberOfWatchers: 0)
         viewsStackView.configureForParticipants(numberOfParticipants: 0)
     }
-    
 }
 
 private extension EventCell {
     func setupSubviews() {
         self.contentView.addSubview(cellView)
         
-        self.addSubview(titleLabel)
-        self.addSubview(dateLabel)
-        
-        self.addSubview(placeStackView)
+        cellView.addSubview(titleLabel)
+        cellView.addSubview(dateLabel)
+
+        cellView.addSubview(placeStackView)
         placeStackView.addArrangedSubview(placeImage)
         placeStackView.addArrangedSubview(placeLabel)
-        
-        self.addSubview(raceImage)
-        
-        self.addSubview(infoStackView)
+
+        cellView.addSubview(raceImage)
+
+        cellView.addSubview(infoStackView)
         infoStackView.addArrangedSubview(likeStackView)
         infoStackView.addArrangedSubview(viewsStackView)
         infoStackView.addArrangedSubview(participantsStackView)
@@ -150,28 +150,29 @@ private extension EventCell {
         cellView.top(isIncludeSafeArea: false)
         cellView.leading()
         cellView.trailing()
-        cellView.height(340)
+        cellView.height(410)
         
         titleLabel.top(16, isIncludeSafeArea: false)
         titleLabel.leading(24)
         titleLabel.trailing(-24)
-        
+        titleLabel.height(44)
+
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
         ])
         dateLabel.leading(24)
-        
+
         NSLayoutConstraint.activate([
             placeStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8)
         ])
         placeStackView.leading(24)
-        
+
         NSLayoutConstraint.activate([
             raceImage.topAnchor.constraint(equalTo: placeStackView.bottomAnchor, constant: 8)
         ])
         raceImage.leading(12)
         raceImage.trailing(-12)
-        raceImage.height(180)
+        raceImage.height(240)
         
         NSLayoutConstraint.activate([
             infoStackView.topAnchor.constraint(equalTo: raceImage.bottomAnchor, constant: 8),
@@ -225,7 +226,7 @@ extension EventCell {
         viewsStackView.configureForWatchers(numberOfWatchers: numberOfWatchers)
         participantsStackView.configureForParticipants(numberOfParticipants: numberOfParticipants)
         isEventLiked = isLiked
-        raceImage.setImage(url: URL(string: "https://onwheels.enula.ru/\(imageId)"))
+        raceImage.setImage(url: URL(string: "\(imageId)"))
     }
 }
 // Screen -> Name, desc, image(Data) -> Model(RaceModelInfo) -> Preseter -> Interactor -> postRace -> post race(without image) -> postImage(raceid)

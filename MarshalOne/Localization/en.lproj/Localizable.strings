@@ -60,3 +60,10 @@
 //profile
 "logout" = "Logout";
 "changeTheme" = "Toggle appearance";
+
+
+// network
+"parametersNil" = "Parameters are nil";
+"encodingFailed" = "Parameters encoding failed";
+"missingURL" = "URL is nil";
+"noInternetConnection" = "No connection";

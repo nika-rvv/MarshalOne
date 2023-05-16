@@ -28,14 +28,14 @@ final class AddRaceInteractor {
         formatter.formatOptions.insert([.withFractionalSeconds,
                                         .withInternetDateTime])
         let dateStrFrom: [String] = dateFrom.components(separatedBy: ".")
-        guard let convertedDateFrom = formatter.date(from: "\(dateStrFrom[2])-\(dateStrFrom[1])-\(dateStrFrom[0])T03:30:00.000Z") else {
+        guard let convertedDateFrom = formatter.date(from: "\(dateStrFrom[2])-\(dateStrFrom[1])-\(dateStrFrom[0])T13:06:38.991Z") else {
             return ("", "")
         }
         
         let convertedDateFromStr = formatter.string(from: convertedDateFrom)
         
         let dateStrTo: [String] = dateTo.components(separatedBy: ".")
-        guard let convertedDateTo = formatter.date(from: "\(dateStrTo[2])-\(dateStrTo[1])-\(dateStrTo[0])T03:30:00.000Z") else {
+        guard let convertedDateTo = formatter.date(from: "\(dateStrTo[2])-\(dateStrTo[1])-\(dateStrTo[0])T13:06:38.991Z") else {
             return ("", "")
         }
         
@@ -63,7 +63,7 @@ final class AddRaceInteractor {
                                   location: location,
                                   date: raceDate,
                                   oneRaceDescription: raceInfoStrings[4],
-                                  images: ["/api/Image/\(imageId)"],
+                                  images: ["https://onwheels.enula.ru/api/Image/\(imageId)"],
                                   tags: [])
         
         return addRaceInfo
@@ -97,36 +97,5 @@ extension AddRaceInteractor: AddRaceInteractorInput {
             
         }
     }
-    
-    //    func addRace(with raceInfo: [String?]) {
-    //        Task {
-    //            let raceInfoStrings = raceInfo.compactMap{ $0 }
-    //
-    //            let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
-    //
-    //            let raceDate = DateClass(from: date.0, to: date.1)
-    //
-    //            var location: Location = Location(latitude: 0.0, longitude: 0.0)
-    //
-    //            do {
-    //                location = try await locationDecoder.getLocation(from: raceInfoStrings[3])
-    //            } catch {
-    //                print("Error: \(error.localizedDescription)")
-    //            }
-    //
-    //            let addRaceInfo = AddRace(name: raceInfoStrings[0],
-    //                                      location: location,
-    //                                      date: raceDate,
-    //                                      oneRaceDescription: raceInfoStrings[4],
-    //                                      images: [],
-    //                                      tags: [])
-    //
-    //            let addRaceResult = await raceManager.postRace(with: addRaceInfo)
-    //
-    //            await MainActor.run {
-    //                output?.raceAdded()
-    //            }
-    //        }
-    //    }
 }
 

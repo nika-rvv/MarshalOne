@@ -21,9 +21,9 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     private let raceImageView: KingfisherImage = {
         let imageView = KingfisherImage(placeHolderType: .event)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-        imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 4
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -34,9 +34,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
         event.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         return event
     }()
-    
-    private lazy var backgroundOfContentListView = UIView()
-    
+        
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -63,7 +61,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let contentViewHeight = eventContentView.height + raceImageView.frame.height + 20
+        var contentViewHeight = eventContentView.height + raceImageView.frame.height + 50
         scrollView.contentSize = CGSize(width: view.frame.width, height: contentViewHeight)
     }
 }
@@ -78,7 +76,7 @@ extension EventViewController: EventViewInput {
                                            latitude: raceData.latitude)
         
         eventContentView.configureButton(isMember: raceData.isMember)
-        raceImageView.setImage(url: URL(string: "https://onwheels.enula.ru\(raceData.imageId)"))
+        raceImageView.setImage(url: URL(string: "\(raceData.imageId)"))
         scrollView.layoutIfNeeded()
     }
     
@@ -98,7 +96,7 @@ extension EventViewController: EventViewInput {
 private extension EventViewController {
     func setupViews() {
         self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
-        view.backgroundColor = R.color.launchScreenColor()
+        view.backgroundColor = R.color.tabBarColor()
         
         view.addSubview(scrollView)
         view.addSubview(navigationBar)
@@ -125,7 +123,7 @@ private extension EventViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -139,7 +137,7 @@ private extension EventViewController {
         contentView.width(view.frame.width)
         NSLayoutConstraint.activate([
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1.1)
         ])
         
         NSLayoutConstraint.activate([
@@ -152,7 +150,7 @@ private extension EventViewController {
         
         NSLayoutConstraint.activate([
             eventContentView.topAnchor.constraint(equalTo: raceImageView.bottomAnchor),
-            eventContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            eventContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
         eventContentView.leading()
         eventContentView.trailing()

@@ -21,6 +21,8 @@ protocol NewEventsViewInput: AnyObject {
     func setDislike(raceId: Int)
     func addWatcher(raceId: Int)
     func showError(error: String?)
+    func showLoaderView()
+    func hideLoaderView()
 }
 
 protocol NewEventsViewOutput: AnyObject {

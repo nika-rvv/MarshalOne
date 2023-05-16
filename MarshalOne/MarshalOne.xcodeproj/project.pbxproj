@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9409E8E12A12A17600563365 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E8E02A12A17600563365 /* UIViewControllerExtension.swift */; };
 		941E218E29FE9745001B1663 /* EventContentProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941E218D29FE9745001B1663 /* EventContentProviderImpl.swift */; };
 		941E219029FECF7A001B1663 /* OneEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941E218F29FECF7A001B1663 /* OneEventInfo.swift */; };
 		94542F5F299E300F005EDB9D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94542F5E299E300F005EDB9D /* CustomButton.swift */; };
@@ -131,6 +132,7 @@
 
 /* Begin PBXFileReference section */
 		23FD6B248BDB7325CA7B0FD0 /* Pods-MarshalOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarshalOne.debug.xcconfig"; path = "Target Support Files/Pods-MarshalOne/Pods-MarshalOne.debug.xcconfig"; sourceTree = "<group>"; };
+		9409E8E02A12A17600563365 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		941E218D29FE9745001B1663 /* EventContentProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentProviderImpl.swift; sourceTree = "<group>"; };
 		941E218F29FECF7A001B1663 /* OneEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneEventInfo.swift; sourceTree = "<group>"; };
 		94542F5E299E300F005EDB9D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 				94A85FDD29C724A800C0544E /* JSONEnum.swift */,
 				9490599329E5A27800362DF3 /* DateExtension.swift */,
 				94665E4329F55E6500CC9908 /* CollectionExtension.swift */,
+				9409E8E02A12A17600563365 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				94C58D5D29953985009FB37F /* EnterContainer.swift in Sources */,
 				94C58D5B29953985009FB37F /* EnterProtocols.swift in Sources */,
 				946625DA29CF3637001A38E0 /* ErrorModel.swift in Sources */,
+				9409E8E12A12A17600563365 /* UIViewControllerExtension.swift in Sources */,
 				94FCAA4C2A0FB043002A874C /* ImageManagerImpl.swift in Sources */,
 				946625FB29D07549001A38E0 /* RaceModel.swift in Sources */,
 				946C3B7C29A92C2500C24AF4 /* ProfileViewController.swift in Sources */,

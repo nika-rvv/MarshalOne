@@ -68,19 +68,21 @@ final class ProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        output.loadInfo()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        output.loadInfo()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = R.color.cellBackgroundColor()
+        self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         addViews()
         setupConstraints()
         configureViewsWithData()
         setupTableView()
         setupActions()
+        output.loadInfo()
     }
 }
 
@@ -93,13 +95,14 @@ extension ProfileViewController {
         view.addSubview(actionsStackView)
         actionsStackView.addArrangedSubview(changeThemeActionVeiw)
         actionsStackView.addArrangedSubview(logoutActionView)
+        
     }
     
     private func setupConstraints() {
         profileView.top(5, isIncludeSafeArea: true)
         profileView.leading()
         profileView.trailing()
-        profileView.height(160)
+        profileView.height(186)
         
         profileTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -237,6 +240,22 @@ extension ProfileViewController: ProfileViewInput {
         }
         guard let date = user?.birthday else {
             return
+        }
+    }
+    
+    func showLoaderView() {
+        profileView.isHidden = true
+        profileTableView.isHidden = true
+        actionsStackView.isHidden = true
+        self.showLoader()
+    }
+    
+    func hideLoaderView() {
+        self.hideLoader()
+        UIView.animate(withDuration: 0.2) {
+            self.profileView.isHidden = false
+            self.profileTableView.isHidden = false
+            self.actionsStackView.isHidden = false
         }
     }
 }

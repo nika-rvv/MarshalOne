@@ -181,7 +181,7 @@ extension AddRaceContentView {
         ])
         raceImageView.leading(24)
         raceImageView.trailing(-24)
-        raceImageView.height(180)
+        raceImageView.height(240)
         
         NSLayoutConstraint.activate([
             addButton.topAnchor.constraint(equalTo: raceImageView.bottomAnchor, constant: 12)

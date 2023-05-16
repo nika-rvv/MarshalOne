@@ -14,8 +14,8 @@ public protocol ParameterEncoder {
 }
 
 public enum NetworkError: String, Error {
-    case parametersNil = "Parameters are nil"
-    case encodingFailed = "Parameters encoding failed"
-    case missingURL = "URL is nil"
+    case parametersNil = "Параметры нулевые"
+    case encodingFailed = "Сбой кодирования параметров"
+    case missingURL = "URL равен нулю"
     case noInternetConnection = "No connection"
 }

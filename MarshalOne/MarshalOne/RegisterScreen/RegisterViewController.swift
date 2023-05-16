@@ -191,7 +191,7 @@ extension RegisterViewController: NavigationBarDelegate {
 }
 
 extension RegisterViewController: RegisterViewInput {
-    func showEmptyFields(withIndexes indexes: [Int]){
+    func showEmptyFields(withIndexes indexes: [Int]) {
         var emptyFields = ""
         for index in indexes {
             emptyFields.append("\(fields[index]), ")
@@ -203,11 +203,21 @@ extension RegisterViewController: RegisterViewInput {
         self.present(alert, animated: true)
     }
     
-    func showCheckedPassword(){
+    func showCheckedPassword() {
         let alert = UIAlertController(title: R.string.localizable.ops(),
                                       message: R.string.localizable.checkPasswords(),
                                       preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: R.string.localizable.chekFields(), style: .default))
         self.present(alert, animated: true)
+    }
+    
+    func showUnauthorizedError(with reason: String?) {
+        if let error = reason {
+            let alert = UIAlertController(title: R.string.localizable.ops(),
+                                          message: error,
+                                          preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
+            self.present(alert, animated: true)
+        }
     }
 }

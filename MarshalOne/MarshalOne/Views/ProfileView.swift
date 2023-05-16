@@ -28,6 +28,7 @@ final class ProfileView: UIView {
         name.translatesAutoresizingMaskIntoConstraints = false
         name.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         name.textColor = R.color.mainTextColor()
+        name.numberOfLines = 0
         name.textAlignment = .center
         return name
     }()

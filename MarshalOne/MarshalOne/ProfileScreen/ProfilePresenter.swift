@@ -26,6 +26,7 @@ extension ProfilePresenter: ProfileModuleInput {
 
 extension ProfilePresenter: ProfileViewOutput {
     func loadInfo() {
+        view?.showLoaderView()
         interactor.loadUserInfo()
     }
     
@@ -40,7 +41,7 @@ extension ProfilePresenter: ProfileViewOutput {
 
 extension ProfilePresenter: ProfileInteractorOutput {
     func setUserData(user: CurrentUser) {
+        view?.hideLoaderView()
         self.view?.getData(userData: user)
-        
     }
 }

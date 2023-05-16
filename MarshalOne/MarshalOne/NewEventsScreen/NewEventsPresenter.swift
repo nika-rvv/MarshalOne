@@ -27,6 +27,7 @@ extension NewEventsPresenter: NewEventsModuleInput {
 
 extension NewEventsPresenter: NewEventsViewOutput {
     func didLoadRaces() {
+        view?.showLoaderView()
         interactor.getRacesData()
     }
     
@@ -48,22 +49,27 @@ extension NewEventsPresenter: NewEventsViewOutput {
 extension NewEventsPresenter: NewEventsInteractorOutput {
     func showError(error: String?) {
         view?.showError(error: error)
+        view?.hideLoaderView()
     }
     
     func setRaces(races: [RaceInfo]) {
         view?.update(withRaces: races)
+        view?.hideLoaderView()
     }
     
     func setDislike(index: Int) {
         view?.setDislike(raceId: index)
+        view?.hideLoaderView()
     }
     
     func setLike(index: Int) {
         view?.setLike(raceId: index)
+        view?.hideLoaderView()
     }
     
     func setWatcher(index: Int) {
         view?.addWatcher(raceId: index)
+        view?.hideLoaderView()
     }
 }
 

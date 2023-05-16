@@ -18,6 +18,7 @@ protocol RegisterModuleOutput: AnyObject {
 protocol RegisterViewInput: AnyObject {
     func showEmptyFields(withIndexes indexes: [Int])
     func showCheckedPassword()
+    func showUnauthorizedError(with reason: String?)
 }
 
 protocol RegisterViewOutput: AnyObject {

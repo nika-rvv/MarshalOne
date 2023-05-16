@@ -10,12 +10,17 @@ import Foundation
 class NetworkManager {
     enum NetworkResponse: String {
         case success
-        case authentificationError = "You need to be authentificated first"
-        case badRequest = "Bad request"
-        case outdated = "The url you requested is outdated"
-        case failed = "Network request failed"
-        case noData = "Response returned with no data to decode"
-        case unableToDecode = "We could not decode the response"
+        case authentificationError = "Неправильные почта или пароль"
+        case badRequest = "Плохой запрос"
+        case outdated = "Запрашиваемый вами адрес устарел"
+        case failed = "Сбой сетевого запроса"
+        case noData = "Ответ возвращен без данных для декодирования"
+        case unableToDecode = "Мы не смогли расшифровать ответ"
+        case authError = "Сначала вам нужно пройти аутентификацию"
+        case wrongPassword = "Неверный пароль или email"
+        case notFound = "Код 404, не найдено"
+        case thisEmailAlreadyExists = "Эта почта уже занята"
+        case serverError = "У нас на сервере что-то произошло, мы уже все чиним"
     }
 
     enum Result {
@@ -31,10 +36,18 @@ class NetworkManager {
         switch response.statusCode {
         case 200...299:
             return .success
-        case 401...499:
-            return .failure(NetworkResponse.authentificationError.rawValue)
+        case 401:
+             return .failure(NetworkResponse.authError.rawValue)
+         case 403:
+             return .failure(NetworkResponse.wrongPassword.rawValue)
+         case 422:
+             return .failure(NetworkResponse.badRequest.rawValue)
+         case 404:
+             return .failure(NetworkResponse.notFound.rawValue)
+         case 409:
+             return .failure(NetworkResponse.thisEmailAlreadyExists.rawValue)
         case 501...599:
-            return .failure(NetworkResponse.badRequest.rawValue)
+            return .failure(NetworkResponse.serverError.rawValue)
         case 600:
             return .failure(NetworkResponse.outdated.rawValue)
         default:
@@ -44,10 +57,10 @@ class NetworkManager {
     
     internal func getStatus(response: URLResponse?) -> Result {
         guard let response = response else {
-            return .failure("Network request failed")
+            return .failure("Сбой сетевого запроса")
         }
         guard let httpResponse = response as? HTTPURLResponse else {
-            return .failure("No response")
+            return .failure("Нет ответа")
         }
         let status = handleNetworkResponse(httpResponse)
         return status
