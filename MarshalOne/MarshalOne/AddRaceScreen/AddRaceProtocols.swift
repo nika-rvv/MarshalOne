@@ -17,6 +17,7 @@ protocol AddRaceModuleOutput: AnyObject {
 
 protocol AddRaceViewInput: AnyObject {
     func showEmptyFields(withIndexes: [Int])
+    func showError(with error: String)
 }
 
 protocol AddRaceViewOutput: AnyObject {
@@ -30,6 +31,7 @@ protocol AddRaceInteractorInput: AnyObject {
 
 protocol AddRaceInteractorOutput: AnyObject {
     func raceAdded()
+    func showEror(with error: String)
 }
 
 protocol AddRaceRouterInput: AnyObject {

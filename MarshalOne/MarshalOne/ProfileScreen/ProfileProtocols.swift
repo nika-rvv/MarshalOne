@@ -19,6 +19,7 @@ protocol ProfileViewInput: AnyObject {
     func getData(userData: CurrentUser)
     func showLoaderView()
     func hideLoaderView()
+    func showError(with error: String)
 }
 
 protocol ProfileViewOutput: AnyObject {
@@ -33,6 +34,7 @@ protocol ProfileInteractorInput: AnyObject {
 
 protocol ProfileInteractorOutput: AnyObject {
     func setUserData(user: CurrentUser)
+    func showError(with error: String)
 }
 
 protocol ProfileRouterInput: AnyObject {

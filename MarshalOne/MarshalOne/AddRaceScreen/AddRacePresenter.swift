@@ -54,6 +54,10 @@ extension AddRacePresenter: AddRaceViewOutput {
 }
 
 extension AddRacePresenter: AddRaceInteractorOutput {
+    func showEror(with error: String) {
+        view?.showError(with: error)
+    }
+    
     func raceAdded() {
         router.closeViewController()
     }

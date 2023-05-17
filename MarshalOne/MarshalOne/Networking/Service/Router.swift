@@ -46,6 +46,7 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
                                  timeoutInterval: 10.0)
         
         request.httpMethod = route.httpMethod.rawValue
+        request.httpShouldHandleCookies = true
 
         do {
             switch route.task {

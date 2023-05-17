@@ -19,6 +19,7 @@ protocol EventViewInput: AnyObject {
     func setData(raceData: OneEventInfo)
     func addMember()
     func deleteMember()
+    func setMemberButton(isUnabledTobeMember: Bool)
 }
 
 protocol EventViewOutput: AnyObject {
@@ -35,7 +36,7 @@ protocol EventInteractorInput: AnyObject {
 }
 
 protocol EventInteractorOutput: AnyObject {
-    func setRace(races: OneEventInfo) async
+    func setRace(races: OneEventInfo, isUnabledTobeMember: Bool) async
     func setMember()
     func removeMember()
 }

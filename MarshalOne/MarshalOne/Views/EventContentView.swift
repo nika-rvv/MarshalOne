@@ -60,6 +60,7 @@ final class EventContentView: UIView {
     private let participateButton: CustomButton = {
         let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
     
@@ -172,10 +173,12 @@ extension EventContentView {
     func configureButton(isMember: Bool) {
         if isMember {
             participateButton.tintColor = R.color.mainOrange()
+            participateButton.isHidden = false
             participateButton.setupTitle(with: "Вы записаны")
             isUserMember = isMember
         } else {
             participateButton.setupTitle(with: R.string.localizable.participate())
+            participateButton.isHidden = false
             participateButton.tintColor = R.color.mainBlue()
             isUserMember = isMember
         }
@@ -187,6 +190,10 @@ extension EventContentView {
     
     func unsetParticipateAction(_ action: @escaping ParticipateAction) {
         self.unsetParticipationAction = action
+    }
+    
+    func hideButton() {
+        participateButton.isHidden = true
     }
 }
 

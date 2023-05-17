@@ -85,6 +85,14 @@ extension AddRaceViewController: ImagePickerDelegate {
 }
 
 extension AddRaceViewController: AddRaceViewInput {
+    func showError(with error: String) {
+        let alert = UIAlertController(title: R.string.localizable.ops(),
+                                      message: "\(error)",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
+        self.present(alert, animated: true)
+    }
+    
     func showEmptyFields(withIndexes: [Int]) {
         var alertString = "Не заполены поля: "
         for index in withIndexes {

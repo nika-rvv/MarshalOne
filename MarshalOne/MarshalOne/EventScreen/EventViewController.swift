@@ -67,6 +67,12 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension EventViewController: EventViewInput {
+    func setMemberButton(isUnabledTobeMember: Bool) {
+        if !isUnabledTobeMember {
+            eventContentView.hideButton()
+        }
+    }
+    
     func setData(raceData: OneEventInfo) {
         eventContentView.configureViewWith(mainText: raceData.title,
                                            placeName: raceData.placeName,
