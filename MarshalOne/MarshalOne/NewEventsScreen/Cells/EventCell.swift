@@ -40,6 +40,7 @@ final class EventCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = R.color.mainOrange()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -150,17 +151,18 @@ private extension EventCell {
         cellView.top(isIncludeSafeArea: false)
         cellView.leading()
         cellView.trailing()
-        cellView.height(410)
+        cellView.height(416)
         
-        titleLabel.top(16, isIncludeSafeArea: false)
+        titleLabel.top(10, isIncludeSafeArea: false)
         titleLabel.leading(24)
         titleLabel.trailing(-24)
         titleLabel.height(44)
 
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6)
         ])
         dateLabel.leading(24)
+        dateLabel.trailing(-24)
 
         NSLayoutConstraint.activate([
             placeStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8)
@@ -175,7 +177,7 @@ private extension EventCell {
         raceImage.height(240)
         
         NSLayoutConstraint.activate([
-            infoStackView.topAnchor.constraint(equalTo: raceImage.bottomAnchor, constant: 8),
+            infoStackView.topAnchor.constraint(equalTo: raceImage.bottomAnchor, constant: 6),
         ])
         infoStackView.leading(18)
         infoStackView.height(24)
@@ -229,7 +231,3 @@ extension EventCell {
         raceImage.setImage(url: URL(string: "\(imageId)"))
     }
 }
-// Screen -> Name, desc, image(Data) -> Model(RaceModelInfo) -> Preseter -> Interactor -> postRace -> post race(without image) -> postImage(raceid)
-
-// let race = await postRace()
-// wait postImage(race.Id)
