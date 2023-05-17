@@ -28,7 +28,7 @@ extension ProfileInteractor: ProfileInteractorInput {
         Task {
             let result = await userManager.currentUserInfo()
             if let error = result.error {
-                print(error)
+                output?.showError(with: error)
             }
             if let user = result.user {
                 await setUserDataWithoutErrors(with: user)

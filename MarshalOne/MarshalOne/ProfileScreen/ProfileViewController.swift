@@ -266,4 +266,12 @@ extension ProfileViewController: ProfileViewInput {
             self.actionsStackView.isHidden = false
         }
     }
+    
+    func showError(with error: String) {
+        let alert = UIAlertController(title: R.string.localizable.ops(),
+                                      message: "\(error)",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: R.string.localizable.correct(), style: .default))
+        self.present(alert, animated: true)
+    }
 }

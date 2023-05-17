@@ -194,6 +194,7 @@ extension AddRaceContentView {
     func setupDatePicker() {
         let dateFromPicker = setupDate()
         let dateToPicker = setupDate()
+        dateToPicker.minimumDate = dateFromPicker.date
         dateFromPicker.addTarget(self, action: #selector(dateFromChange(datePicker:)),
                              for: UIControl.Event.valueChanged)
         dateToPicker.addTarget(self, action: #selector(dateToChange(datePicker:)),

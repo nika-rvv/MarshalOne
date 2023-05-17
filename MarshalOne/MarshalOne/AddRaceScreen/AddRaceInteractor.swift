@@ -21,9 +21,9 @@ final class AddRaceInteractor {
     }
     
     private func formatDate(dateFrom: String, dateTo: String) -> (String, String) {
-//        var fromDateString = ""
-//        var toDateString = ""
-//
+        //        var fromDateString = ""
+        //        var toDateString = ""
+        //
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions.insert([.withFractionalSeconds,
                                         .withInternetDateTime])
@@ -40,11 +40,11 @@ final class AddRaceInteractor {
         }
         
         let convertedDateToStr = formatter.string(from: convertedDateTo)
-
+        
         return (convertedDateFromStr, convertedDateToStr)
     }
     
-    private func makeRaceInfo(raceInfo: [String?], imageId: Int) async -> AddRace {
+    private func makeRaceInfo(raceInfo: [String?], imageId: Int) async -> (race: AddRace?, error: String?)  {
         let raceInfoStrings = raceInfo.compactMap{ $0 }
         
         let date = formatDate(dateFrom: raceInfoStrings[1], dateTo: raceInfoStrings[2])
@@ -56,7 +56,7 @@ final class AddRaceInteractor {
         do {
             location = try await locationDecoder.getLocation(from: raceInfoStrings[3])
         } catch {
-            print("Error: \(error.localizedDescription)")
+            return (nil, "\(error)")
         }
         
         let addRaceInfo = AddRace(name: raceInfoStrings[0],
@@ -66,7 +66,7 @@ final class AddRaceInteractor {
                                   images: ["https://onwheels.enula.ru/api/Image/\(imageId)"],
                                   tags: [])
         
-        return addRaceInfo
+        return (addRaceInfo, nil)
     }
 }
 
@@ -85,9 +85,21 @@ extension AddRaceInteractor: AddRaceInteractorInput {
                     return
                 }
                 let postInfo = await makeRaceInfo(raceInfo: raceInfo, imageId: imageId)
-                let postRaceResult = await raceManager.postRace(with: postInfo)
-                if postRaceResult.error != nil {
-                    print(postRaceResult.error)
+                if let postInfoError = postInfo.error {
+                    await MainActor.run {
+                        output?.showEror(with: postInfoError)
+                    }
+                }
+                
+                var postRaceResult: (raceId: Int?, error: String?)
+                
+                if let postInfoRace = postInfo.race {
+                    postRaceResult = await raceManager.postRace(with: postInfoRace)
+                }
+                if let postRaceResultError = postRaceResult.error {
+                    await MainActor.run {
+                        output?.showEror(with: postRaceResultError)
+                    }
                 } else {
                     await MainActor.run {
                         output?.raceAdded()

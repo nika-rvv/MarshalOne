@@ -40,6 +40,11 @@ extension ProfilePresenter: ProfileViewOutput {
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {
+    func showError(with error: String) {
+        view?.hideLoaderView()
+        view?.showError(with: error)
+    }
+    
     func setUserData(user: CurrentUser) {
         view?.hideLoaderView()
         self.view?.getData(userData: user)

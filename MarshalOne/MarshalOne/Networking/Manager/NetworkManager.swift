@@ -30,7 +30,6 @@ class NetworkManager {
     
     static let environment: NetworkEnvironment = .debug
     static let additionalHeader: HTTPHeaders = ["" : ""]
-    
 
     func handleNetworkResponse(_ response : HTTPURLResponse) -> Result {
         switch response.statusCode {

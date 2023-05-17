@@ -22,7 +22,15 @@ final class EventInteractor {
         self.raceId = raceId
     }
     
-    private func makeOneRaceInfo(raceInfo: OneRace, isMember: Bool) async -> OneEventInfo {
+    private func makeOneRaceInfo(raceInfo: OneRace, isMember: Bool) async -> (race: OneEventInfo, isUnabledTobeMember: Bool) {
+        var isUnabledTobeMember = true
+        
+        if Date().formatted(.iso8601) < raceInfo.date.to  {
+            isUnabledTobeMember = true
+        } else {
+            isUnabledTobeMember = false
+        }
+        
         let raceInfo = OneEventInfo(title: raceInfo.name,
                                     dateSubtitle: formatDate(dateFrom: raceInfo.date.from,
                                                              dateTo: raceInfo.date.to),
@@ -34,7 +42,7 @@ final class EventInteractor {
                                     description: raceInfo.oneRaceDescription,
                                     isMember: isMember)
         
-        return raceInfo
+        return (raceInfo, isUnabledTobeMember)
     }
     
     private func formatLocation(from longitude: Double, and latitude: Double) async -> String {
@@ -84,7 +92,7 @@ extension EventInteractor: EventInteractorInput {
             
             if let race = result.race, let member = isMember.isMember {
                 let convertedRaceInfo = await makeOneRaceInfo(raceInfo: race, isMember: member)
-                await self.output?.setRace(races: convertedRaceInfo)
+                await self.output?.setRace(races: convertedRaceInfo.race, isUnabledTobeMember: convertedRaceInfo.isUnabledTobeMember)
             }
         }
     }
