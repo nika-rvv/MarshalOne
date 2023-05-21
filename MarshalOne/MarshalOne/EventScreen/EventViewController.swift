@@ -34,7 +34,7 @@ final class EventViewController: UIViewController, UIGestureRecognizerDelegate {
         event.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         return event
     }()
-        
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -87,16 +87,27 @@ extension EventViewController: EventViewInput {
     }
     
     func addMember() {
-        UIView.animate(withDuration: 0.3) {
-            self.eventContentView.configureButton(isMember: true)
-        }
+        self.eventContentView.configureButton(isMember: true)
     }
     
     func deleteMember() {
-        UIView.animate(withDuration: 0.3) {
-            self.eventContentView.configureButton(isMember: false)
+        self.eventContentView.configureButton(isMember: false)
+    }
+    
+    func showLoaderView() {
+        contentView.isHidden = true
+        raceImageView.isHidden = true
+        self.showLoader()
+    }
+    
+    func hideLoaderView() {
+        self.hideLoader()
+        UIView.animate(withDuration: 0.2) {
+            self.contentView.isHidden = false
+            self.raceImageView.isHidden = false
         }
     }
+    
 }
 
 private extension EventViewController {

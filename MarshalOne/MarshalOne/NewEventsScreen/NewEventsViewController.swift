@@ -48,14 +48,13 @@ final class NewEventsViewController: UIViewController {
         view.backgroundColor = R.color.cellBackgroundColor()
         self.tabBarController?.tabBar.backgroundColor = R.color.launchScreenColor()
         setupUI()
-        output.showLoader()
-        output.didLoadRaces()
 	}
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        output.showLoader()
+        output.didLoadRaces()
+    }
 }
 
 private extension NewEventsViewController {

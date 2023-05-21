@@ -26,6 +26,7 @@ extension EventPresenter: EventModuleInput {
 
 extension EventPresenter: EventViewOutput {
     func loadRaceInfo() {
+        view?.showLoaderView()
         interactor.loadInfo()
     }
     
@@ -45,6 +46,7 @@ extension EventPresenter: EventViewOutput {
 extension EventPresenter: EventInteractorOutput {
     func setRace(races: OneEventInfo, isUnabledTobeMember: Bool) async {
         await MainActor.run {
+            view?.hideLoaderView()
             view?.setData(raceData: races)
             view?.setMemberButton(isUnabledTobeMember: isUnabledTobeMember)
         }

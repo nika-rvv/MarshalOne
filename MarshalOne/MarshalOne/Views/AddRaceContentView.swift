@@ -95,6 +95,7 @@ final class AddRaceContentView: UIView {
         image.layer.borderWidth = 1
         image.layer.borderColor = R.color.mainBlue()?.cgColor
         image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
         return image
     }()
     

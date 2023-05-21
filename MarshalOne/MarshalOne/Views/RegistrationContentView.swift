@@ -25,6 +25,7 @@ final class RegistrationContentView: UIView {
         let bike = UIImageView()
         bike.translatesAutoresizingMaskIntoConstraints = false
         bike.image = R.image.registrationImage()
+        bike.contentMode = .scaleAspectFill
         return bike
     }()
     

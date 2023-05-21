@@ -20,6 +20,8 @@ protocol EventViewInput: AnyObject {
     func addMember()
     func deleteMember()
     func setMemberButton(isUnabledTobeMember: Bool)
+    func showLoaderView()
+    func hideLoaderView()
 }
 
 protocol EventViewOutput: AnyObject {
