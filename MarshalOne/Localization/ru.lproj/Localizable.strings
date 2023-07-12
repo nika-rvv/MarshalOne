@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  MarshalOne
+
+  Created by Veronika on 16.02.2023.
+  
+*/
+
+// login
+"welcomeLabel" = "Добро пожаловать \nв MarshalOne";
+"noAccount" = "Нет аккаунта? ";
+"register" = "Зарегестрироваться";
+"enterEmail" = "Введите email";
+"enterPassword" = "Введите пароль";
+"enter" = "Войти";
+
+//registration
+"createAccount" = "Создайте аккаунт";
+"fillFields" = "Пожалуйста, заполните все поля";
+"enterName" = "Введите имя";
+"enterSurname" = "Введите фамилию";
+"birthdate" = "Дата рождения";
+"enterCity" = "Введите город проживания";
+"createPassword" = "Создайте пароль";
+"confirmPassword" = "Подтвердите пароль";
+"acceptRules" = "Регистрируясь, я соглашаюсь с ";
+"acceptRules2" = "\n пользовательским соглашением";
+"man" = "муж";
+"woman" = "жен";
+"sex" = "Пол";
+"name" = "Имя";
+"surname" = "Фамилия";
+"city" = "Город";
+"email" = "Почта";
+"password" = "Пароль";
+"passwordConfirmation" = "Подтверждение пароля";
+
+//tabBar
+"events" = "Соревнования";
+"addRace" = "Добавить гонку";
+"profile" = "Профиль";
+
+
+// addRace
+"eventName" = "Название гонки";
+"dateFrom" = "Дата начала";
+"dateTo" = "Дата окончания";
+"eventDescription" = "Описание гонки";
+"placeOfEvent" = "Место проведения";
+
+//alerts
+"ops" = "Ой";
+"chekFields" = "Проверьте данные поля: ";
+"correct" = "Исправлю";
+"checkPasswords" = "Пароли не совпадают";
+
+// events
+"mapEventPlace" = "Место проведения";
+"participate" = "Участвовать!";
+
+//profile
+"logout" = "Выйти из аккаунта";
+"changeTheme" = "Поменять тему";
+
+//network
+"parametersNil" = "Параметры нулевые";
+"encodingFailed" = "Сбой кодирования параметров";
+"missingURL" = "URL равен нулю";
+"noInternetConnection" = "Нет соединения";
